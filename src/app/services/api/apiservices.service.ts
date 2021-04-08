@@ -17,12 +17,15 @@ export class ApiservicesService {
     return this.http.get<Product[]>("http://127.0.0.1:8000/product/snippets/")
   }
 
-  getOneProduct(pdrdId):Observable<Product>{
-    return this.http.get<Product>(`http://127.0.0.1:8000/product/snippets/${pdrdId}/`)
+  getOneProduct(cat,name):Observable<Product[]>{
+    return this.http.get<Product[]>(`http://127.0.0.1:8000/product/snippets/${cat}/${name}/`)
   }
 
   getAllcategories():Observable<Category[]>{
     return this.http.get<Category[]>("http://127.0.0.1:8000/product/categories/")
+  }
+  getproductdetails(id):Observable<Product>{
+    return this.http.get<Product>(`http://127.0.0.1:8000/product/snippets/${id}/`)
   }
 
 

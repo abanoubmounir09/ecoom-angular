@@ -16,12 +16,15 @@ export class MainComponent implements OnInit,AfterViewInit  {
   @ViewChild ('totalvalue')elem:ElementRef;
 
   SelectedCategory:string;
-  prdname:number;
+  productcategory:Product[];
+  prdname:string;
+  prdprice:number;
 
 
 
   constructor(private _apiServe:ApiservicesService) {
-   this.prdname=1
+   this.prdname="iphone7"
+   this.SelectedCategory="mobile"
   }
 
   ngOnInit(): void {
@@ -37,6 +40,7 @@ export class MainComponent implements OnInit,AfterViewInit  {
     this._apiServe.getAllcategories().subscribe((res)=>{
       this.categoryArray=res
       console.log(res)
+      
     },
     (err)=>{
       console.log(err)
@@ -51,8 +55,10 @@ export class MainComponent implements OnInit,AfterViewInit  {
 
   onSubmit(){
     // console.log(this.prdname)
-    this._apiServe.getOneProduct(this.prdname).subscribe((res)=>{
+    this._apiServe.getOneProduct(this.SelectedCategory,this.prdname).subscribe((res)=>{
       console.log(res)
+      this.data=res
+      
     },
     (err)=>{
       console.log(err)

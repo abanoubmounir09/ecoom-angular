@@ -1,5 +1,5 @@
 export interface Product {
-  PRDId?:Number;
+  id?:Number;
   PRDName:string;
   PRDCategory:string;
   PRDDesc:string;
