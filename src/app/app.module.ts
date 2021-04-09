@@ -7,8 +7,10 @@ import { HeaderComponent } from './Components/header/header.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { AboutUsComponent } from './Components/about-us/about-us.component';
 import { MainComponent } from './Components/main/main.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductdetailsComponent } from './Components/productdetails/productdetails.component';
+import { LoginComponent } from './Components/user/login/login.component';
+import { RegisterComponent } from './Components/user/register/register.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +19,16 @@ import { ProductdetailsComponent } from './Components/productdetails/productdeta
     FooterComponent,
     AboutUsComponent,
     MainComponent,
-    ProductdetailsComponent
+    ProductdetailsComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
