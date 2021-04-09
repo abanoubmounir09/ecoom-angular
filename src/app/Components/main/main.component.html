@@ -1,4 +1,3 @@
-<app-header></app-header>
 
 <div class="container-fluid">
   <div class="row mt-3">
@@ -43,75 +42,29 @@
 
   </div>
 
- 
-  <!-- <div class="row mt-3">
-    <div class="col-3">
-      <div id="accordion">
-        <div class="card">
-          <div class="card-header">
-            <a class="card-link" data-toggle="collapse" href="#collapseOne">
-              name
-            </a>
-          </div>
-          <div id="collapseOne" class="collapse show" data-parent="#accordion">
-            <div class="card-body">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header">
-            <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-            categoty
-          </a>
-          </div>
-          <div id="collapseTwo" class="collapse" data-parent="#accordion">
-            <div class="card-body">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header">
-            <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
-              price
-            </a>
-          </div>
-          <div id="collapseThree" class="collapse" data-parent="#accordion">
-            <div class="card-body">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    assets/im.jpg
-  </div> -->
+
 
   <div class="row mt-3 " >
     <div  class="col-md-3">
-      {{prdname}}
-        <form (ngSubmit)="onSubmit()" >
-            
 
-          <input type="text" [(ngModel)]="prdname">
-            <select #sel  class=" form-control btn btn-primary" style=" background-color: wheat; margin-top: -10px;"  name="category" id="cars" class="form-control" [(ngModel)]="SelectedCategory" >
+          <span >{{prodName}}</span>
+          <input type="text" [(ngModel)]="prodName" placeholder="item name">
+          <input type="number" [(ngModel)]="prdprice" placeholder="price">
+
+        <form (ngSubmit)="onSubmit()" >
+            <select #sel  class=" form-control btn btn-primary" style=" background-color: wheat;
+             margin-top: -10px;"  name="category" id="cars" class="form-control"
+              [(ngModel)]="SelectedCategory" >
               <option *ngFor="let cat of categoryArray;"  [value]="cat.CATName" >
                {{cat.CATName}}
               </option>
+
             </select>
 
-
-
-
-
             <input type="submit" name="save">
-
-
         </form>
+
     </div>
-
-
 
 
     <div class="col-md-3"  *ngFor="let item of data;">
@@ -128,7 +81,7 @@
               </h5>
             </div>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dignissim</p>
-            <a  class="btn btn-primary" [routerLink]="['/apiproductbyid',item.id]">View</a>
+            <a class="btn btn-warning" [routerLink]="['/product' ,item.id]">details</a>
           </div>
         </div>
      </div>
@@ -141,30 +94,6 @@
 
 
 
- <!-- <div ng-controller="SsbImageController as ssb">
-<h2>{{ssb.heading2}}</h2>
- <div ng-repeat="images in ssb.products">
-   <img ng-src="{{images.src}}" alt="{{images.alt}}"/>
- </div>
-</div> -->
 
 
 
-
-
-<!-- footter -->
-<app-footer></app-footer>
-
-
-
-<!--
-<div class="col-md-3">
-  <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="assets/im.jpg" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-</div> -->
