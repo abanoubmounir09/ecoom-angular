@@ -1,10 +1,20 @@
-<div class="container">
-    <h2>Card product</h2>
-    <div class="card" style="width:400px">
-      <div class="card-body">
-        <h4 class="card-title">{{prd.PRDName}}</h4>
-        <h1 class="card-text">price:{{prd.PRDPrice}}</h1>
-        
-       
-      </div>
+<div class="container mt-3">
+
+  <div class="row mt-2">
+    <div class="col-4">
+      <img src="{{item.PRDImage}}"  class="img-thumbnail mt-2" style="width:100%">
     </div>
+
+    <div class="col-8 mt-2">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title text-success mt-2">name is :{{item.PRDName}}</h4>
+          <p class="text-info mt-2">price is :{{item.PRDName}}</p>
+          <p class="text-primary mt-2">escription:{{item.PRDDesc}}</p>
+        </div>
+      </div>
+      <button class="btn btn-success m-2"(click)="GoBack()">go Back</button>
+    </div>
+  </div>
+
+  </div>

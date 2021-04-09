@@ -17,14 +17,14 @@ export class MainComponent implements OnInit,AfterViewInit  {
 
   SelectedCategory:string;
   productcategory:Product[];
-  prdname:string;
+  prodName:string;
   prdprice:number;
 
 
 
   constructor(private _apiServe:ApiservicesService) {
-   this.prdname="iphone7"
-   this.SelectedCategory="mobile"
+  //  this.prdname="iphone7"
+  //  this.SelectedCategory="mobile"
   }
 
   ngOnInit(): void {
@@ -40,7 +40,7 @@ export class MainComponent implements OnInit,AfterViewInit  {
     this._apiServe.getAllcategories().subscribe((res)=>{
       this.categoryArray=res
       console.log(res)
-      
+
     },
     (err)=>{
       console.log(err)
@@ -48,21 +48,30 @@ export class MainComponent implements OnInit,AfterViewInit  {
   }
 
   ngAfterViewInit() {
-    console.log(this.elem.nativeElement.value);
-    // console.log(this.someInput.nativeElement.innerHTML);
-    this.elem.nativeElement.style.color= "red"
+    // console.log(this.elem.nativeElement.value);
+    // // console.log(this.someInput.nativeElement.innerHTML);
+    // this.elem.nativeElement.style.color= "red"
+  }
+
+  testfun(){
+
   }
 
   onSubmit(){
-    // console.log(this.prdname)
-    this._apiServe.getOneProduct(this.SelectedCategory,this.prdname).subscribe((res)=>{
+    // console.log(this.SelectedCategory,this.prodName)
+
+    let poductname=this.prodName
+    let prodcategory=this.SelectedCategory
+    let  dict = {"poductname":poductname,"prodcategory":prodcategory}
+
+    this._apiServe.getFilterProduct(this.SelectedCategory,this.prodName).subscribe((res)=>{
       console.log(res)
       this.data=res
-      
+
     },
     (err)=>{
       console.log(err)
     })
-  }
+   }
 
 }
