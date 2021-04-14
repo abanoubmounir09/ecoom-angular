@@ -4,19 +4,15 @@ import { MainComponent } from './Components/main/main.component';
 import { ProductdetailsComponent } from './Components/productdetails/productdetails.component';
 import { LoginComponent } from './Components/user/login/login.component';
 import { RegisterComponent } from './Components/user/register/register.component';
-
+import { UserprofileComponent } from './Components/userprofile/userprofile.component';
 const routes: Routes =
 [
-<<<<<<< HEAD
-  { path: 'apiproductbyid/:id', component: ProductdetailsComponent},
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent},
-
-=======
   {path:'',redirectTo:'Home',pathMatch:'full'},
   {path:'Home', component:MainComponent},
+  { path:'login', component: LoginComponent },
+  { path:'register', component: RegisterComponent},
   {path:'product/:pid', component:ProductdetailsComponent},
->>>>>>> 8b80c20e4d939ddfe650a0f9466791eb6c96ae7a
+  {path:'profile', component:UserprofileComponent},
 ];
 
 

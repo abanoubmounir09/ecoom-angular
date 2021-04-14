@@ -1,4 +1,3 @@
-
 <div class="container-fluid">
   <div class="row mt-3">
     <div class="col-md-12">
@@ -10,23 +9,41 @@
         </ul>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="assets/im.jpg" alt="Los Angeles" class="img-responsive" width="100%" height="320px">
+            <img
+              src="assets/im.jpg"
+              alt="Los Angeles"
+              class="img-responsive"
+              width="100%"
+              height="320px"
+            />
             <div class="carousel-caption">
               <h3>Los Angeles</h3>
               <p>We had such a great time in LA!</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="assets/im.jpg" alt="Chicago" class="img-responsive"  width="100%" height="320px">
+            <img
+              src="assets/im.jpg"
+              alt="Chicago"
+              class="img-responsive"
+              width="100%"
+              height="320px"
+            />
             <div class="carousel-caption">
               <h3>Chicago</h3>
               <p>Thank you, Chicago!</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="assets/im.jpg" alt="New York" class="img-responsive"  width="100%" height="320px">
+            <img
+              src="assets/im.jpg"
+              alt="New York"
+              class="img-responsive"
+              width="100%"
+              height="320px"
+            />
             <div class="carousel-caption">
-              <h3 >New York</h3>
+              <h3>New York</h3>
               <p>We love the Big Apple!</p>
             </div>
           </div>
@@ -39,61 +56,84 @@
         </a>
       </div>
     </div>
-
   </div>
 
-
-
-  <div class="row mt-3 " >
-    <div  class="col-md-3">
-
-          <span >{{prodName}}</span>
-          <input type="text" [(ngModel)]="prodName" placeholder="item name">
-          <input type="number" [(ngModel)]="prdprice" placeholder="price">
-
-        <form (ngSubmit)="onSubmit()" >
-            <select #sel  class=" form-control btn btn-primary" style=" background-color: wheat;
-             margin-top: -10px;"  name="category" id="cars" class="form-control"
-              [(ngModel)]="SelectedCategory" >
-              <option *ngFor="let cat of categoryArray;"  [value]="cat.CATName" >
-               {{cat.CATName}}
-              </option>
-
-            </select>
-
-            <input type="submit" name="save">
-        </form>
-
+  <div class="row mt-3">
+    <div class="col-3 mt-3">
+      <div class="input-group mb-3 col-12">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">price</span>
+        </div>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="prdprice"
+          aria-label="prdprice"
+          [(ngModel)]="prdprice"
+          aria-describedby="basic-addon1"
+        />
+      </div>
     </div>
+    <div class="col-3 mt-3">
+      <div class="input-group mb-3 w-100 col-12">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Name</span>
+        </div>
+        <input
+          type="text"
+          class="form-contro2"
+          placeholder="prodName"
+          aria-label="prodName"
+          [(ngModel)]="prodName"
+          aria-describedby="basic-addon2"
+        />
+      </div>
+    </div>
+    <div class="col-3 mt-4">
+      <select
+      #sel
+      class="form-control btn btn-primary col-12"
+      style="background-color: wheat; margin-top: -10px"
+      name="category"
+      id="cars"
+      class="form-control"
+      [(ngModel)]="SelectedCategory">
+      <option *ngFor="let cat of categoryArray" [value]="cat.CATName">
+        {{ cat.CATName }}
+      </option>
+    </select>
+    </div>
+    <div class="col-3 mt-2">
+      <button class="btn btn-warning mt-2 " style="width: 100px;" (click)="onSave()">Search</button>
+    </div>
+  </div>
 
-
-    <div class="col-md-3"  *ngFor="let item of data;">
-      <div class="card mt-2" style="width: 20rem;">
-        <img class="card-img-top" src=" assets/im.jpg" alt="Card image cap">
-        <div class="card-body">
-          <div class="caption">
-            <div class="caption-top">
-              <h5 class="float-right badge-success p-1">
-                {{item.PRDPrice}}
-              </h5>
-              <h5>
-                <a href="product.html">{{item.PRDName}}</a>
-              </h5>
+  <div class="row mt-3">
+      <div class="col-3 ml-2" *ngFor="let item of data">
+        <div class="card mt-2 first" style="width: 20rem">
+          <img class="card-img-top" src=" assets/im.jpg" alt="Card image cap" />
+          <div class="card-body">
+            <div class="caption">
+              <div class="caption-top">
+                <h5 class="float-right badge-success p-1">
+                  {{ item.PRDPrice }}
+                </h5>
+                <h5>
+                  <a [routerLink]="['/product', item.id]">{{ item.PRDName }}</a>
+                </h5>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                dignissim
+              </p>
+              <a class="btn btn-warning" [routerLink]="['/product', item.id]"
+                >details</a
+              >
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dignissim</p>
-            <a class="btn btn-warning" [routerLink]="['/product' ,item.id]">details</a>
           </div>
         </div>
-     </div>
-    </div>
+      </div>
+
   </div>
 
-
 </div>
-
-
-
-
-
-
-
