@@ -3,7 +3,7 @@ export interface Product {
   PRDName:string;
   PRDCategory:string;
   PRDDesc:string;
-  PRDImage :string;
+  PRDImage : string;
   PRDPrice:Number;
   PRDDiscountPrice:Number;
   PRDCost:Number;
