@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Globals } from 'src/app/common/global-constants';
+import { Userprofile } from 'src/app/model/classes/userprofile';
 import { Category } from 'src/app/model/interfaces/category';
 import { Product } from 'src/app/model/interfaces/product';
 import { ApiservicesService } from 'src/app/services/api/apiservices.service';
@@ -22,10 +24,11 @@ export class MainComponent implements OnInit,AfterViewInit  {
   SelectedCategory:string;
   prodName:string;
   prdprice:number;
+  loginUser:Userprofile=new Userprofile();
+  check_is_staff: boolean;
 
 
-
-  constructor(private _apiServe:ApiservicesService,private _global:Globals) {
+  constructor(private _apiServe:ApiservicesService,private _router: Router,private _activedRoute:ActivatedRoute) {
     this.prdprice=0;
     this.prodName="";
     this.SelectedCategory = "";
@@ -69,6 +72,31 @@ export class MainComponent implements OnInit,AfterViewInit  {
     (err)=>{
       console.log(err)
     })
+  }
+  addtocard(item_id)
+  {
+    if(localStorage.getItem("loginuser") != null){
+      var data = JSON.parse(localStorage.getItem("loginuser"));
+      this.loginUser.email=data['email']
+      this.loginUser.username=data['username']
+      this.loginUser.id=data['id']
+      this.loginUser.is_staff=data['is_staff']
+      if (data['is_staff']==true){
+        this.check_is_staff=true
+      }
+      else{
+        this.check_is_staff=false
+      }
+      console.log("staff is ", this.check_is_staff)
+    }
+    console.log('ssss')
+    console.log(item_id)
+    this._apiServe.addtocard(
+      item_id,this.loginUser.id).subscribe((res) => {
+        console.log(res)
+        
+      }, (err) => { console.log(err) })
+
   }
 
 

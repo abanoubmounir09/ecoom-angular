@@ -14,12 +14,9 @@ const routes: Routes =
   { path:'login', component: LoginComponent },
   { path:'register', component: RegisterComponent},
   {path:'product/:pid', component:ProductdetailsComponent},
-<<<<<<< HEAD
-  {path:'order/:pid', component:OrderComponent},
+  {path:'order', component:OrderComponent},
   {path:'addproduct', component:AddproductComponent},
-=======
   {path:'profile', component:UserprofileComponent},
->>>>>>> e30ad9a4faa3c263e56aa0dc2eba6dddb47bed58
 ];
 
 

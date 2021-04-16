@@ -130,16 +130,13 @@
                 >details</a
               >
             </div>
-<<<<<<< HEAD
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dignissim</p>
             <a class="btn btn-warning" [routerLink]="['/product' ,item.id]">details</a>
-            <a class="btn btn-warning" [routerLink]="['/order' ,item.id]">Order</a>
-=======
->>>>>>> e30ad9a4faa3c263e56aa0dc2eba6dddb47bed58
+            <a class="btn btn-warning" (click)="addtocard(item.id)">add to card</a>
           </div>
         </div>
       </div>
 
   </div>
-
+  <a class="btn btn-warning" [routerLink]="['/order']">my card</a>
 </div>
