@@ -2,8 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from 'src/app/model/interfaces/category';
+import { Order } from 'src/app/model/interfaces/order';
 import { Product } from 'src/app/model/interfaces/product';
+
+
+
+
 import { Useraccount } from 'src/app/model/interfaces/useraccount';
+
 
 
 
@@ -49,6 +55,32 @@ export class ApiservicesService {
    });
     return this.http.get<Product>(`http://127.0.0.1:8000/product/prdid/1/`, { headers: reqHeader })
   }
+  addtocard(id,userid):Observable<Order>{
+    let x=
+    {
+      pid:id,
+      uid:userid
+    }
+    const httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Accept': ' */*'
+             //,'Authorization': 'my-auth-token'
+          })
+        };
+    return this.http.post<Order>(`http://127.0.0.1:8000/product/order/`,x,httpOptions)
+  }
+
+  // order(id): Observable<Order> {
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'application/json',
+  //       'Accept': ' */*'
+  //       //  ,'Authorization': 'my-auth-token'
+  //     })
+  //   };
+  //   return this.http.post<Order>(`http://127.0.0.1:8000/product/order/`, order, httpOptions)
+  // }
 
   //test filters
   testallquires(filterObj):Observable<Product[]>{
@@ -98,6 +130,16 @@ export class ApiservicesService {
     return this.http.post<Useraccount>(`http://127.0.0.1:8000/account/logout/`,{ headers: headersob })
   }
 
+  insertProduct(prd: Product): Observable<Product> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Accept': ' */*'
+        //  ,'Authorization': 'my-auth-token'
+      })
+    };
+    return this.http.post<Product>(`http://127.0.0.1:8000/product/add/`, prd, httpOptions)
+  }
    //active
   //  activeuser():Observable<Useraccount>{
   //   var headersob = new HttpHeaders();
@@ -106,7 +148,20 @@ export class ApiservicesService {
   // }
 
 
-
+  mycard(userid):Observable<Order>{
+    let x=
+    {
+      uid:userid
+    }
+    const httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Accept': ' */*'
+             //,'Authorization': 'my-auth-token'
+          })
+        };
+    return this.http.post<Order>(`http://127.0.0.1:8000/product/order/`,x,httpOptions)
+  }
 
 
 

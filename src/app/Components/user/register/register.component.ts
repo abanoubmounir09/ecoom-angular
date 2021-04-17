@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Globals } from 'src/app/common/global-constants';
 import { Userprofile } from 'src/app/model/classes/userprofile';
 import { ApiservicesService } from 'src/app/services/api/apiservices.service';
-import { Useraccount } from './../../../model/interfaces/useraccount';
+
 
 @Component({
   selector: 'app-register',

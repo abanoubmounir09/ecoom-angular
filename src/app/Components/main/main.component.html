@@ -130,10 +130,13 @@
                 >details</a
               >
             </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dignissim</p>
+            <a class="btn btn-warning" [routerLink]="['/product' ,item.id]">details</a>
+            <a class="btn btn-warning" (click)="addtocard(item.id)">add to card</a>
           </div>
         </div>
       </div>
 
   </div>
-
+  <a class="btn btn-warning" [routerLink]="['/order']">my card</a>
 </div>
