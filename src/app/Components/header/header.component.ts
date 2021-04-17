@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit,AfterViewInit {
       this.loginUser.username=data['username']
       this.loginUser.id=data['id']
       this.loginUser.is_staff=data['is_staff']
+      this.loginUser.token=data['token']
       if (data['is_staff']==true){
         this.check_is_staff=true
       }
@@ -41,7 +42,7 @@ export class HeaderComponent implements OnInit,AfterViewInit {
   }
 
   ngOnInit(): void {
-    console.log("ttttttttt********-------",this.loginUser)
+    console.log("loginUser********-------",this.loginUser)
   }
 
   saveBtnClick(){

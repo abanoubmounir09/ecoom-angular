@@ -13,12 +13,25 @@ import { Useraccount } from 'src/app/model/interfaces/useraccount';
 })
 export class ApiservicesService {
 
+   token:string
+  constructor(private http: HttpClient) {
 
-  constructor(private http: HttpClient) { }
+    if(localStorage.getItem("loginuser") != null){
+      var data = JSON.parse(localStorage.getItem("loginuser"));
+      this.token=data['token']
+    }
+   }
 
 
   getAllproduct():Observable<Product[]>{
-    return this.http.get<Product[]>("http://127.0.0.1:8000/product/snippets/")
+
+    console.log("*********toooken is ******",this.token)
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Token  ' + this.token
+   });
+
+    return this.http.get<Product[]>("http://127.0.0.1:8000/product/snippets/", { headers: reqHeader } )
   }
 
   getFilterProduct(cat,name):Observable<Product[]>{
@@ -30,15 +43,19 @@ export class ApiservicesService {
   }
 
   getproductdetails(id):Observable<Product>{
-    return this.http.get<Product>(`http://127.0.0.1:8000/product/prdid/1/`)
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Token  ' + this.token
+   });
+    return this.http.get<Product>(`http://127.0.0.1:8000/product/prdid/1/`, { headers: reqHeader })
   }
 
   //test filters
   testallquires(filterObj):Observable<Product[]>{
-    const newobject = {
-      category:"apple",
-      Prodname:"iphone3",
-    }
+    // const newobject = {
+    //   category:"apple",
+    //   Prodname:"iphone3",
+    // }
     var objectToSend = JSON.stringify(filterObj);
     var headersob = new HttpHeaders();
     headersob.append('Content-Type', 'application/json');
@@ -47,7 +64,7 @@ export class ApiservicesService {
   }
 
   //register api-http://127.0.0.1:8000/account/signup/
-  registeruser(user):Observable<Useraccount>{
+    registeruser(user):Observable<Useraccount>{
     var headersob = new HttpHeaders();
     headersob.append('Content-Type', 'application/json');
     // var objectToSend = JSON.stringify(user); dontparse to string in api token
@@ -56,13 +73,13 @@ export class ApiservicesService {
 
      //active
   loginUser(userob):Observable<Useraccount>{
-     var test={
-        "username": "cust33",
-        "password": "1234",
-      }
+    //  var test={
+    //     "username": "cust33",
+    //     "password": "1234",
+    //   }
       var headersob = new HttpHeaders();
       headersob.append('Content-Type', 'application/json');
-      return this.http.post<Useraccount>(`http://127.0.0.1:8000/account/login/`,test,{ headers: headersob })
+      return this.http.post<Useraccount>(`http://127.0.0.1:8000/account/login/`,userob,{ headers: headersob })
     }
 
 
