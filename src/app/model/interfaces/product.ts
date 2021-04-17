@@ -8,4 +8,5 @@ export interface Product {
   PRDDiscountPrice:Number;
   PRDCost:Number;
   PRDCreatedNow:string;
+  PRDQuantity: number;
 }

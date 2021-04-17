@@ -22,12 +22,13 @@ export class AddproductComponent implements OnInit {
       PRDPrice:null,
       PRDCost:null,
       PRDDiscountPrice:null,
-      PRDCreatedNow:""
+      PRDCreatedNow:"",
+      PRDQuantity: null,
 
     }
   }
 
-  ngOnInit(): void 
+  ngOnInit(): void
   {
     this._apiPrdServ.getAllcategories().subscribe((res)=>{
       this.categoryArray=res
@@ -47,5 +48,5 @@ export class AddproductComponent implements OnInit {
         this._router.navigateByUrl('/Home');
       }, (err) => { console.log(err) })
   }
-  
+
 }
