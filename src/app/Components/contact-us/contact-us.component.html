@@ -1,0 +1,123 @@
+<div class="container-fluid bg-dark">
+  <div class="mt-2 mb-4 pt-2 pl-2 bg-dark">
+    <h1 class="font-weight-bolder text-white text-center">CONTACT US</h1>
+  </div>
+  <div>
+    <a
+      class="nav-link font-weight-bold text-white text-center" style="font-size:25px;"
+      routerLink="/Home"
+    >
+      Home
+    </a>
+    <li class="nav-link font-weight-bold text-white d-flex">
+      <strong class="mx-auto" style="font-size:25px;"> Contact us! </strong>
+    </li>
+  </div>
+</div>
+
+<div class="container-fluid pt-2 pb-2 ">
+  <div class="container mt-4 mb-4 pt-4 ">
+    <div class = "row">
+     <div class = "col-6">
+      <form class="text-center">
+        <div class="form-group">
+          <!--<label class="mb-2 mr-sm-2">Name:</label>-->
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter Name"
+            [(ngModel)]="name"
+            class="form-control mb-4"
+          />
+        </div>
+        <br />
+
+        <div class="form-group">
+          <!--<label class="mb-2 mr-sm-2">Email:</label>-->
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter Email"
+            [(ngModel)]="email"
+            class="form-control mb-4"
+          />
+        </div>
+        <br />
+
+        <div class="form-group">
+          <!--<label class="mb-2 mr-sm-2">Phone:</label>-->
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Enter phone"
+            [(ngModel)]="phone"
+            class="form-control mb-4"
+          />
+        </div>
+        <br />
+
+        <div class="form-group">
+          <!--<label class="mb-2 mr-sm-2">Message:</label>-->
+          <textarea
+            name="message"
+            placeholder="Enter Message"
+            [(ngModel)]="message"
+            class="form-control mb-4"
+            rows="6"
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          (click)="submitForm()"
+          class="btn btn-danger btn-lg my-4"
+        >
+          Submit
+        </button>
+      </form>
+     </div>
+
+     <div class = "col-6">
+
+      <div class="map-info">
+			<div class="map-container">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.5606633793054!2d-74.00828458522746!3d40.70567254594076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a3d8bd97fdb%3A0x2c63563cac21c14a!2s88%20Pine%20St%2C%20New%20York%2C%20NY%2010005%2C%20USA!5e0!3m2!1sen!2s!4v1573054178138!5m2!1sen!2s" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>			</div>
+	  	</div>
+
+     </div>
+   </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+ <div class ="row">
+  <div class="border border-muted col-4">
+    <div class="pr-2 mr-2 mt-2">
+      <img src="https://themes.magesolution.com/gemmart/pub/media/wysiwyg/contact-icon-1.png"/>
+    </div>
+    <div>
+      <h5>Address:</h5>
+      <p>17 Princess Road, London, Greater London NW1 8JR, UK</p>
+    </div>
+  </div>
+
+  <div class="border border-muted col-4">
+    <div class="pr-2 mr-2 mt-2">
+      <img src="https://themes.magesolution.com/gemmart/pub/media/wysiwyg/contact-icon-2.png"/>
+    </div>
+    <div>
+      <h5>Email us:</h5>
+      <p>support@arrowhitech.com <br />support@arrowpress.com</p>
+    </div>
+  </div>
+
+  <div class="border border-muted col-4">
+    <div class="pr-2 mr-2 mt-2">
+      <img src="https://themes.magesolution.com/gemmart/pub/media/wysiwyg/contact-icon-3.png"/>
+    </div>
+    <div>
+      <h5>Hotline:</h5>
+      <p>020 8819 3279 / 01483 338 757</p>
+    </div>
+  </div>
+ </div>
+</div>

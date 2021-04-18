@@ -1,3 +1,4 @@
+import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
@@ -12,6 +13,7 @@ import { ProductdetailsComponent } from './Components/productdetails/productdeta
 import { LoginComponent } from './Components/user/login/login.component';
 import { RegisterComponent } from './Components/user/register/register.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,8 @@ import { RegisterComponent } from './Components/user/register/register.component
     MainComponent,
     ProductdetailsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
