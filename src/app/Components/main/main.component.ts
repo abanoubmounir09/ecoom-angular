@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Globals } from 'src/app/common/global-constants';
+import { Userprofile } from 'src/app/model/classes/userprofile';
 import { Category } from 'src/app/model/interfaces/category';
 import { Product } from 'src/app/model/interfaces/product';
 import { ApiservicesService } from 'src/app/services/api/apiservices.service';
@@ -15,19 +18,24 @@ export class MainComponent implements OnInit,AfterViewInit  {
 
   @ViewChild ('totalvalue')elem:ElementRef;
 
-  SelectedCategory:string;
+  testonputinform:string;
   productcategory:Product[];
+
+  SelectedCategory:string;
   prodName:string;
   prdprice:number;
+  loginUser:Userprofile=new Userprofile();
+  check_is_staff: boolean;
 
 
-
-  constructor(private _apiServe:ApiservicesService) {
-  //  this.prdname="iphone7"
-  //  this.SelectedCategory="mobile"
+  constructor(private _apiServe:ApiservicesService,private _router: Router,private _activedRoute:ActivatedRoute) {
+    this.prdprice=0;
+    this.prodName="";
+    this.SelectedCategory = "";
   }
 
   ngOnInit(): void {
+    // get all products
     this._apiServe.getAllproduct().subscribe((res)=>{
       this.data=res;
       console.log(res)
@@ -36,11 +44,10 @@ export class MainComponent implements OnInit,AfterViewInit  {
       console.log(err)
     })
 
-    // ------------------
+    // get all categories
     this._apiServe.getAllcategories().subscribe((res)=>{
       this.categoryArray=res
       console.log(res)
-
     },
     (err)=>{
       console.log(err)
@@ -48,30 +55,74 @@ export class MainComponent implements OnInit,AfterViewInit  {
   }
 
   ngAfterViewInit() {
-    // console.log(this.elem.nativeElement.value);
-    // // console.log(this.someInput.nativeElement.innerHTML);
-    // this.elem.nativeElement.style.color= "red"
-  }
-
-  testfun(){
 
   }
 
-  onSubmit(){
-    // console.log(this.SelectedCategory,this.prodName)
-
-    let poductname=this.prodName
-    let prodcategory=this.SelectedCategory
-    let  dict = {"poductname":poductname,"prodcategory":prodcategory}
-
-    this._apiServe.getFilterProduct(this.SelectedCategory,this.prodName).subscribe((res)=>{
+  onSave(){
+    console.log(this.prdprice,this.prodName,this.SelectedCategory)
+    var filteObj={
+      category:this.SelectedCategory,
+      Prodname:this.prodName,
+      price:this.prdprice
+    }
+    this._apiServe.testallquires(filteObj).subscribe((res)=>{
       console.log(res)
       this.data=res
-
     },
     (err)=>{
       console.log(err)
     })
+  }
+  addtocard(item_id)
+  {
+    if(localStorage.getItem("loginuser") != null){
+      var data = JSON.parse(localStorage.getItem("loginuser"));
+      this.loginUser.email=data['email']
+      this.loginUser.username=data['username']
+      this.loginUser.id=data['id']
+      this.loginUser.is_staff=data['is_staff']
+      if (data['is_staff']==true){
+        this.check_is_staff=true
+      }
+      else{
+        this.check_is_staff=false
+      }
+      console.log("staff is ", this.check_is_staff)
+    }
+    console.log('ssss')
+    console.log(item_id)
+    this._apiServe.addtocard(
+      item_id,this.loginUser.id).subscribe((res) => {
+        console.log(res)
+        
+      }, (err) => { console.log(err) })
+
+  }
+
+
+  onSubmit(){
+
+
+    // let poductname=this.prodName
+    // let prodcategory=this.SelectedCategory
+    // let  dict = {"poductname":poductname,"prodcategory":prodcategory}
+
+    // this._apiServe.getFilterProduct(this.SelectedCategory,this.prodName).subscribe((res)=>{
+    //   console.log(res)
+    //   this.data=res
+
+    // },
+    // (err)=>{
+    //   console.log(err)
+    // })
+
+    // this._apiServe.testallquires().subscribe((res)=>{
+    //   console.log(res)
+    // },
+    // (err)=>{
+    //   console.log(err)
+    // })
+
    }
 
 }

@@ -10,8 +10,12 @@ import { AboutUsComponent } from './Components/about-us/about-us.component';
 import { MainComponent } from './Components/main/main.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductdetailsComponent } from './Components/productdetails/productdetails.component';
+import { AddproductComponent } from './Components/addproduct/addproduct.component';
+import { OrderComponent } from './Components/order/order.component';
 import { LoginComponent } from './Components/user/login/login.component';
 import { RegisterComponent } from './Components/user/register/register.component';
+import { Globals } from './common/global-constants';
+import { UserprofileComponent } from './Components/userprofile/userprofile.component';
 
 
 @NgModule({
@@ -22,9 +26,12 @@ import { RegisterComponent } from './Components/user/register/register.component
     AboutUsComponent,
     MainComponent,
     ProductdetailsComponent,
+    AddproductComponent,
+    OrderComponent,
     LoginComponent,
     RegisterComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    UserprofileComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +40,8 @@ import { RegisterComponent } from './Components/user/register/register.component
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [Globals],
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }

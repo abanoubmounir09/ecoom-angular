@@ -12,9 +12,11 @@ import {Location} from '@angular/common'
 
 export class ProductdetailsComponent implements OnInit,AfterViewInit {
 
-  item:Product;
+  item: Product;
+  ratevalue:string;
+  ProductId:string;
 
-  constructor(private _apiServe:ApiservicesService,private _activedRoute:ActivatedRoute,
+  constructor(private _apiServe: ApiservicesService,private _activedRoute: ActivatedRoute,
     private loc: Location) {
 
      }
@@ -38,6 +40,17 @@ export class ProductdetailsComponent implements OnInit,AfterViewInit {
 
   GoBack(){
     this.loc.back();
+  }
+  sRating(){
+    console.log(this.ratevalue);
+   this._apiServe.rateProduct(this.ProductId,this.ratevalue).subscribe((res)=>{
+     console.log(res)
+   },
+   (err)=>{
+     console.log(err)
+   })
+
+
   }
 
 }

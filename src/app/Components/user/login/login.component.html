@@ -2,17 +2,27 @@
   <div class="row justify-content-center">
     <div class="col-lg-6 ">
       <form [formGroup]="loginForm" (ngSubmit)="login()">
-    <div class="form-group">
-        <label for="">mail</label>
-        <input type="email" formControlName="Email" class="form-control" name="Umail">
-        <div class="alert alert-danger" role="alert" *ngIf="loginForm.controls['Email'].invalid &&
-            loginForm.controls['Email'].touched">
-            <strong *ngIf="loginForm.controls['Email'].errors.required"> Email
-                is required </strong>
-            <strong *ngIf="loginForm.controls['Email'].errors.email"> Email not
-                contain Ex: @,.com </strong>
-        </div>
-    </div>
+
+        <div class="form-group">
+          <label for="">User Name:</label>
+          <input type="text" formControlName="UserName" class="form-control" name="user">
+          <div class="alert alert-danger" role="alert" *ngIf="loginForm.controls['UserName'].invalid &&
+            loginForm.controls['UserName'].touched">
+            <strong *ngIf="loginForm.controls['UserName'].errors.required"> User Name
+              is required </strong>
+          </div>
+          </div>
+    <!-- <div class="form-group">
+      <label for="">Email</label>
+      <input type="email" formControlName="Email" class="form-control" name="Umail">
+      <div class="alert alert-danger" role="alert" *ngIf="loginForm.controls['Email'].invalid &&
+      loginForm.controls['Email'].touched">
+        <strong *ngIf="loginForm.controls['Email'].errors.required"> Email
+          is required </strong>
+        <strong *ngIf="loginForm.controls['Email'].errors.email"> Email not
+          contain Ex: @,.com </strong>
+      </div>
+    </div> -->
     <div class="form-group">
         <label for="">password</label>
         <input type="password" formControlName="Password" class="form-control" name="Upassword">
@@ -32,4 +42,3 @@
     </div>
   </div>
 </div>
-
