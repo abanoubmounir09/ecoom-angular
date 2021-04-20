@@ -15,6 +15,7 @@ export class ProductdetailsComponent implements OnInit,AfterViewInit {
   item: Product;
   ratevalue:string;
   ProductId:string;
+  add:string;
 
   imgDirectory:any= "http://127.0.0.1:8000"
 
@@ -53,6 +54,15 @@ export class ProductdetailsComponent implements OnInit,AfterViewInit {
      console.log(err)
    })
 
+
+  }
+  addincrement(){
+    this.add ="1"
+
+  }
+
+
+  subproduct(){
 
   }
 
