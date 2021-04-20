@@ -1,35 +1,137 @@
-<div class="container mt-3">
+<div class="container bg-dark">
+  <div class="row">
+    <div class="col-12">
+      <div class="mt-2 mb-4 pt-2 pl-2 bg-dark">
+        <h1 class="font-weight-bolder text-white text-center">
+          Micro USB to Type-C Adapter 3pcs
+        </h1>
+      </div>
+      <div>
+        <a
+          class="nav-link font-weight-bold text-white text-center"
+          style="font-size: 25px; cursor: pointer"
+          routerLink="/Home"
+          >Home</a
+        >
+        <li class="nav-link font-weight-bold text-white d-flex">
+          <strong class="mx-auto" style="font-size: 25px">
+            Micro USB to Type-C Adapter 3pcs
+          </strong>
+        </li>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <div class="row mt-2 dfirst " style="height: 300px;">
-    <div class="col-4 fcard  d-flex justify-content-center">
-      <img src=" assets/im.jpg"  class="img-thumbnail mt-2 first " style="width:100%">
+<div class="container">
+  <div class="row my-4 pr-6">
+    <div class="col-md-2 my-4 pl-4 mw-100%">
+      <img
+        src="assets/usb1.png"
+        width="120px"
+        class="border border-muted d-flex float-right"
+      />
+      <img
+        src="assets/usb2.jpg"
+        width="120px"
+        class="border border-muted d-flex float-right"
+      />
+      <img
+        src="assets/usb3.jpg"
+        width="120px"
+        class="border border-muted d-flex float-right"
+      />
     </div>
 
-    <div class="col-8 mt-2  ">
-      <div class="card fcard ">
-        <div class="card-body ">
-          <h4 class="card-title text-success mt-2">name is :{{item.PRDName}}</h4>
-          <p class="text-info mt-2">price is :{{item.PRDName}}</p>
-          <p class="text-primary mt-2">escription:{{item.PRDDesc}}</p>
+    <div class="col-xl-4 my-4 pr-4 mw-100%">
+      <img src="assets/usb1.png" class="border border-muted w-100 h-100" />
+    </div>
+
+    <div class="col-6 my-4">
+      <h2>Micro USB to Type-C Adapter 3pcs</h2>
+      <a class="text-muted">Be The First To Review This Product</a>
+      <h3 class="text-danger">$19.00</h3>
+      <ul>
+        <li><a class="text-muted">4.5 inch HD Touch Screen (1280 x 720)</a></li>
+        <li><a class="text-muted">Android 4.4 KitKat OS</a></li>
+        <li><a class="text-muted">1.4 GHz Quad Core™ Processor</a></li>
+      </ul>
+
+
+      <div class="form-group d-inline-flex mr-4 border-muted">
+          <button class="form-control border-light btn"><i class="fa fa-minus text-muted" style=" font-size:12px"></i></button>
+          <input type="text" value="1" class="form-control border-light text-center input-btn">
+          <button class="form-control border-light btn"><i class="fa fa-plus text-muted" style="font-size:12px"></i></button>
+      </div>
+      <button class="btn-danger btn-card">
+        Add to Cart
+      </button>
+      <br /><br />
+      <div>
+        <strong class="text-muted">Availability:</strong>
+        <span class="text-success"> In stock</span>
+      </div>
+      <div>
+        <strong class="text-muted">SKU:</strong>
+        <span class="text-dark"> DEMOH1_3006</span>
+      </div>
+      <br />
+      <div>
+        <a href="#" class="text-danger">Delivery &amp; Return</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="container mt-3">
+  <div class="row mt-2 dfirst" style="height: 300px">
+    <div class="col-4 fcard d-flex justify-content-center">
+      <img
+        src=" assets/im.jpg"
+        class="img-thumbnail mt-2 first"
+        style="width: 100%"
+      />
+  <div class="row mt-2 dfirst " style="height: 300px;">
+    <div class="col-4 fcard  d-flex justify-content-center">
+      <img src="{{imgDirectory}}{{item.PRDImage}}"  class="img-thumbnail mt-2 first " style="width:100%">
+    </div>
+
+    <div class="col-8 mt-2">
+      <div class="card fcard">
+        <div class="card-body">
+          <h4 class="card-title text-success mt-2">
+            name is :{{ item.PRDName }}
+          </h4>
+          <p class="text-info mt-2">price is :{{ item.PRDName }}</p>
+          <p class="text-primary mt-2">description:{{ item.PRDDesc }}</p>
         </div>
       </div>
-      <button class="btn btn-success m-2"(click)="GoBack()">go Back</button>
+      <button class="btn btn-success m-2" (click)="GoBack()">go Back</button>
     </div>
   </div>
   <div class="row">
     <div class="form-group">
-    <label for="sel1">Select list:</label>
-    <select class="form-control" id="sel1" [(ngModel)]="ratevalue"  >
-      <option [value]="1">1</option>
-      <option [value]="2">2</option>
-      <option [value]="3">3</option>
-      <option [value]="4">4</option>
-      <option [value]="5">5</option>
-    </select>
-   </div>
+      <label for="sel1">Select list:</label>
+      <select class="form-control" id="sel1" [(ngModel)]="ratevalue">
+        <option [value]="1">1</option>
+        <option [value]="2">2</option>
+        <option [value]="3">3</option>
+        <option [value]="4">4</option>
+        <option [value]="5">5</option>
+      </select>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary" (click)="sRating()">
+    Rating
+  </button>
+</div>
 
-    </div>
-       <button type="button" class="btn btn-primary" (click)="sRating()">Rating</button>
-    </div>
+
+
 
 

@@ -1,12 +1,12 @@
 export interface Product {
-  id?:Number;
+  id?:number;
   PRDName:string;
   PRDCategory:string;
   PRDDesc:string;
-  PRDImage : string;
-  PRDPrice:Number;
-  PRDDiscountPrice:Number;
-  PRDCost:Number;
+  PRDImage : File;
+  PRDPrice:string;
+  PRDDiscountPrice:string;
+  PRDCost:string;
   PRDCreatedNow:string;
-  PRDQuantity: number;
+  PRDQuantity: string;
 }

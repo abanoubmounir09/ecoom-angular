@@ -6,10 +6,14 @@
           <li data-target="#demo" data-slide-to="0" class="active"></li>
           <li data-target="#demo" data-slide-to="1"></li>
           <li data-target="#demo" data-slide-to="2"></li>
+          <li data-target="#demo" data-slide-to="3"></li>
+          <li data-target="#demo" data-slide-to="4"></li>
         </ul>
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img
+              src="assets/device4.jpg"
+              alt="devices1"
               src="assets/im.jpg"
               alt="Los Angeles"
               class="img-responsive"
@@ -17,12 +21,27 @@
               height="320px"
             />
             <div class="carousel-caption">
-              <h3>Los Angeles</h3>
+              <div>
+                <h1>Black friday</h1>
+                <a href="#" class="primary-btn">Shop Now</a>
+              </div>
               <p>We had such a great time in LA!</p>
             </div>
           </div>
           <div class="carousel-item">
             <img
+              src="assets/device3.jpeg"
+              alt="device3"
+              class="img-responsive"
+              width="100%"
+              height="320px"
+            />
+            <div class="carousel-caption"></div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="assets/device 5.jpg"
+              alt="device 5"
               src="assets/im.jpg"
               alt="Chicago"
               class="img-responsive"
@@ -30,12 +49,17 @@
               height="320px"
             />
             <div class="carousel-caption">
-              <h3>Chicago</h3>
-              <p>Thank you, Chicago!</p>
+              <a href="#" class="primary-btn">Shop Now</a>
+              <div>
+                <h2>Sale <span>50%</span></h2>
+              </div>
+              <p>We love the Big Apple!</p>
             </div>
           </div>
           <div class="carousel-item">
             <img
+              src="assets/device1.jpeg"
+              alt="device1"
               src="assets/im.jpg"
               alt="New York"
               class="img-responsive"
@@ -43,100 +67,317 @@
               height="320px"
             />
             <div class="carousel-caption">
+              <div>
+                <h1>Black friday</h1>
+                <a href="#" class="primary-btn">Shop Now</a>
+              </div>
+              <div>
+                <h2>Sale <span>50%</span></h2>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="assets/device2.jpeg"
+              alt="device2"
+              class="img-responsive"
+              width="100%"
+              height="320px"
+            />
+            <div class="carousel-caption">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-5">
+                    <h1>Black friday</h1>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore
+                    </p>
+                    <a href="#" class="primary-btn">Shop Now</a>
+                  </div>
+                </div>
+                <div class="off-card">
+                  <h2>Sale <span>50%</span></h2>
+                </div>
+              </div>
               <h3>New York</h3>
               <p>We love the Big Apple!</p>
             </div>
           </div>
+
+          <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
         </div>
-        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#demo" data-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </a>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="row mt-3">
-    <div class="col-3 mt-3">
-      <div class="input-group mb-3 col-12">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">price</span>
+
+  <div class="container">
+<!-- search -->
+      <div class="row mt-3">
+
+        <div class="col-3 mt-3">
+          <div class="input-group mb-3 col-12">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">price</span>
+            </div>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="prdprice"
+              aria-label="prdprice"
+              [(ngModel)]="prdprice"
+              aria-describedby="basic-addon1"
+            />
+          </div>
         </div>
-        <input
-          type="number"
+        <div class="col-3 mt-3">
+          <div class="input-group mb-3 w-100 col-12">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Name</span>
+            </div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="prodName"
+              aria-label="prodName"
+              [(ngModel)]="prodName"
+              aria-describedby="basic-addon2"
+            />
+          </div>
+        </div>
+
+        <!-- search -->
+        <div class="col-3 mt-4">
+          <select
+          #sel
+          class="form-control btn btn-primary col-12"
+          style="background-color: wheat; margin-top: -10px"
+          name="category"
+          id="cars"
           class="form-control"
-          placeholder="prdprice"
-          aria-label="prdprice"
-          [(ngModel)]="prdprice"
-          aria-describedby="basic-addon1"
-        />
-      </div>
-    </div>
-    <div class="col-3 mt-3">
-      <div class="input-group mb-3 w-100 col-12">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">Name</span>
+          [(ngModel)]="SelectedCategory">
+          <option *ngFor="let cat of categoryArray" [value]="cat.CATName">
+            {{ cat.CATName }}
+          </option>
+        </select>
         </div>
-        <input
-          type="text"
-          class="form-contro2"
-          placeholder="prodName"
-          aria-label="prodName"
-          [(ngModel)]="prodName"
-          aria-describedby="basic-addon2"
-        />
+        <div class="col-3 mt-2">
+          <button class="btn btn-warning mt-2 " style="width: 100px;" (click)="onSave()">Search</button>
+        </div>
       </div>
-    </div>
-    <div class="col-3 mt-4">
-      <select
-      #sel
-      class="form-control btn btn-primary col-12"
-      style="background-color: wheat; margin-top: -10px"
-      name="category"
-      id="cars"
-      class="form-control"
-      [(ngModel)]="SelectedCategory">
-      <option *ngFor="let cat of categoryArray" [value]="cat.CATName">
-        {{ cat.CATName }}
-      </option>
-    </select>
-    </div>
-    <div class="col-3 mt-2">
-      <button class="btn btn-warning mt-2 " style="width: 100px;" (click)="onSave()">Search</button>
-    </div>
-  </div>
+<!-- end serach -->
 
-  <div class="row mt-3">
-      <div class="col-3 ml-2" *ngFor="let item of data">
-        <div class="card mt-2 first" style="width: 20rem">
-          <img class="card-img-top" src=" assets/im.jpg" alt="Card image cap" />
+
+
+      <!------------------------------------------------------------------------------------------------------------------>
+</div>
+
+<!-- items  -->
+<div class="container">
+
+    <div class="row mt-3">
+      <div class="col-lg-3 col-md-3 col-xl-3 " *ngFor="let item of data">
+        <div class="card mt-2 first">
+          <div  class="product-item  p-0"  >
+            <div class="product-image">
+              <img class="card-img-top" src="{{imgDirectory}}{{item.PRDImage}}"
+              alt="Card image cap" height="220" />
+            <div class="product-action">
+              <a  (click)="addtocard(item.id)"><i class="fa fa-cart-plus"></i></a>
+              <a [routerLink]="['/product' ,item.id]"><i class="fa fa-search" ></i></a>
+
+              <!-- <a href="#"><i class="fa fa-heart"></i></a> -->
+
+            </div>
+            </div>
+          </div>
+          <!-- <img class="card-img-top" src="{{imgDirectory}}{{item.PRDImage}}" alt="Card image cap" /> -->
           <div class="card-body">
             <div class="caption">
               <div class="caption-top">
-                <h5 class="float-right badge-success p-1">
-                  {{ item.PRDPrice }}
+                <h5 class="float-right badge-warning ">
+                  {{ item.PRDPrice| currency }}
                 </h5>
                 <h5>
                   <a [routerLink]="['/product', item.id]">{{ item.PRDName }}</a>
                 </h5>
               </div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                dignissim
-              </p>
-              <a class="btn btn-warning" [routerLink]="['/product', item.id]"
-                >details</a
-              >
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dignissim</p>
-            <a class="btn btn-warning" [routerLink]="['/product' ,item.id]">details</a>
-            <a class="btn btn-warning" (click)="addtocard(item.id)">add to card</a>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <a class="btn info m-1" [routerLink]="['/product' ,item.id]">details</a>
+            <a class="btn success " (click)="addtocard(item.id)">add to card</a>
           </div>
         </div>
       </div>
 
   </div>
-  <a class="btn btn-warning" [routerLink]="['/order']">my card</a>
+
 </div>
+
+
+<!-- tiger -->
+  <a class="btn btn-warning" [routerLink]="['/order']">my card</a>
+
+  <a class="btn warning" [routerLink]="['/order']">my card</a>
+
+
+
+
+      <!-- <div class="row mt-3">
+        <div class="col-md-4">
+          <span>{{ prodName }}</span>
+          <input type="text" [(ngModel)]="prodName" placeholder="item name" />
+          <input type="number" [(ngModel)]="prdprice" placeholder="price" />
+
+          <form (ngSubmit)="onSubmit()">
+            <select
+              #sel
+              class="form-control btn btn-primary"
+              style="background-color: wheat; margin-top: -10px"
+              name="category"
+              id="cars"
+              class="form-control"
+              [(ngModel)]="SelectedCategory"
+            >
+              <option *ngFor="let cat of categoryArray" [value]="cat.CATName">
+                {{ cat.CATName }}
+              </option>
+            </select>
+
+            <input type="submit" name="save" />
+          </form>
+        </div>
+      </div> -->
+      <!---------------------------------------------------------------------------------->
+    <!-- <div class="col-md-3" *ngFor="let item of data">
+        <div class="card mt-2" style="width: 20rem">
+  </div>
+  <div class="ratting">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+</div> -->
+<!--
+
+
+    <div class="col-md-4">
+            <div class="product-item">
+              <div class="product-image">
+                <ul class="">
+                  <li class="new mt-4"><span>New</span></li>
+                </ul>
+                <a href="product-detail.html">
+                  <img
+                    src="http://demo.posthemes.com/pos_haltico/92-home_default/playstation-4-pro-1tb-star-wars-battlefront-ii-bundle.jpg"
+                    alt="PlayStation 4 Pro 1TB Star Wars Battlefront II..."
+                  />
+                </a>
+                <div class="product-action">
+                  <a href="#"><i class="fa fa-cart-plus"></i></a>
+                  <a href="#"><i class="fa fa-heart"></i></a>
+                  <a href="#"><i class="fa fa-search"></i></a>
+                </div>
+              </div>
+              <div>
+                <a href="#" class="link"
+                  ><i>PlayStation 4 Pro 1TB Star Wars Battlefront II...</i></a
+                >
+              </div>
+              <div class="ratting">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <div>
+                <b class="text-primary"><span>$</span>27.55</b>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="product-item">
+              <div class="product-image">
+                <ul class="">
+                  <li class="new mt-4"><span>New</span></li>
+                </ul>
+                <a href="product-detail.html">
+                  <img
+                    src="http://demo.posthemes.com/pos_haltico/80-home_default/canon-vista-fhd-4k-camcorder-2214c002.jpg"
+                    alt="canon vista fhd 4k..."
+                  />
+                </a>
+                <div class="product-action">
+                  <a href="#"><i class="fa fa-cart-plus"></i></a>
+                  <a href="#"><i class="fa fa-heart"></i></a>
+                  <a href="#"><i class="fa fa-search"></i></a>
+                </div>
+              </div>
+              <div>
+                <a href="#" class="link"
+                  ><i>Canon Vista Fhd 4k Camcorder 2214c002</i></a
+                >
+              </div>
+              <div class="ratting">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <div>
+                <b class="text-primary"><span>$</span>22.71</b>
+              </div>
+            </div>
+          </div>
+
+
+          div item------ geoegre animal
+
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-md-3"  *ngFor="let item of data">
+            <div class="product-item">
+              <div class="product-image">
+                <ul class="">
+                  <li class="new mt-4"><span>New</span></li>
+                </ul>
+                <a href="product-detail.html">
+                  <img
+                    src="{{imgDirectory}}{{item.PRDImage}}"
+                    alt="720 Degree Panoramic HD 360..."
+                  />
+                </a>
+                <div class="product-action">
+                  <a href="#"><i class="fa fa-cart-plus"></i></a>
+                  <a href="#"><i class="fa fa-heart"></i></a>
+                  <a href="#"><i class="fa fa-search"></i></a>
+                </div>
+              </div>
+              <div>
+                <a href="#" class="link"
+                  ><i>720 Degree Panoramic HD 360 Video VR Cameras Dual</i></a
+                >
+              </div>
+
+              <div>
+                <b class="text-primary"><span>$</span>29.00</b>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+-->
