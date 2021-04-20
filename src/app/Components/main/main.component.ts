@@ -26,7 +26,7 @@ export class MainComponent implements OnInit,AfterViewInit  {
   prdprice:number;
   loginUser:Userprofile=new Userprofile();
   check_is_staff: boolean;
-
+  imgDirectory:any= "http://127.0.0.1:8000"
 
   constructor(private _apiServe:ApiservicesService,private _router: Router,private _activedRoute:ActivatedRoute) {
     this.prdprice=0;
@@ -94,7 +94,7 @@ export class MainComponent implements OnInit,AfterViewInit  {
     this._apiServe.addtocard(
       item_id,this.loginUser.id).subscribe((res) => {
         console.log(res)
-        
+
       }, (err) => { console.log(err) })
 
   }

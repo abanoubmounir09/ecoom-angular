@@ -4,14 +4,8 @@ import { Observable } from 'rxjs';
 import { Category } from 'src/app/model/interfaces/category';
 import { Order } from 'src/app/model/interfaces/order';
 import { Product } from 'src/app/model/interfaces/product';
-
-
-
-
 import { Useraccount } from 'src/app/model/interfaces/useraccount';
-
-
-
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Injectable({
@@ -28,48 +22,35 @@ export class ApiservicesService {
     }
    }
 
-
+//get all product
   getAllproduct(): Observable<Product[]>{
 
-    console.log('*********toooken is ******', this.token);
     const reqHeader = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Token  ' + this.token
    });
-
-    return this.http.get<Product[]>('http://127.0.0.1:8000/product/snippets/', { headers: reqHeader } );
+  //  { headers: reqHeader }
+    return this.http.get<Product[]>('http://127.0.0.1:8000/product/snippets/',{ headers: reqHeader } );
   }
 
   getFilterProduct(cat, name): Observable<Product[]>{
     return this.http.get<Product[]>(`http://127.0.0.1:8000/product/query/${cat}/${name}/`);
   }
-
+//get all category
   getAllcategories(): Observable<Category[]>{
     return this.http.get<Category[]>('http://127.0.0.1:8000/product/categories/');
   }
 
-  getproductdetails(id): Observable<Product>{
+  //get all product details
+  getproductdetails(itemId): Observable<Product>{
     const reqHeader = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Token  ' + this.token
    });
-    return this.http.get<Product>(`http://127.0.0.1:8000/product/prdid/1/`, { headers: reqHeader });
+    return this.http.get<Product>(`http://127.0.0.1:8000/product/prdid/${itemId}/`,{ headers: reqHeader });
   }
-  addtocard(id, userid): Observable<Order>{
-    const x =
-    {
-      pid: id,
-      uid: userid
-    };
-    const httpOptions = {
-          headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-            Accept: ' */*'
-             // ,'Authorization': 'my-auth-token'
-          })
-        };
-    return this.http.post<Order>(`http://127.0.0.1:8000/product/order/`, x, httpOptions);
-  }
+
+
 
   // order(id): Observable<Order> {
   //   const httpOptions = {
@@ -130,15 +111,39 @@ export class ApiservicesService {
     return this.http.post<Useraccount>(`http://127.0.0.1:8000/account/logout/`, { headers: headersob });
   }
 
-  insertProduct(prd: Product): Observable<Product> {
+   //active
+  //  activeuser():Observable<Useraccount>{
+  //   var headersob = new HttpHeaders();
+  //   headersob.append('Content-Type', 'application/json');
+  //   return this.http.post<Useraccount>(`http://127.0.0.1:8000/account/active/`,{ headers: headersob })
+  // }
+
+  //add to card
+  addtocard(id,userid):Observable<Order>{
+    let x=
+    {
+      pid:id,
+      uid:userid
+    }
     const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Accept: ' */*'
-        //  ,'Authorization': 'my-auth-token'
-      })
-    };
-    return this.http.post<Product>(`http://127.0.0.1:8000/product/add/`, prd, httpOptions);
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Accept': ' */*'
+             //,'Authorization': 'my-auth-token'
+          })
+        };
+    return this.http.post<Order>(`http://127.0.0.1:8000/product/order/`,x,httpOptions)
+  }
+
+  //insert product
+  insertProduct(prd): Observable<any> {
+    const headersob = new HttpHeaders();
+    headersob.append('Content-Type', 'application/json');
+    // const alldata={order: prd, takenSeatsIds:imgdata}
+    // console.log("tokeb******",alldata['takenSeatsIds'].get("cover"));
+
+
+    return this.http.post<any>(`http://127.0.0.1:8000/product/add/`, prd);
   }
    // active
   //  activeuser():Observable<Useraccount>{
@@ -162,18 +167,29 @@ export class ApiservicesService {
         };
     return this.http.post<Order>(`http://127.0.0.1:8000/product/order/`, x, httpOptions);
   }
+
   rateProduct(prdId, stars): Observable<Product>{
     const rating = {
-      stars,
-
+      stars:"3"
     };
-
-    const headersob = new HttpHeaders();
-    headersob.append('Content-Type', 'application/json');
-
-    return this.http.post<Product>(`http://127.0.0.1:8000/product/rate/${prdId}`, rating, { headers: headersob });
+    const headersob = new HttpHeaders({
+      'Content-Type': 'application/json',
+       "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+   });
+    return this.http.post<Product>(`https://127.0.0.1:8000/product/rate/${prdId}`, rating, { headers: headersob });
   }
 
 
 
 }
+
+
+
+
+// const headersob = new HttpHeaders();
+// headersob.append('Content-Type', 'application/json');
+// headersob.append('Access-Control-Allow-Origin', '*');
+// headersob.append("Access-Control-Allow-Methods", "POST, OPTIONS");
+// headersob.append("Access-Control-Allow-Headers", "Content-Type");
