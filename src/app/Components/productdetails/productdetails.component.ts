@@ -12,9 +12,13 @@ import {Location} from '@angular/common'
 
 export class ProductdetailsComponent implements OnInit,AfterViewInit {
 
-  item:Product;
+  item: Product;
+  ratevalue:string;
+  ProductId:string;
 
-  constructor(private _apiServe:ApiservicesService,private _activedRoute:ActivatedRoute,
+  imgDirectory:any= "http://127.0.0.1:8000"
+
+  constructor(private _apiServe: ApiservicesService,private _activedRoute: ActivatedRoute,
     private loc: Location) {
 
      }
@@ -24,8 +28,8 @@ export class ProductdetailsComponent implements OnInit,AfterViewInit {
 
   ngOnInit(): void
    {
-    let ProductId = this._activedRoute.snapshot.params['pid']
-    this._apiServe.getproductdetails(ProductId).subscribe((res)=>{
+    this.ProductId = this._activedRoute.snapshot.params['pid']
+    this._apiServe.getproductdetails(this.ProductId).subscribe((res)=>{
       this.item=res[0];
       console.log("details",res)
 
@@ -38,6 +42,18 @@ export class ProductdetailsComponent implements OnInit,AfterViewInit {
 
   GoBack(){
     this.loc.back();
+  }
+
+  sRating(){
+    console.log("*****-rate",this.ratevalue);
+   this._apiServe.rateProduct(this.ProductId,this.ratevalue).subscribe((res)=>{
+     console.log(res)
+   },
+   (err)=>{
+     console.log(err)
+   })
+
+
   }
 
 }

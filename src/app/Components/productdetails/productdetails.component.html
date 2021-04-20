@@ -2,7 +2,7 @@
 
   <div class="row mt-2 dfirst " style="height: 300px;">
     <div class="col-4 fcard  d-flex justify-content-center">
-      <img src=" assets/im.jpg"  class="img-thumbnail mt-2 first " style="width:100%">
+      <img src="{{imgDirectory}}{{item.PRDImage}}"  class="img-thumbnail mt-2 first " style="width:100%">
     </div>
 
     <div class="col-8 mt-2  ">
@@ -16,8 +16,23 @@
       <button class="btn btn-success m-2"(click)="GoBack()">go Back</button>
     </div>
   </div>
+  <div class="row">
+    <div class="form-group">
+    <label for="sel1">Select list:</label>
+    <select class="form-control" id="sel1" [(ngModel)]="ratevalue"  >
+      <option [value]="1">1</option>
+      <option [value]="2">2</option>
+      <option [value]="3">3</option>
+      <option [value]="4">4</option>
+      <option [value]="5">5</option>
+    </select>
+   </div>
 
-  </div>
+    </div>
+       <button type="button" class="btn btn-primary" (click)="sRating()">Rating</button>
+    </div>
+
+
 
 
 

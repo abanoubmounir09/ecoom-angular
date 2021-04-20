@@ -111,32 +111,25 @@
   <div class="row mt-3">
       <div class="col-3 ml-2" *ngFor="let item of data">
         <div class="card mt-2 first" style="width: 20rem">
-          <img class="card-img-top" src=" assets/im.jpg" alt="Card image cap" />
+          <img class="card-img-top" src="{{imgDirectory}}{{item.PRDImage}}" alt="Card image cap" />
           <div class="card-body">
             <div class="caption">
               <div class="caption-top">
-                <h5 class="float-right badge-success p-1">
+                <h5 class="float-right badge-warning  p-1">
                   {{ item.PRDPrice }}
                 </h5>
                 <h5>
                   <a [routerLink]="['/product', item.id]">{{ item.PRDName }}</a>
                 </h5>
               </div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                dignissim
-              </p>
-              <a class="btn btn-warning" [routerLink]="['/product', item.id]"
-                >details</a
-              >
             </div>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dignissim</p>
-            <a class="btn btn-warning" [routerLink]="['/product' ,item.id]">details</a>
-            <a class="btn btn-warning" (click)="addtocard(item.id)">add to card</a>
+            <a class="btn info m-1" [routerLink]="['/product' ,item.id]">details</a>
+            <a class="btn success " (click)="addtocard(item.id)">add to card</a>
           </div>
         </div>
       </div>
 
   </div>
-  <a class="btn btn-warning" [routerLink]="['/order']">my card</a>
+  <a class="btn warning" [routerLink]="['/order']">my card</a>
 </div>
