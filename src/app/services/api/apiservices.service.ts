@@ -20,11 +20,13 @@ import { Useraccount } from 'src/app/model/interfaces/useraccount';
 export class ApiservicesService {
 
    token: string;
+   userId: string;
   constructor(private http: HttpClient) {
 
     if (localStorage.getItem('loginuser') != null){
       const data = JSON.parse(localStorage.getItem('loginuser'));
       this.token = data.token;
+      this.userId = data.id;
     }
    }
 
@@ -173,6 +175,19 @@ export class ApiservicesService {
 
     return this.http.post<Product>(`http://127.0.0.1:8000/product/rate/${prdId}`, rating, { headers: headersob });
   }
+
+
+
+  getOwnerProduct(): Observable<Product[]>{
+    const objecowner={id:this.userId}
+    console.log('*********toooken is ******', this.token);
+    const reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+   });
+
+    return this.http.post<Product[]>(' http://127.0.0.1:8000/product/ownerproduct/', objecowner, { headers: reqHeader } );
+  }
+
 
 
 
