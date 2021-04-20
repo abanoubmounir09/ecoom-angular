@@ -71,9 +71,8 @@ export class AddproductComponent implements OnInit {
   onselect(event:any){
     this.cover=event.target.files[0]
     this.prd.PRDImage=this.cover
-      // console.log("----file----",this.cover);
-      // console.log("----name----",this.cover['name']);
-
+    
+    // uploaddata =  new FormData();
     this.uploaddata.append("cover",this.cover,this.cover.name)
     this.uploaddata.append("PRDName",this.prd.PRDName)
     this.uploaddata.append("PRDCategory",this.prd.PRDCategory)
@@ -82,11 +81,6 @@ export class AddproductComponent implements OnInit {
     this.uploaddata.append("PRDCost",this.prd.PRDCost)
     this.uploaddata.append("PRDDiscountPrice",this.prd.PRDDiscountPrice)
     this.uploaddata.append("PRDQuantity",this.prd.PRDQuantity)
-
-
-      // this.prd.PRDImage=this.cover
-      // console.log("----iimg----",this.cover);
-      // console.log("----prd----",this.prd.PRDImage);
 
     // if(event.target.files){
     //   for(let i=0;i<File.length;i++){

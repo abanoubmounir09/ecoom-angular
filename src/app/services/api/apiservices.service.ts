@@ -24,13 +24,12 @@ export class ApiservicesService {
 
 //get all product
   getAllproduct(): Observable<Product[]>{
-
     const reqHeader = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Token  ' + this.token
    });
   //  { headers: reqHeader }
-    return this.http.get<Product[]>('http://127.0.0.1:8000/product/snippets/',{ headers: reqHeader } );
+    return this.http.get<Product[]>('http://127.0.0.1:8000/product/snippets/');
   }
 
   getFilterProduct(cat, name): Observable<Product[]>{
