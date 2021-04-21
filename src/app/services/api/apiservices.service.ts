@@ -26,6 +26,13 @@ export class ApiservicesService {
   getAllproduct():Observable<Product[]>{
     return this.http.get<Product[]>("http://127.0.0.1:8000/product/snippets/")
   }
+  // getmycard(userid):Observable<Order[]>
+  // { let x=
+  //   {
+  //     uid:userid
+  //   }
+  //   return this.http.get<Order[]>("http://127.0.0.1:8000/product/mycard/")
+  // }
 
   getFilterProduct(cat,name):Observable<Product[]>{
     return this.http.get<Product[]>(`http://127.0.0.1:8000/product/query/${cat}/${name}/`)
@@ -131,7 +138,7 @@ export class ApiservicesService {
   // }
 
 
-  mycard(userid):Observable<Order>{
+  mycard(userid):Observable<Order[]>{
     let x=
     {
       uid:userid
@@ -143,9 +150,24 @@ export class ApiservicesService {
              //,'Authorization': 'my-auth-token'
           })
         };
-    return this.http.post<Order>(`http://127.0.0.1:8000/product/order/`,x,httpOptions)
+    return this.http.post<Order[]>(`http://127.0.0.1:8000/product/mycard/`,x,httpOptions)
   }
 
+  delitemcard(userid,pid):Observable<Order[]>{
+    let x=
+    {
+      uid:userid,
+      pid:pid
+    }
+    const httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Accept': ' */*'
+             //,'Authorization': 'my-auth-token'
+          })
+        };
+    return this.http.post<Order[]>(`http://127.0.0.1:8000/product/delcard/`,x,httpOptions)
+  }
 
 
 

@@ -13,6 +13,11 @@ export class OrderComponent implements OnInit {
   order:Order;
   loginUser:Userprofile=new Userprofile();
   check_is_staff: boolean;
+  datap:Order[];
+  totalprice:number
+  shippingcost:number
+  
+ v:number=0;  
   constructor(private _apiPrdServ: ApiservicesService, private _router: Router,private _activedRoute:ActivatedRoute)
    {
     this.order = {
@@ -27,6 +32,7 @@ export class OrderComponent implements OnInit {
       
       
     }
+    this.totalprice=0
     }
 
   ngOnInit(): void 
@@ -57,9 +63,47 @@ export class OrderComponent implements OnInit {
     }
     this._apiPrdServ.mycard(
       this.loginUser.id).subscribe((res) => {
+        this.datap=res;
+        
+        for(let i=0;i<this.datap.length;i++)
+        {
+          this.totalprice=this.totalprice  + res[0][0].PRDPrice;
+        }
+        this.shippingcost=this.totalprice+10
+          console.log("sdsddddddddsdsdddddd")
           console.log(res)
           
-         }, (err) => { console.log(err) })
+          }, (err) => { console.log(err) })
+
+        //  this._apiPrdServ.getmycard().subscribe((res)=>{
+        //   this.datap=res;
+        //   console.log(res)
+        // },
+        // (err)=>{
+        //   console.log(err)
+        // })
+  }
+  delitem(id)
+  { if(localStorage.getItem("loginuser") != null){
+    var data = JSON.parse(localStorage.getItem("loginuser"));
+    this.loginUser.email=data['email']
+    this.loginUser.username=data['username']
+    this.loginUser.id=data['id']
+    this.loginUser.is_staff=data['is_staff']
+    if (data['is_staff']==true){
+      this.check_is_staff=true
+    }
+    else{
+      this.check_is_staff=false
+    
+  }}
+    this._apiPrdServ.delitemcard(this.loginUser.id,id).subscribe((res) => {
+      this.datap=res;
+        console.log("sdsddddddddsdsdddddd")
+        console.log(res)
+        
+        }, (err) => { console.log(err) })
+    console.log(id)
   }
 
 }
