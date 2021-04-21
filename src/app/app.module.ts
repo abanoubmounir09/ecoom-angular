@@ -1,3 +1,4 @@
+import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
@@ -16,6 +17,7 @@ import { RegisterComponent } from './Components/user/register/register.component
 import { Globals } from './common/global-constants';
 import { UserprofileComponent } from './Components/userprofile/userprofile.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +30,7 @@ import { UserprofileComponent } from './Components/userprofile/userprofile.compo
     OrderComponent,
     LoginComponent,
     RegisterComponent,
+    ContactUsComponent,
     UserprofileComponent
   ],
   imports: [

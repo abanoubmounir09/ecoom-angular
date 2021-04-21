@@ -32,10 +32,11 @@ export class LoginComponent implements OnInit {
       var userObject ={
         username:formValue['UserName'],
         password:formValue['Password'],
+
       };
 
       this._apiServe.loginUser(userObject).subscribe((res)=>{
-        // console.log(res)
+        console.log(res)
         // console.log("data ///****",res['data'])
         var username= res['data']['username']
         var email= res['data']['email']

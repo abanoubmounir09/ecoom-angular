@@ -18,6 +18,7 @@ export class OrderComponent implements OnInit {
   shippingcost:number
   
  v:number=0;  
+ imgDirectory:any= "http://127.0.0.1:8000"
   constructor(private _apiPrdServ: ApiservicesService, private _router: Router,private _activedRoute:ActivatedRoute)
    {
     this.order = {
