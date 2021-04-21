@@ -15,12 +15,14 @@ export class ApiservicesService {
 
    token: string;
    userId: string;
+   username:string;
   constructor(private http: HttpClient) {
 
     if (localStorage.getItem('loginuser') != null){
       const data = JSON.parse(localStorage.getItem('loginuser'));
       this.token = data.token;
       this.userId = data.id;
+      this.username = data.username;
     }
    }
 
@@ -169,17 +171,18 @@ export class ApiservicesService {
     return this.http.post<Order>(`http://127.0.0.1:8000/product/order/`, x, httpOptions);
   }
 
-  rateProduct(prdId, stars): Observable<Product>{
+  rateProduct(prdId, stars): Observable<any>{
     const rating = {
-      stars:"3"
+      stars:"3",
+      uname:this.username,
+      prdId:prdId,
     };
-    const headersob = new HttpHeaders({
+
+    const reqHeader = new HttpHeaders({
       'Content-Type': 'application/json',
-       "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
+      Authorization: 'Token  ' + this.token
    });
-    return this.http.post<Product>(`https://127.0.0.1:8000/product/rate/${prdId}`, rating, { headers: headersob });
+    return this.http.post(`http://127.0.0.1:8000/product/rate/`, rating, { headers: reqHeader });
   }
 
 
@@ -191,7 +194,7 @@ export class ApiservicesService {
       'Content-Type': 'application/json',
    });
 
-    return this.http.post<Product[]>(' http://127.0.0.1:8000/product/ownerproduct/', objecowner, { headers: reqHeader } );
+    return this.http.post<Product[]>('http://127.0.0.1:8000/product/ownerproduct/', objecowner, { headers: reqHeader } );
   }
 
 

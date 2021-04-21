@@ -43,15 +43,17 @@
       />
     </div>
 
-    <div class="col-xl-4 my-4 pr-4 mw-100%">
+    <div class="col-4 my-4 pr-4 mw-100%">
       <img src="{{imgDirectory}}{{item.PRDImage}}"  class="img-thumbnail mt-2 first w-100 h-100">
     </div>
 
     <div class="col-6 my-4">
       <h2> Product Name :{{ item.PRDName }}</h2>
+      <p class="text-success">Description: {{item.PRDDesc}}</p>
       <h3 class="text-danger">Price:{{item.PRDCost | currency}}</h3>
-      <a class="text-muted">Quantity: {{item.PRDQuantity}}</a>
-      <p class="text-muted">Description: {{item.PRDDesc}}</p>
+      <a class="text-muted">Quantity: {{item.PRDCategory}}</a>
+      <p class="text-info">number of rating: {{item['no_of_rating']}}</p>
+      <p class="text-success">number of rating: {{item['avg_of_rating']}}</p>
       <!-- <ul>
         <li><a class="text-muted">4.5 inch HD Touch Screen (1280 x 720)</a></li>
         <li><a class="text-muted">Android 4.4 KitKat OS</a></li>
@@ -60,9 +62,9 @@
 
 
       <div class="form-group d-inline-flex mr-4 border-muted">
-          <button class="form-control border-light btn" (click)="addincrement()"><i class="fa fa-minus text-muted" style=" font-size:12px"></i></button>
+          <button class="form-control border-light btn" (click)="subproduct()"><i class="fa fa-minus text-muted" style=" font-size:12px"></i></button>
           <input  type="text" [(ngModel)]="add" class="form-control border-light text-center input-btn">
-          <button class="form-control border-light btn" (click)="subproduct()"><i class="fa fa-plus text-muted" style="font-size:12px"></i></button>
+          <button class="form-control border-light btn" (click)="addincrement()"><i class="fa fa-plus text-muted" style="font-size:12px"></i></button>
       </div>
       <button class="btn-danger btn-card">
         Add to Cart

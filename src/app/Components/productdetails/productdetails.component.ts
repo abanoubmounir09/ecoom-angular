@@ -15,12 +15,13 @@ export class ProductdetailsComponent implements OnInit,AfterViewInit {
   item: Product;
   ratevalue:string;
   ProductId:string;
-  add:string;
+  add:number;
 
   imgDirectory:any= "http://127.0.0.1:8000"
 
   constructor(private _apiServe: ApiservicesService,private _activedRoute: ActivatedRoute,
     private loc: Location) {
+      this.add = 1
 
      }
   ngAfterViewInit(): void {
@@ -57,13 +58,13 @@ export class ProductdetailsComponent implements OnInit,AfterViewInit {
 
   }
   addincrement(){
-    this.add ="1"
-
+    this.add +=1
   }
 
 
   subproduct(){
 
+    this.add +=1
   }
 
 }
