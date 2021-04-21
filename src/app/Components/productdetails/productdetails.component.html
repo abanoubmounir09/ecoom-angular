@@ -25,7 +25,7 @@
 
 <div class="container">
   <div class="row my-4 pr-6">
-    <div class="col-md-2 my-4 pl-4 mw-100%">
+    <div class="col-2 my-4 pl-4 mw-100%">
       <img
         src="assets/usb1.png"
         width="120px"
@@ -43,7 +43,7 @@
       />
     </div>
 
-    <div class="col-xl-4 my-4 pr-4 mw-100%">
+    <div class="col-4 my-4 pr-4 mw-100%">
       <img src="{{imgDirectory}}{{item.PRDImage}}"  class="img-thumbnail mt-2 first w-100 h-100">
     </div>
 
@@ -60,9 +60,9 @@
 
 
       <div class="form-group d-inline-flex mr-4 border-muted">
-          <button class="form-control border-light btn" (click)="addincrement()"><i class="fa fa-minus text-muted" style=" font-size:12px"></i></button>
+          <button class="form-control border-light btn" (click)="subproduct()"><i class="fa fa-minus text-muted" style=" font-size:12px"></i></button>
           <input  type="text" [(ngModel)]="add" class="form-control border-light text-center input-btn">
-          <button class="form-control border-light btn" (click)="subproduct()"><i class="fa fa-plus text-muted" style="font-size:12px"></i></button>
+          <button class="form-control border-light btn" (click)="addincrement()"><i class="fa fa-plus text-muted" style="font-size:12px"></i></button>
       </div>
       <button class="btn-danger btn-card">
         Add to Cart
