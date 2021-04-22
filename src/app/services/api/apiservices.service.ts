@@ -5,7 +5,7 @@ import { Category } from 'src/app/model/interfaces/category';
 import { Order } from 'src/app/model/interfaces/order';
 import { Product } from 'src/app/model/interfaces/product';
 import { Useraccount } from 'src/app/model/interfaces/useraccount';
-import { CookieService } from 'ngx-cookie-service';
+
 
 
 @Injectable({
@@ -14,40 +14,50 @@ import { CookieService } from 'ngx-cookie-service';
 export class ApiservicesService {
 
    token: string;
+   userId: string;
+   username: string;
   constructor(private http: HttpClient) {
 
     if (localStorage.getItem('loginuser') != null){
       const data = JSON.parse(localStorage.getItem('loginuser'));
       this.token = data.token;
+      this.userId = data.id;
+      this.username = data.username;
     }
    }
 
-//get all product
+// get all product
   getAllproduct(): Observable<Product[]>{
-
     const reqHeader = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Token  ' + this.token
    });
   //  { headers: reqHeader }
-    return this.http.get<Product[]>('http://127.0.0.1:8000/product/snippets/',{ headers: reqHeader } );
+    return this.http.get<Product[]>('http://127.0.0.1:8000/product/snippets/');
   }
+  // getmycard(userid):Observable<Order[]>
+  // { let x=
+  //   {
+  //     uid:userid
+  //   }
+  //   return this.http.get<Order[]>("http://127.0.0.1:8000/product/mycard/")
+  // }
 
   getFilterProduct(cat, name): Observable<Product[]>{
     return this.http.get<Product[]>(`http://127.0.0.1:8000/product/query/${cat}/${name}/`);
   }
-//get all category
+// get all category
   getAllcategories(): Observable<Category[]>{
     return this.http.get<Category[]>('http://127.0.0.1:8000/product/categories/');
   }
 
-  //get all product details
+  // get all product details
   getproductdetails(itemId): Observable<Product>{
     const reqHeader = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Token  ' + this.token
    });
-    return this.http.get<Product>(`http://127.0.0.1:8000/product/prdid/${itemId}/`,{ headers: reqHeader });
+    return this.http.get<Product>(`http://127.0.0.1:8000/product/prdid/${itemId}/`, { headers: reqHeader });
   }
 
 
@@ -111,31 +121,31 @@ export class ApiservicesService {
     return this.http.post<Useraccount>(`http://127.0.0.1:8000/account/logout/`, { headers: headersob });
   }
 
-   //active
+   // active
   //  activeuser():Observable<Useraccount>{
   //   var headersob = new HttpHeaders();
   //   headersob.append('Content-Type', 'application/json');
   //   return this.http.post<Useraccount>(`http://127.0.0.1:8000/account/active/`,{ headers: headersob })
   // }
 
-  //add to card
-  addtocard(id,userid):Observable<Order>{
-    let x=
+  // add to card
+  addtocard(id, userid): Observable<Order>{
+    const x =
     {
-      pid:id,
-      uid:userid
-    }
+      pid: id,
+      uid: userid
+    };
     const httpOptions = {
           headers: new HttpHeaders({
             'Content-Type': 'application/json',
-            'Accept': ' */*'
-             //,'Authorization': 'my-auth-token'
+            Accept: ' */*'
+             // ,'Authorization': 'my-auth-token'
           })
         };
-    return this.http.post<Order>(`http://127.0.0.1:8000/product/order/`,x,httpOptions)
+    return this.http.post<Order>(`http://127.0.0.1:8000/product/order/`, x, httpOptions);
   }
 
-  //insert product
+  // insert product
   insertProduct(prd): Observable<any> {
     const headersob = new HttpHeaders();
     headersob.append('Content-Type', 'application/json');
@@ -153,7 +163,8 @@ export class ApiservicesService {
   // }
 
 
-  mycard(userid): Observable<Order>{
+  
+  mycard(userid): Observable<Order[]>{
     const x =
     {
       uid: userid
@@ -165,20 +176,48 @@ export class ApiservicesService {
              // ,'Authorization': 'my-auth-token'
           })
         };
-    return this.http.post<Order>(`http://127.0.0.1:8000/product/order/`, x, httpOptions);
+    return this.http.post<Order[]>(`http://127.0.0.1:8000/product/mycard/`,x,httpOptions)
+    
   }
 
-  rateProduct(prdId, stars): Observable<Product>{
+  rateProduct(prdId, stars): Observable<any>{
     const rating = {
-      stars:"3"
+      stars:"3",
+      uname:this.username,
+      prdId:prdId,
     };
-    const headersob = new HttpHeaders({
+
+    const reqHeader = new HttpHeaders({
       'Content-Type': 'application/json',
-       "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
+      Authorization: 'Token  ' + this.token
    });
-    return this.http.post<Product>(`https://127.0.0.1:8000/product/rate/${prdId}`, rating, { headers: headersob });
+    return this.http.post(`http://127.0.0.1:8000/product/rate/`, rating, { headers: reqHeader });
+  }
+
+  getOwnerProduct(): Observable<Product[]>{
+    const objecowner = {id: this.userId};
+    console.log('*********toooken is ******', this.token);
+    const reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+   });
+
+    return this.http.post<Product[]>('http://127.0.0.1:8000/product/ownerproduct/', objecowner, { headers: reqHeader } );
+  }
+
+  delitemcard(userid,pid):Observable<Order[]>{
+    let x=
+    {
+      uid:userid,
+      pid:pid
+    }
+    const httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Accept': ' */*'
+             //,'Authorization': 'my-auth-token'
+          })
+        };
+    return this.http.post<Order[]>(`http://127.0.0.1:8000/product/delcard/`,x,httpOptions)
   }
 
 

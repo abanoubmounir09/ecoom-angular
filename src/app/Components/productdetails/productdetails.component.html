@@ -25,7 +25,7 @@
 
 <div class="container">
   <div class="row my-4 pr-6">
-    <div class="col-md-2 my-4 pl-4 mw-100%">
+    <div class="col-2 my-4 pl-4 mw-100%">
       <img
         src="assets/usb1.png"
         width="120px"
@@ -43,25 +43,28 @@
       />
     </div>
 
-    <div class="col-xl-4 my-4 pr-4 mw-100%">
-      <img src="assets/usb1.png" class="border border-muted w-100 h-100" />
+    <div class="col-4 my-4 pr-4 mw-100%">
+      <img src="{{imgDirectory}}{{item.PRDImage}}"  class="img-thumbnail mt-2 first w-100 h-100">
     </div>
 
     <div class="col-6 my-4">
-      <h2>Micro USB to Type-C Adapter 3pcs</h2>
-      <a class="text-muted">Be The First To Review This Product</a>
-      <h3 class="text-danger">$19.00</h3>
-      <ul>
+      <h2> Product Name :{{ item.PRDName }}</h2>
+      <p class="text-success">Description: {{item.PRDDesc}}</p>
+      <h3 class="text-danger">Price:{{item.PRDCost | currency}}</h3>
+      <a class="text-muted">Quantity: {{item.PRDCategory}}</a>
+      <p class="text-info">number of rating: {{item['no_of_rating']}}</p>
+      <p class="text-success">number of rating: {{item['avg_of_rating']}}</p>
+      <!-- <ul>
         <li><a class="text-muted">4.5 inch HD Touch Screen (1280 x 720)</a></li>
         <li><a class="text-muted">Android 4.4 KitKat OS</a></li>
         <li><a class="text-muted">1.4 GHz Quad Core™ Processor</a></li>
-      </ul>
+      </ul> -->
 
 
       <div class="form-group d-inline-flex mr-4 border-muted">
-          <button class="form-control border-light btn"><i class="fa fa-minus text-muted" style=" font-size:12px"></i></button>
-          <input type="text" value="1" class="form-control border-light text-center input-btn">
-          <button class="form-control border-light btn"><i class="fa fa-plus text-muted" style="font-size:12px"></i></button>
+          <button class="form-control border-light btn" (click)="subproduct()"><i class="fa fa-minus text-muted" style=" font-size:12px"></i></button>
+          <input  type="text" [(ngModel)]="add" class="form-control border-light text-center input-btn">
+          <button class="form-control border-light btn" (click)="addincrement()"><i class="fa fa-plus text-muted" style="font-size:12px"></i></button>
       </div>
       <button class="btn-danger btn-card">
         Add to Cart
@@ -76,8 +79,23 @@
         <span class="text-dark"> DEMOH1_3006</span>
       </div>
       <br />
-      <div>
-        <a href="#" class="text-danger">Delivery &amp; Return</a>
+      <div class="form-group col-12">
+        <label for="sel1">Select Rating:</label>
+        <select class="form-control col-6" id="sel1" [(ngModel)]="ratevalue">
+          <option [value]="1">1</option>
+          <option [value]="2">2</option>
+          <option [value]="3">3</option>
+          <option [value]="4">4</option>
+          <option [value]="5">5</option>
+        </select>
+      </div>
+      <div class="col-6 m-2">
+        <button class="btn btn-primary w-50" (click)="sRating()">
+          Rating
+        </button>
+      </div>
+      <div class="col-lg-6 m-2">
+        <button class="btn btn-success w-50" (click)="GoBack()">go Back</button>
       </div>
     </div>
   </div>
@@ -88,6 +106,10 @@
 
 
 
+
+
+
+<!--
 <div class="container mt-3">
   <div class="row mt-2 dfirst" style="height: 300px">
     <div class="col-4 fcard d-flex justify-content-center">
@@ -129,7 +151,7 @@
   <button type="button" class="btn btn-primary" (click)="sRating()">
     Rating
   </button>
-</div>
+</div> -->
 
 
 
