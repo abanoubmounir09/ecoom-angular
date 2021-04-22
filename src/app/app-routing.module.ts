@@ -1,3 +1,4 @@
+import { OnlinePayComponent } from './Components/online-pay/online-pay.component';
 import { AboutUsComponent } from './Components/about-us/about-us.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 import { NgModule, Component } from '@angular/core';
@@ -27,6 +28,7 @@ const routes: Routes =
   {path:'order', component:OrderComponent},
   {path:'addproduct', component:AddproductComponent},
   {path:'profile', component:UserprofileComponent},
+  {path:'pay',component:OnlinePayComponent}
 ];
 
 
