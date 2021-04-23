@@ -17,6 +17,7 @@ import { RegisterComponent } from './Components/user/register/register.component
 import { Globals } from './common/global-constants';
 import { UserprofileComponent } from './Components/userprofile/userprofile.component';
 import { OnlinePayComponent } from './Components/online-pay/online-pay.component';
+import { EditProductComponent } from './Components/edit-product/edit-product.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { OnlinePayComponent } from './Components/online-pay/online-pay.component
     ContactUsComponent,
     UserprofileComponent,
     OnlinePayComponent,
+    EditProductComponent,
   ],
   imports: [
     BrowserModule,

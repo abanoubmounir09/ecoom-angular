@@ -16,8 +16,8 @@ export class OrderComponent implements OnInit {
   datap:Order[];
   totalprice:number
   shippingcost:number
-  
- v:number=0;  
+
+ v:number=0;
  imgDirectory:any= "http://127.0.0.1:8000"
   constructor(private _apiPrdServ: ApiservicesService, private _router: Router,private _activedRoute:ActivatedRoute)
    {
@@ -30,22 +30,22 @@ export class OrderComponent implements OnInit {
       PRDCost:null,
       PRDDiscountPrice:null,
       PRDCreatedNow:""
-      
-      
+
+
     }
     this.totalprice=0
     }
 
-  ngOnInit(): void 
+  ngOnInit(): void
   {
-    
+
     // let id = this._activedRoute.snapshot.params['pid']
     // console.log('ssss')
     // console.log(id)
     // this._apiPrdServ.addtocard(
     //   id).subscribe((res) => {
     //     console.log(res)
-        
+
     //   }, (err) => { console.log(err) })
 
     if(localStorage.getItem("loginuser") != null){
@@ -64,8 +64,8 @@ export class OrderComponent implements OnInit {
     }
     this._apiPrdServ.mycard(
       this.loginUser.id).subscribe((res) => {
-        this.datap=res;
-        
+        // this.datap = res;
+
         for(let i=0;i<this.datap.length;i++)
         {
           this.totalprice=this.totalprice  + res[0][0].PRDPrice;
@@ -73,7 +73,7 @@ export class OrderComponent implements OnInit {
         this.shippingcost=this.totalprice+10
           console.log("sdsddddddddsdsdddddd")
           console.log(res)
-          
+
           }, (err) => { console.log(err) })
 
         //  this._apiPrdServ.getmycard().subscribe((res)=>{
@@ -96,13 +96,13 @@ export class OrderComponent implements OnInit {
     }
     else{
       this.check_is_staff=false
-    
+
   }}
     this._apiPrdServ.delitemcard(this.loginUser.id,id).subscribe((res) => {
-      this.datap=res;
+      this.datap = res;
         console.log("sdsddddddddsdsdddddd")
         console.log(res)
-        
+
         }, (err) => { console.log(err) })
     console.log(id)
   }
