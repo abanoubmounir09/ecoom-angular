@@ -173,9 +173,9 @@ export class ApiservicesService {
 
   rateProduct(prdId, stars): Observable<any>{
     const rating = {
-      stars:"3",
-      uname:this.username,
-      prdId:prdId,
+      stars: '3',
+      uname: this.username,
+      prdId,
     };
 
     const reqHeader = new HttpHeaders({
