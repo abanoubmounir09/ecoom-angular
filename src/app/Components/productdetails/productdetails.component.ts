@@ -19,9 +19,9 @@ export class ProductdetailsComponent implements OnInit, AfterViewInit {
 
   imgDirectory: any = 'http://127.0.0.1:8000';
 
-  constructor(private _apiServe: ApiservicesService, private _activedRoute: ActivatedRoute,
-              private loc: Location) {
-      this.add = 1;
+  constructor(private _apiServe: ApiservicesService,private _activedRoute: ActivatedRoute,
+    private loc: Location) {
+      this.add = 1
 
      }
   ngAfterViewInit(): void {
@@ -58,8 +58,7 @@ export class ProductdetailsComponent implements OnInit, AfterViewInit {
 
   }
   addincrement(){
-    this.add += 1;
-
+    this.add +=1
   }
 
 
@@ -67,7 +66,6 @@ export class ProductdetailsComponent implements OnInit, AfterViewInit {
     if (this.add > 1){
       this.add -= 1;
     }
-
     }
   }
 

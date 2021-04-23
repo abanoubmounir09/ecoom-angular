@@ -73,7 +73,6 @@ export class RegisterComponent implements OnInit {
           is_staff:is_staffdata,
         }
         localStorage.setItem("loginuser", JSON.stringify(localData));
-        // console.log('user data is ',username,email,id)
 
         this.router.navigate(['/Home'])
       },

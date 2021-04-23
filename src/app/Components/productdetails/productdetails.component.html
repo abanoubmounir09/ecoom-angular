@@ -49,9 +49,11 @@
 
     <div class="col-6 my-4">
       <h2> Product Name :{{ item.PRDName }}</h2>
+      <p class="text-success">Description: {{item.PRDDesc}}</p>
       <h3 class="text-danger">Price:{{item.PRDCost | currency}}</h3>
-      <a class="text-muted">Quantity: {{item.PRDQuantity}}</a>
-      <p class="text-muted">Description: {{item.PRDDesc}}</p>
+      <a class="text-muted">Quantity: {{item.PRDCategory}}</a>
+      <p class="text-info">number of rating: {{item['no_of_rating']}}</p>
+      <p class="text-success">number of rating: {{item['avg_of_rating']}}</p>
       <!-- <ul>
         <li><a class="text-muted">4.5 inch HD Touch Screen (1280 x 720)</a></li>
         <li><a class="text-muted">Android 4.4 KitKat OS</a></li>
