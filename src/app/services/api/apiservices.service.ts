@@ -147,39 +147,14 @@ export class ApiservicesService {
 
   // insert product
   insertProduct(prd): Observable<any> {
-    const reqHeader = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Token  ' + this.token
+  const reqHeader = new HttpHeaders({
+    'Content-Type': 'application/json',
+    Authorization: 'Token  ' + this.token
    });
-
-
-    return this.http.post<any>(`http://127.0.0.1:8000/product/add/`, prd,{ headers: reqHeader });
-  }
-   // active
-  //  activeuser():Observable<Useraccount>{
-  //   var headersob = new HttpHeaders();
-  //   headersob.append('Content-Type', 'application/json');
-  //   return this.http.post<Useraccount>(`http://127.0.0.1:8000/account/active/`,{ headers: headersob })
-  // }
-
-
-  
-  mycard(userid): Observable<Order[]>{
-    const x =
-    {
-      uid: userid
-    };
-    const httpOptions = {
-          headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-            Accept: ' */*'
-             // ,'Authorization': 'my-auth-token'
-          })
-        };
-    return this.http.post<Order[]>(`http://127.0.0.1:8000/product/mycard/`,x,httpOptions)
-    
+    return this.http.post(`http://127.0.0.1:8000/product/add/`, prd,{ headers: reqHeader });
   }
 
+  // rate
   rateProduct(prdId, stars): Observable<any>{
     const rating = {
       stars:"3",
@@ -193,6 +168,24 @@ export class ApiservicesService {
    });
     return this.http.post(`http://127.0.0.1:8000/product/rate/`, rating, { headers: reqHeader });
   }
+
+  mycard(userid): Observable<Order[]>{
+    const x =
+    {
+      uid: userid
+    };
+    const httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            Accept: ' */*'
+             // ,'Authorization': 'my-auth-token'
+          })
+        };
+    return this.http.post<Order[]>(`http://127.0.0.1:8000/product/mycard/`,x,httpOptions)
+
+  }
+
+
 
   getOwnerProduct(): Observable<Product[]>{
     const objecowner = {id: this.userId};
@@ -226,6 +219,12 @@ export class ApiservicesService {
 
 
 
+   // active
+  //  activeuser():Observable<Useraccount>{
+  //   var headersob = new HttpHeaders();
+  //   headersob.append('Content-Type', 'application/json');
+  //   return this.http.post<Useraccount>(`http://127.0.0.1:8000/account/active/`,{ headers: headersob })
+  // }
 
 // const headersob = new HttpHeaders();
 // headersob.append('Content-Type', 'application/json');

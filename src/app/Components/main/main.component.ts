@@ -32,6 +32,22 @@ export class MainComponent implements OnInit,AfterViewInit  {
     this.prdprice=0;
     this.prodName="";
     this.SelectedCategory = "";
+
+    if(localStorage.getItem("loginuser") != null){
+      var data = JSON.parse(localStorage.getItem("loginuser"));
+      this.loginUser.email=data['email']
+      this.loginUser.username=data['username']
+      this.loginUser.id=data['id']
+      this.loginUser.is_staff=data['is_staff']
+      this.loginUser.token=data['token']
+      if (data['is_staff']==true){
+        this.check_is_staff=true
+      }
+      else{
+        this.check_is_staff=false
+      }
+    }
+
   }
 
   ngOnInit(): void {

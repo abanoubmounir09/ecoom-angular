@@ -260,7 +260,7 @@
               <img class="card-img-top" src="{{imgDirectory}}{{item.PRDImage}}"
               alt="Card image cap" height="220" />
             <div class="product-action">
-              <a  (click)="addtocard(item.id)"><i class="fa fa-cart-plus"></i></a>
+              <a  (click)="addtocard(item.id)" [style.display]="check_is_staff ? 'none' : 'block'"><i class="fa fa-cart-plus"></i></a>
 
               <a [routerLink]="['/product' ,item.id]"><i class="fa fa-search" ></i></a>
 
@@ -269,7 +269,6 @@
             </div>
             </div>
           </div>
-          <!-- <img class="card-img-top" src="{{imgDirectory}}{{item.PRDImage}}" alt="Card image cap" /> -->
           <div class="card-body">
             <div class="caption">
               <div class="caption-top">
@@ -282,8 +281,8 @@
               </div>
             </div>
             <p>{{ item.PRDDesc }}</p>
-            <a class="btn info m-1" [routerLink]="['/product' ,item.id]">details</a>
-            <a class="btn success " (click)="addtocard(item.id)">add to card</a>
+            <a class="btn info m-1" [routerLink]="['/product' ,item.id]" >details</a>
+            <a class="btn success " (click)="addtocard(item.id)" [style.display]="check_is_staff ? 'none' : 'block'">add to card</a>
           </div>
         </div>
       </div>
@@ -414,7 +413,7 @@
           </div>
 
 
-          div item------ geoegre animal
+          div item------
 
       <div class="container-fluid">
         <div class="row">

@@ -30,7 +30,6 @@ export class HeaderComponent implements OnInit,AfterViewInit {
       else{
         this.check_is_staff=false
       }
-      console.log("staff is ", this.check_is_staff)
     }
     // console.log("ttttttttt********-------",this.loginUser)
 
