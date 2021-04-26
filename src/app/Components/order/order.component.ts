@@ -18,6 +18,8 @@ export class OrderComponent implements OnInit {
   shippingcost:number
   qnumber:[];
  v:number=0;  
+
+ 
  imgDirectory:any= "http://127.0.0.1:8000"
  newnum:number
   constructor(private _apiPrdServ: ApiservicesService, private _router: Router,private _activedRoute:ActivatedRoute)
@@ -34,20 +36,23 @@ export class OrderComponent implements OnInit {
       PRDQuantity:null
       
       
+      
+
+
     }
     this.totalprice=0
     }
 
-  ngOnInit(): void 
+  ngOnInit(): void
   {
-    
+
     // let id = this._activedRoute.snapshot.params['pid']
     // console.log('ssss')
     // console.log(id)
     // this._apiPrdServ.addtocard(
     //   id).subscribe((res) => {
     //     console.log(res)
-        
+
     //   }, (err) => { console.log(err) })
 
     if(localStorage.getItem("loginuser") != null){
@@ -71,6 +76,8 @@ export class OrderComponent implements OnInit {
 
         
         this.qnumber=res['q']
+        // this.datap = res;
+
         for(let i=0;i<this.datap.length;i++)
         {
 
@@ -82,6 +89,8 @@ export class OrderComponent implements OnInit {
           console.log("sdsddddddddsdsdddddd")
           console.log(res['q'])
           
+          console.log(res)
+
           }, (err) => { console.log(err) })
 
         //  this._apiPrdServ.getmycard().subscribe((res)=>{
@@ -104,13 +113,13 @@ export class OrderComponent implements OnInit {
     }
     else{
       this.check_is_staff=false
-    
+
   }}
     this._apiPrdServ.delitemcard(this.loginUser.id,id).subscribe((res) => {
-      this.datap=res;
+      this.datap = res;
         console.log("sdsddddddddsdsdddddd")
         console.log(res)
-        
+
         }, (err) => { console.log(err) })
     console.log(id)
   }

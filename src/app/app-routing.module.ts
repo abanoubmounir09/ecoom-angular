@@ -9,6 +9,8 @@ import { ProductdetailsComponent } from './Components/productdetails/productdeta
 import { LoginComponent } from './Components/user/login/login.component';
 import { RegisterComponent } from './Components/user/register/register.component';
 import { UserprofileComponent } from './Components/userprofile/userprofile.component';
+import { OnlinePayComponent } from './Components/online-pay/online-pay.component';
+import { EditProductComponent } from './Components/edit-product/edit-product.component';
 const routes: Routes =
 [
   { path: 'apiproductbyid/:id', component: ProductdetailsComponent},
@@ -27,6 +29,8 @@ const routes: Routes =
   {path:'order', component:OrderComponent},
   {path:'addproduct', component:AddproductComponent},
   {path:'profile', component:UserprofileComponent},
+  {path:'pay', component:OnlinePayComponent},
+  {path:'edit/:pid' ,component: EditProductComponent}
 ];
 
 

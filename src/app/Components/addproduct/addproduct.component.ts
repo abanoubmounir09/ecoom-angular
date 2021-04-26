@@ -10,10 +10,10 @@ import { ApiservicesService } from 'src/app/services/api/apiservices.service';
   styleUrls: ['./addproduct.component.css']
 })
 export class AddproductComponent implements OnInit {
-  prd:Product;
-  categoryArray:Category[];
-  cover:File;
-  urls=[];
+  prd: Product;
+  categoryArray: Category[];
+  cover: File;
+  urls = [];
   uploaddata =  new FormData();
   addcat:string
   constructor(private _apiPrdServ: ApiservicesService, private _router: Router)
@@ -22,26 +22,26 @@ export class AddproductComponent implements OnInit {
       PRDName: "",
       PRDCategory: null,
       PRDDesc: "",
-      PRDImage:null,
-      PRDPrice:null,
-      PRDCost:null,
-      PRDDiscountPrice:null,
-      PRDCreatedNow:"",
+      PRDImage: null,
+      PRDPrice: null,
+      PRDCost: null,
+      PRDDiscountPrice: null,
+      PRDCreatedNow: "",
       PRDQuantity: null,
 
-    }
+    };
   }
 
   ngOnInit(): void
   {
-    this._apiPrdServ.getAllcategories().subscribe((res)=>{
-      this.categoryArray=res
+    this._apiPrdServ.getAllcategories().subscribe((res) => {
+      this.categoryArray = res
       console.log(res)
 
     },
-    (err)=>{
+    (err) => {
       console.log(err)
-    })
+    });
   }
 
   //add product subscripe func
@@ -49,13 +49,13 @@ export class AddproductComponent implements OnInit {
     this._apiPrdServ.insertProduct(this.uploaddata).subscribe((res) => {
         console.log(res)
         this._router.navigateByUrl('/Home');
-      }, (err) => { console.log(err) })
+      }, (err) => { console.log(err) });
   }
 
-  onselect(event:any){
-    this.cover=event.target.files[0]
-    this.prd.PRDImage=this.cover
-    
+  onselect(event: any){
+    this.cover = event.target.files[0];
+    this.prd.PRDImage = this.cover;
+
     // uploaddata =  new FormData();
     this.uploaddata.append("cover",this.cover,this.cover.name)
     this.uploaddata.append("PRDName",this.prd.PRDName)
@@ -82,9 +82,9 @@ export class AddproductComponent implements OnInit {
 
   processFile(imageInput: any) {
     const file: File = imageInput.files[0];
-    console.log("----file----",file);
-    this.cover=imageInput.target.files[0]
-    console.log("----iimg----",this.cover);
+    console.log("----file----", file);
+    this.cover = imageInput.target.files[0];
+    console.log("----iimg----", this.cover);
   }
 
 }
