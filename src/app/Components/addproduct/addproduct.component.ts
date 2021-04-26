@@ -15,12 +15,12 @@ export class AddproductComponent implements OnInit {
   cover:File;
   urls=[];
   uploaddata =  new FormData();
-
+  addcat:string
   constructor(private _apiPrdServ: ApiservicesService, private _router: Router)
    {
     this.prd = {
       PRDName: "",
-      PRDCategory: "",
+      PRDCategory: null,
       PRDDesc: "",
       PRDImage:null,
       PRDPrice:null,
@@ -46,22 +46,6 @@ export class AddproductComponent implements OnInit {
 
   //add product subscripe func
   add() {
-    //  this.prd.PRDImage=`http://127.0.0.1:8000/media/${this.prd.PRDImage}`
-    console.log("----iimg----",this.prd);
-    var xx ={
-      'itm' :this.uploaddata,
-      // data:this.uploaddata
-    }
-    // console.log("----uploaddata----", this.uploaddata.get("cover"));
-
-    var finalData = [];
-    var t1 = this.uploaddata.get
-
-    finalData.push({
-      d1:t1,
-      d2:this.prd
-    })
-    const alldata={order: this.prd, takenSeatsIds:this.uploaddata}
     this._apiPrdServ.insertProduct(this.uploaddata).subscribe((res) => {
         console.log(res)
         this._router.navigateByUrl('/Home');
@@ -81,6 +65,7 @@ export class AddproductComponent implements OnInit {
     this.uploaddata.append("PRDCost",this.prd.PRDCost)
     this.uploaddata.append("PRDDiscountPrice",this.prd.PRDDiscountPrice)
     this.uploaddata.append("PRDQuantity",this.prd.PRDQuantity)
+    this.uploaddata.append("newcat",this.addcat)
 
     // if(event.target.files){
     //   for(let i=0;i<File.length;i++){

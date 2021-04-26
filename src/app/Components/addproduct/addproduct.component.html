@@ -1,119 +1,89 @@
-<div class="container">
-<!-- <button class="btn btn-primary" (click)="add()">Add</button> -->
-<form #myfrom="ngForm" (ngSubmit)="add()" class="mx-auto py-3">
+
+
+<div class="container-fluid">
+    <div class="row mt-5 mb-5  justify-content-center">
+      <div class="col-8">
+          <!-- <button class="btn btn-primary" (click)="add()">Add</button> -->
+  
+  
+  <form #myfrom="ngForm" (ngSubmit)="add()">
     <!-- {{myfrom.invalid}} -->
-    <div class="form-group">
-        <label for=""> <b>Name </b> </label>
-        <input #prdName="ngModel" type="text" [(ngModel)]="prd.PRDName" class="form-control" name="pName" required minlength="3" placeholder="enter product name">
-    </div>
-    <div class="form-group">
-        <label for=""><b>Price </b></label>
-        <input #prdPrice="ngModel" type="number" [(ngModel)]="prd.PRDPrice" class="form-control" name="pPrice" required min="1" placeholder="enter Price for a product">
-        
-    </div>
+   
+
 
     <div class="form-group">
-        <label for=""><b>category </b></label>
-        <select #sel  class=" form-control btn btn-primary" style=" background-color: #f3f6ff; margin-top: 10px; color: black;">
+        <label for="">Name</label>
+        <input #prdName="ngModel" type="text" [(ngModel)]="prd.PRDName" class="form-control" name="pName" required minlength="3">
+    </div>
+    <div class="form-group">
+        <label for="">Price</label>
+        <input #prdPrice="ngModel" type="number" [(ngModel)]="prd.PRDPrice" class="form-control" name="pPrice" required min="1">
+  
+    </div>
+  
+    <div class="form-group">
+      <label for="">Select  Category</label>
+        <select #sel  class=" form-control btn btn-primary" style=" background-color: wheat;
              margin-top: -10px;"  name="category" id="cars" class="form-control"
               [(ngModel)]="prd.PRDCategory" >
               <option *ngFor="let cat of categoryArray;"  [value]="cat.CATName" >
                {{cat.CATName}}
               </option>
-
-
-<div class="container-fluid">
-  <div class="row mt-5 mb-5  justify-content-center">
-    <div class="col-8">
-        <!-- <button class="btn btn-primary" (click)="add()">Add</button> -->
-
-
-
-  <!-- {{myfrom.invalid}} -->
-  <div class="form-group">
-      <label for="">Name</label>
-      <input #prdName="ngModel" type="text" [(ngModel)]="prd.PRDName" class="form-control" name="pName" required minlength="3">
-  </div>
-  <div class="form-group">
-      <label for="">Price</label>
-      <input #prdPrice="ngModel" type="number" [(ngModel)]="prd.PRDPrice" class="form-control" name="pPrice" required min="1">
-
-  </div>
-
-  <div class="form-group">
-      <select #sel  class=" form-control btn btn-primary" style=" background-color: wheat;
-           margin-top: -10px;"  name="category" id="cars" class="form-control"
-            [(ngModel)]="prd.PRDCategory" >
-            <option *ngFor="let cat of categoryArray;"  [value]="cat.CATName" >
-             {{cat.CATName}}
-            </option>
-          </select>
-  </div>
-
-  <div class="form-group">
-    <label for="">image</label>
-  <input type="file" multiple (change)="onselect($event)">
-</div>
-
-  <div class="form-group">
-      <label for="">Description</label>
-      <textarea class="form-control" [(ngModel)]="prd.PRDDesc" name="pDescription" rows="3" required minlength="10"></textarea>
-  </div>
+            </select>
+    </div>
+  
 
     <div class="form-group">
-        <label for=""><b>Description </b></label>
-        <textarea class="form-control" [(ngModel)]="prd.PRDDesc" name="pDescription" rows="3" required minlength="10" placeholder="enter Price for a product"></textarea>
-    </div>
-
-    <div class="form-group">
-        <label for=""><b>Image for product </b></label>
-        <input #prdimg="ngModel" type="file" [(ngModel)]="prd.PRDImage" class="form-control" name="image" required >
-    </div>
-
-    <div class="form-group">
-        <label for=""><b>Cost </b></label>
-        <input #prdcost="ngModel" type="number" [(ngModel)]="prd.PRDCost" class="form-control" name="pPrice" required placeholder="enter cost for a product">
-    </div>
-
-    <div class="form-group">
-        <label for=""><b>Discound </b></label>
-        <input #prdcost="ngModel" type="number" [(ngModel)]="prd.PRDDiscountPrice" class="form-control" name="pPrice" required placeholder="enter Price for a product">
-    </div>
-
-    <button type="submit" class="btn" style="background-color: gray; width: 100%; color: black;">Save</button>
-
-</div>
-  <!-- img hint---------------------------------***** -->
-  <!-- <div class="form-group">
-      <label for="">image</label>
-      <input #prdimg="ngModel" type="file" (change)="processFile($event)" [(ngModel)]="prd.PRDImage" class="form-control" name="image" required >
-  </div> -->
-
-  <div class="form-group">
-      <label for="">cost</label>
-      <input #prdcost="ngModel" type="number" [(ngModel)]="prd.PRDCost" class="form-control" name="pPrice" required >
+      <label for="">Add Category</label>
+      <input #prdName="ngModel" type="text" [(ngModel)]="addcat" class="form-control" name="Catname" >
   </div>
+ 
+  
+    <div class="form-group">
+        <label for="">Description</label>
+        <textarea class="form-control" [(ngModel)]="prd.PRDDesc" name="pDescription" rows="3" required minlength="10"></textarea>
+    </div>
+  
+    <!-- img hint---------------------------------***** -->
+    <!-- <div class="form-group">
+        <label for="">image</label>
+        <input #prdimg="ngModel" type="file" (change)="processFile($event)" [(ngModel)]="prd.PRDImage" class="form-control" name="image" required >
+    </div> -->
+  
+    <div class="form-group">
+        <label for="">cost</label>
+        <input #prdcost="ngModel" type="number" [(ngModel)]="prd.PRDCost" class="form-control" name="pPrice" required >
+    </div>
+  
+    <div class="form-group">
+        <label for="">discound</label>
+        <input #prdcost="ngModel" type="number" [(ngModel)]="prd.PRDDiscountPrice" class="form-control" name="pPrice" required >
+    </div>
+    <div class="form-group">
+      <label for="">Quantity</label>
+      <input #prdcost="ngModel" type="number" [(ngModel)]="prd.PRDQuantity" class="form-control" name="pPrice" required >
 
-  <div class="form-group">
-      <label for="">discound</label>
-      <input #prdcost="ngModel" type="number" [(ngModel)]="prd.PRDDiscountPrice" class="form-control" name="pPrice" required >
-  </div>
-  <div class="form-group">
-    <label for="">Quantity</label>
-    <input #prdcost="ngModel" type="number" [(ngModel)]="prd.PRDQuantity" class="form-control" name="pPrice" required >
-</div>
-  <button type="submit" class="btn btn-primary" >Save</button>
 
-
-
-<img *ngFor="let url of urls" [src]="url" height="100">
-
-
+      <div class="form-group">
+        <label for="">image</label>
+      <input type="file" multiple (change)="onselect($event)">
     </div>
 
-
+    
   </div>
-
-
-
-
+    <button type="submit" class="btn btn-primary" >Save</button>
+  </form>
+  
+  
+  <img *ngFor="let url of urls" [src]="url" height="100">
+  
+  
+      </div>
+  
+  
+    </div>
+  
+  </div>
+  
+  
+  

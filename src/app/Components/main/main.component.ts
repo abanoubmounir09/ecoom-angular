@@ -27,11 +27,12 @@ export class MainComponent implements OnInit,AfterViewInit  {
   loginUser:Userprofile=new Userprofile();
   check_is_staff: boolean;
   imgDirectory:any= "http://127.0.0.1:8000"
-
+  q:number
   constructor(private _apiServe:ApiservicesService,private _router: Router,private _activedRoute:ActivatedRoute) {
     this.prdprice=0;
     this.prodName="";
     this.SelectedCategory = "";
+    this.q=1
   }
 
   ngOnInit(): void {
@@ -92,7 +93,7 @@ export class MainComponent implements OnInit,AfterViewInit  {
     console.log('ssss')
     console.log(item_id)
     this._apiServe.addtocard(
-      item_id,this.loginUser.id).subscribe((res) => {
+      item_id,this.loginUser.id,this.q).subscribe((res) => {
         console.log(res)
 
       }, (err) => { console.log(err) })

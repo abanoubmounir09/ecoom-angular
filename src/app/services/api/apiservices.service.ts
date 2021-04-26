@@ -129,11 +129,12 @@ export class ApiservicesService {
   // }
 
   // add to card
-  addtocard(id, userid): Observable<Order>{
+  addtocard(id, userid,quantity): Observable<Order>{
     const x =
     {
       pid: id,
-      uid: userid
+      uid: userid,
+      quantity:quantity
     };
     const httpOptions = {
           headers: new HttpHeaders({
@@ -144,6 +145,27 @@ export class ApiservicesService {
         };
     return this.http.post<Order>(`http://127.0.0.1:8000/product/order/`, x, httpOptions);
   }
+
+
+
+  delonefromcard(id, userid,quantity): Observable<Order>{
+    const x =
+    {
+      pid: id,
+      uid: userid,
+      quantity:quantity
+    };
+    const httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            Accept: ' */*'
+             // ,'Authorization': 'my-auth-token'
+          })
+        };
+    return this.http.post<Order>(`http://127.0.0.1:8000/product/delfromcard/`, x, httpOptions);
+  }
+
+  
 
   // insert product
   insertProduct(prd): Observable<any> {

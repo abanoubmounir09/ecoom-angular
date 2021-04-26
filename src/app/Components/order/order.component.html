@@ -7,7 +7,7 @@
 
 
 
-
+{{qnumber}}
 
 
 
@@ -46,15 +46,15 @@
                                             <p>{{ datap[i][v].PRDName }}</p>
                                         </div>
                                     </td>
-                                    <td id="1">{{ datap[i][v].PRDPrice }}</td>
+                                    <td id="1">{{ datap[i][v].PRDPrice}}</td>
                                     <td>
                                         <div class="qty">
-                                            <button onclick = "remove('1','1res')" class="btn-minus"><i class="fa fa-minus"></i></button>
-                                            <input type="text" value="0" id="1N" disabled>
-                                            <button onclick="add('1','1N','1res')" class="btn-plus"><i class="fa fa-plus"></i></button>
+                                            <button (click) ="updatequantity(qnumber[i],datap[i][v].id )" (click)="refresh()" class="btn-minus"><i class="fa fa-minus"></i></button>
+                                            <input type="text"  id="1N" disabled [value]="qnumber[i]">
+                                            <button (click)="updatequantityadd(qnumber[i],datap[i][v].id)" class="btn-plus"><i class="fa fa-plus"></i></button>
                                         </div>
                                     </td>
-                                    <td id="1res">0</td>
+                                    <td id="1res">{{qnumber[i]}}</td>
                                     <td><button (click)="delitem( datap[i][v].id )"><i class="fa fa-trash"></i></button></td>
                                 </tr>
 
