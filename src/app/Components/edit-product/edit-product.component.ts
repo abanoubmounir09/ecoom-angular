@@ -1,46 +1,39 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/model/interfaces/category';
 import { Product } from 'src/app/model/interfaces/product';
 import { ApiservicesService } from 'src/app/services/api/apiservices.service';
 
 @Component({
-  selector: 'app-addproduct',
-  templateUrl: './addproduct.component.html',
-  styleUrls: ['./addproduct.component.css']
+  selector: 'app-edit-product',
+  templateUrl: './edit-product.component.html',
+  styleUrls: ['./edit-product.component.css']
 })
-export class AddproductComponent implements OnInit {
+export class EditProductComponent implements OnInit {
   prd: Product;
-  categoryArray: Category[];
+  ProductId: string;
+  item: Product;
   cover: File;
+  categoryArray: Category[];
   urls = [];
   uploaddata =  new FormData();
-  token:string;userId:string;username:string;
-
-  constructor(private _apiPrdServ: ApiservicesService, private _router: Router)
-   {
+  constructor(private _apiPrdServ: ApiservicesService, private _router: Router,private _activedRoute: ActivatedRoute) {
     this.prd = {
       PRDName: "",
       PRDCategory: "",
       PRDDesc: "",
       PRDImage: null,
-      PRDPrice: null,
+      PRDPrice: "100",
       PRDCost: null,
       PRDDiscountPrice: null,
       PRDCreatedNow: "",
       PRDQuantity: null,
 
     };
-    if (localStorage.getItem('loginuser') != null){
-      const data = JSON.parse(localStorage.getItem('loginuser'));
-      this.token = data.token;
-      this.userId = data.id;
-      this.username = data.username;
-    }
+
   }
 
-  ngOnInit(): void
-  {
+  ngOnInit(): void {
     this._apiPrdServ.getAllcategories().subscribe((res) => {
       this.categoryArray = res
       console.log(res)
@@ -49,15 +42,48 @@ export class AddproductComponent implements OnInit {
     (err) => {
       console.log(err)
     });
+
+    this.ProductId = this._activedRoute.snapshot.params.pid;
+    this._apiPrdServ.getproductdetails(this.ProductId).subscribe((res) => {
+      console.log('**result**',res);
+      this.prd= res[0];
+      console.log('**prd**',this.prd);
+
+      this.prd.PRDName=res[0]['PRDName'];
+      console.log(this.prd.PRDName);
+
+
+      this.prd.PRDCost=res[0]['PRDCost']
+      this.prd.PRDPrice=res[0]['PRDPrice']
+      console.log(this.prd.PRDPrice);
+
+      this.prd.PRDQuantity=res[0]['RDQuantity']
+      this.prd.PRDDesc=res[0]['PRDDesc']
+      this.prd.PRDDiscountPrice=res[0]['PRDDiscountPrice']
+
+      console.log('details', res);
+
+      console.log('name', this.item.PRDName);
+    },
+    (err) => {
+      console.log(err);
+    });
   }
 
-  //add product subscripe func
+
+
+
   add() {
-    this._apiPrdServ.insertProduct(this.uploaddata).subscribe((res) => {
+    this._apiPrdServ.updateProduct(this.uploaddata).subscribe((res) => {
         console.log(res)
-        this._router.navigateByUrl('/Home');
+        // this._router.navigateByUrl('/Home');
       }, (err) => { console.log(err) });
   }
+
+
+
+
+
 
   onselect(event: any){
     this.cover = event.target.files[0];
@@ -72,26 +98,7 @@ export class AddproductComponent implements OnInit {
     this.uploaddata.append("PRDCost", this.prd.PRDCost);
     this.uploaddata.append("PRDDiscountPrice", this.prd.PRDDiscountPrice);
     this.uploaddata.append("PRDQuantity", this.prd.PRDQuantity);
-    this.uploaddata.append("userid", this.userId);
-
-    // if(event.target.files){
-    //   for(let i=0;i<File.length;i++){
-    //     var reader= new FileReader();
-    //     reader.readAsDataURL(event.target.files[i]);
-    //     reader.onload=(events:any)=>{
-
-    //       this.urls.push(events.target.result);
-    //     }
-    //   }
-    // }
-    // console.log("urls is ",this.urls[0]);
-  }
-
-  processFile(imageInput: any) {
-    const file: File = imageInput.files[0];
-    console.log("----file----", file);
-    this.cover = imageInput.target.files[0];
-    console.log("----iimg----", this.cover);
-  }
+    this.uploaddata.append("PRDId",this.ProductId);
+}
 
 }

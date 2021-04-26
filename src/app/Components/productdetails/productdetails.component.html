@@ -25,8 +25,14 @@
 
 <div class="container">
   <div class="row my-4 pr-6">
-    <div class="col-2 my-4 pl-4 mw-100%">
-      <img
+    <div class="col-6 my-4 pl-4 mw-100%">
+      <div class="col-10 my-4 pr-4 mw-100%">
+        <img src="{{imgDirectory}}{{item.PRDImage}}"  class="img-thumbnail mt-2 first w-100 h-100">
+      </div>
+      <div class="col-8 my-4 pr-4  ml-5">
+      <h3 class="text-success ">Description: {{item.PRDDesc}}</h3>
+      </div>
+      <!-- <img
         src="assets/usb1.png"
         width="120px"
         class="border border-muted d-flex float-right"
@@ -40,12 +46,10 @@
         src="assets/usb3.jpg"
         width="120px"
         class="border border-muted d-flex float-right"
-      />
+      /> -->
     </div>
 
-    <div class="col-4 my-4 pr-4 mw-100%">
-      <img src="{{imgDirectory}}{{item.PRDImage}}"  class="img-thumbnail mt-2 first w-100 h-100">
-    </div>
+
 
     <div class="col-6 my-4">
       <h2> Product Name :{{ item.PRDName }}</h2>
@@ -53,7 +57,7 @@
       <h3 class="text-danger">Price:{{item.PRDCost | currency}}</h3>
       <a class="text-muted">Quantity: {{item.PRDCategory}}</a>
       <p class="text-info">number of rating: {{item['no_of_rating']}}</p>
-      <p class="text-success">number of rating: {{item['avg_of_rating']}}</p>
+      <p class="text-success">average of rating: {{item['avg_of_rating']}}</p>
       <!-- <ul>
         <li><a class="text-muted">4.5 inch HD Touch Screen (1280 x 720)</a></li>
         <li><a class="text-muted">Android 4.4 KitKat OS</a></li>

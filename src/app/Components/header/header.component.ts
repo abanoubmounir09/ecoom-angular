@@ -24,14 +24,18 @@ export class HeaderComponent implements OnInit,AfterViewInit {
       this.loginUser.id=data['id']
       this.loginUser.is_staff=data['is_staff']
       this.loginUser.token=data['token']
-      if (data['is_staff']==true){
+      if (data['is_staff']==true && data['is_staff'] != null){
         this.check_is_staff=true
       }
       else{
         this.check_is_staff=false
       }
     }
-    // console.log("ttttttttt********-------",this.loginUser)
+    else
+    {
+      this.check_is_staff=true
+    }
+    console.log("-------------",this.check_is_staff)
 
   }
 

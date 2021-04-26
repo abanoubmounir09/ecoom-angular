@@ -17,7 +17,8 @@ import { RegisterComponent } from './Components/user/register/register.component
 import { Globals } from './common/global-constants';
 import { UserprofileComponent } from './Components/userprofile/userprofile.component';
 import { OnlinePayComponent } from './Components/online-pay/online-pay.component';
-
+import { EditProductComponent } from './Components/edit-product/edit-product.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -34,13 +35,15 @@ import { OnlinePayComponent } from './Components/online-pay/online-pay.component
     ContactUsComponent,
     UserprofileComponent,
     OnlinePayComponent,
+    EditProductComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [Globals],
   bootstrap: [AppComponent],

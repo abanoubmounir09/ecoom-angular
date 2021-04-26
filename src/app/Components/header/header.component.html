@@ -75,14 +75,16 @@
       </li> -->
       <!-- <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
+        [style.display]="this.check_is_staff ? 'none' : 'block'"
       </li> -->
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
       <!-- <button class="btn btn-outline-warning my-2 my-sm-0 m-1" type="submit">search</button> -->
       <!-- <button class="btn btn-outline-warning my-2 my-sm-0 m-1" (click)="checkactiveuser()" >check active user</button> -->
-      <a  class="bg-white mr-4 btn-lg"  [routerLink]="['/order']" [style.display]="check_is_staff ? 'none' : 'block'"><i class="fa fa-cart-plus" ></i></a>
+      <a  class="bg-white mr-4 btn-lg"  [routerLink]="['/order']" [hidden]="this.check_is_staff" ><i class="fa fa-cart-plus" ></i></a>
       <!-- <a class="btn warning" [routerLink]="['/order']">my card</a> -->
+      <a class="btn btn-outline-warning my-2 my-sm-0 m-1"  [routerLink]="['/addproduct']" [hidden]="!this.check_is_staff">Add Product</a>
       <button class="btn btn-outline-success my-2 my-sm-0 m-1" type="submit" [style.display]="loginUser.username ? 'none' : 'block'"
       [routerLink]="['/login']">signin</button>
       <button class="btn btn-outline-info my-2 my-sm-0" type="submit" [style.display]="loginUser.username ? 'none' : 'block'"
@@ -93,7 +95,7 @@
         </button>
         <div class="dropdown-menu">
           <a class="dropdown-item " [routerLink]="['/profile']">Profile</a>
-          <a class="dropdown-item"  [routerLink]="['/addproduct']" [style.display]="check_is_staff ? 'block' : 'none'">Add Product</a>
+          <a class="dropdown-item"  [routerLink]="['/addproduct']" [hidden]="!this.check_is_staff">Add Product</a>
           <a class="dropdown-item" (click)="logout()">Logout</a>
         </div>
       </div>
