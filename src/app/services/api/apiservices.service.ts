@@ -70,10 +70,7 @@ export class ApiservicesService {
 
   // test filters
   testallquires(filterObj): Observable<Product[]>{
-    // const newobject = {
-    //   category:"apple",
-    //   Prodname:"iphone3",
-    // }
+
     const objectToSend = JSON.stringify(filterObj);
     const headersob = new HttpHeaders();
     headersob.append('Content-Type', 'application/json');
@@ -91,10 +88,6 @@ export class ApiservicesService {
 
      // active
   loginUser(userob): Observable<Useraccount>{
-    //  var test={
-    //     "username": "cust33",
-    //     "password": "1234",
-    //   }
       const headersob = new HttpHeaders();
       headersob.append('Content-Type', 'application/json');
       return this.http.post<Useraccount>(`http://127.0.0.1:8000/account/login/`, userob, { headers: headersob });
@@ -124,11 +117,12 @@ export class ApiservicesService {
   // }
 
   // add to card
-  addtocard(id, userid): Observable<Order>{
+  addtocard(id, userid,quantity): Observable<Order>{
     const x =
     {
       pid: id,
-      uid: userid
+      uid: userid,
+      quantity:quantity
     };
     const httpOptions = {
           headers: new HttpHeaders({
@@ -143,7 +137,7 @@ export class ApiservicesService {
   // insert product
   insertProduct(prd): Observable<any> {
   const reqHeader = new HttpHeaders({
-    'Content-Type': 'application/json',
+    'Content-Type' : 'application/json; charset=UTF-8',
     Authorization: 'Token  ' + this.token
    });
     return this.http.post(`http://127.0.0.1:8000/product/add/`, prd,{ headers: reqHeader });
@@ -158,7 +152,7 @@ export class ApiservicesService {
     };
 
     const reqHeader = new HttpHeaders({
-      'Content-Type': 'application/json',
+      'Content-Type' : 'application/json; charset=UTF-8',
       Authorization: 'Token  ' + this.token
    });
     return this.http.post(`http://127.0.0.1:8000/product/rate/`, rating, { headers: reqHeader });
@@ -171,7 +165,7 @@ export class ApiservicesService {
     };
     const httpOptions = {
           headers: new HttpHeaders({
-            'Content-Type': 'application/json',
+            'Content-Type' : 'application/json; charset=UTF-8',
             Accept: ' */*'
              // ,'Authorization': 'my-auth-token'
           })
@@ -191,7 +185,7 @@ export class ApiservicesService {
     };
     console.log('*********toooken is ******', objecowner);
    const reqHeader = new HttpHeaders({
-    'Content-Type': 'application/json',
+    'Content-Type' : 'application/json; charset=UTF-8',
     Authorization: 'Token  ' + this.token
  });
 
@@ -218,10 +212,27 @@ export class ApiservicesService {
   // updateProduct product
   updateProduct(prd): Observable<any> {
     const reqHeader = new HttpHeaders({
-      'Content-Type': 'application/json',
+      'Content-Type' : 'application/json; charset=UTF-8',
       Authorization: 'Token  ' + this.token
      });
       return this.http.post(`http://127.0.0.1:8000/product/edit/`, prd);
+    }
+
+    delonefromcard(id, userid,quantity): Observable<Order>{
+      const x =
+      {
+        pid: id,
+        uid: userid,
+        quantity:quantity
+      };
+      const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+              Accept: ' */*'
+               // ,'Authorization': 'my-auth-token'
+            })
+          };
+      return this.http.post<Order>(`http://127.0.0.1:8000/product/delfromcard/`, x, httpOptions);
     }
 
 

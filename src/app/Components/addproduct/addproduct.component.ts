@@ -17,11 +17,12 @@ export class AddproductComponent implements OnInit {
   uploaddata =  new FormData();
   token:string;userId:string;username:string;
 
+  addcat:string
   constructor(private _apiPrdServ: ApiservicesService, private _router: Router)
    {
     this.prd = {
       PRDName: "",
-      PRDCategory: "",
+      PRDCategory: null,
       PRDDesc: "",
       PRDImage: null,
       PRDPrice: null,
@@ -73,6 +74,7 @@ export class AddproductComponent implements OnInit {
     this.uploaddata.append("PRDDiscountPrice", this.prd.PRDDiscountPrice);
     this.uploaddata.append("PRDQuantity", this.prd.PRDQuantity);
     this.uploaddata.append("userid", this.userId);
+    this.uploaddata.append("newcat",this.addcat)
 
     // if(event.target.files){
     //   for(let i=0;i<File.length;i++){

@@ -3,6 +3,7 @@ import { Product } from 'src/app/model/interfaces/product';
 import { ActivatedRoute } from '@angular/router';
 import { ApiservicesService } from 'src/app/services/api/apiservices.service';
 import {Location} from '@angular/common';
+import { Userprofile } from 'src/app/model/classes/userprofile';
 
 @Component({
   selector: 'app-productdetails',
@@ -11,7 +12,8 @@ import {Location} from '@angular/common';
 })
 
 export class ProductdetailsComponent implements OnInit, AfterViewInit {
-
+  loginUser:Userprofile=new Userprofile();
+  check_is_staff: boolean;
   item: Product;
   ratevalue: string;
   ProductId: string;
@@ -67,5 +69,31 @@ export class ProductdetailsComponent implements OnInit, AfterViewInit {
       this.add -= 1;
     }
     }
+
+
+    addtocard(item_id)
+  {
+    if(localStorage.getItem("loginuser") != null){
+      var data = JSON.parse(localStorage.getItem("loginuser"));
+      this.loginUser.email=data['email']
+      this.loginUser.username=data['username']
+      this.loginUser.id=data['id']
+      this.loginUser.is_staff=data['is_staff']
+      if (data['is_staff']==true){
+        this.check_is_staff=true
+      }
+      else{
+        this.check_is_staff=false
+      }
+      console.log("staff is ", this.check_is_staff)
+    }
+    console.log('ssss')
+    console.log(item_id)
+    this._apiServe.addtocard(
+      item_id,this.loginUser.id,this.add).subscribe((res) => {
+        console.log(res)
+
+      }, (err) => { console.log(err) })
   }
 
+}

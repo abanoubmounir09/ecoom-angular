@@ -16,9 +16,12 @@ export class OrderComponent implements OnInit {
   datap:Order[];
   totalprice:number
   shippingcost:number
-
+  qnumber:[];
  v:number=0;
+
+
  imgDirectory:any= "http://127.0.0.1:8000"
+ newnum:number
   constructor(private _apiPrdServ: ApiservicesService, private _router: Router,private _activedRoute:ActivatedRoute)
    {
     this.order = {
@@ -29,7 +32,11 @@ export class OrderComponent implements OnInit {
       PRDPrice:null,
       PRDCost:null,
       PRDDiscountPrice:null,
-      PRDCreatedNow:""
+      PRDCreatedNow:"",
+      PRDQuantity:null
+
+
+
 
 
     }
@@ -64,14 +71,24 @@ export class OrderComponent implements OnInit {
     }
     this._apiPrdServ.mycard(
       this.loginUser.id).subscribe((res) => {
+
+        this.datap=res['d'];
+
+
+        this.qnumber=res['q']
         // this.datap = res;
 
         for(let i=0;i<this.datap.length;i++)
         {
-          this.totalprice=this.totalprice  + res[0][0].PRDPrice;
+
+
+          this.datap[i][0].PRDPrice=this.datap[i][0].PRDPrice * this.qnumber[i]
+          this.totalprice=this.totalprice  + this.datap[i][0].PRDPrice;
         }
         this.shippingcost=this.totalprice+10
           console.log("sdsddddddddsdsdddddd")
+          console.log(res['q'])
+
           console.log(res)
 
           }, (err) => { console.log(err) })
@@ -85,7 +102,8 @@ export class OrderComponent implements OnInit {
         // })
   }
   delitem(id)
-  { if(localStorage.getItem("loginuser") != null){
+  {
+    if(localStorage.getItem("loginuser") != null){
     var data = JSON.parse(localStorage.getItem("loginuser"));
     this.loginUser.email=data['email']
     this.loginUser.username=data['username']
@@ -100,11 +118,68 @@ export class OrderComponent implements OnInit {
   }}
     this._apiPrdServ.delitemcard(this.loginUser.id,id).subscribe((res) => {
       this.datap = res;
-        console.log("sdsddddddddsdsdddddd")
-        console.log(res)
-
         }, (err) => { console.log(err) })
     console.log(id)
+
+    // window.location.reload();
   }
 
+  updatequantity(n:number,id:number)
+  {
+    console.log(n)
+    n=n-1;
+    if(localStorage.getItem("loginuser") != null){
+      var data = JSON.parse(localStorage.getItem("loginuser"));
+      this.loginUser.email=data['email']
+      this.loginUser.username=data['username']
+      this.loginUser.id=data['id']
+      this.loginUser.is_staff=data['is_staff']
+      if (data['is_staff']==true){
+        this.check_is_staff=true
+      }
+      else{
+        this.check_is_staff=false
+      }
+      console.log("staff is ", this.check_is_staff)
+    }
+    this._apiPrdServ.delonefromcard(id,
+      this.loginUser.id,n).subscribe((res) => {
+
+
+          }, (err) => { console.log(err) })
+
+          // window.location.reload();
+  }
+
+
+  updatequantityadd(n:number,id:number)
+  {
+    n=n+1;
+    if(localStorage.getItem("loginuser") != null){
+      var data = JSON.parse(localStorage.getItem("loginuser"));
+      this.loginUser.email=data['email']
+      this.loginUser.username=data['username']
+      this.loginUser.id=data['id']
+      this.loginUser.is_staff=data['is_staff']
+      if (data['is_staff']==true){
+        this.check_is_staff=true
+      }
+      else{
+        this.check_is_staff=false
+      }
+      console.log("staff is ", this.check_is_staff)
+    }
+    this._apiPrdServ.delonefromcard(id,
+      this.loginUser.id,n).subscribe((res) => {
+
+
+          }, (err) => { console.log(err) })
+
+     window.location.reload();
+  }
+
+
+  refresh(): void {
+    window.location.reload();
+}
 }

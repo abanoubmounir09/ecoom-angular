@@ -5,6 +5,7 @@ import { Userprofile } from 'src/app/model/classes/userprofile';
 import { Category } from 'src/app/model/interfaces/category';
 import { Product } from 'src/app/model/interfaces/product';
 import { ApiservicesService } from 'src/app/services/api/apiservices.service';
+import {render} from 'creditcardpayments/creditCardPayments'
 
 
 @Component({
@@ -32,7 +33,9 @@ export class MainComponent implements OnInit,AfterViewInit  {
   totalLength:number;
   page:number=1;
 
-  constructor(private _apiServe:ApiservicesService,private _router: Router,private _activedRoute:ActivatedRoute) {
+  q:number
+  constructor(private _apiServe:ApiservicesService,private _router: Router,private _activedRoute:ActivatedRoute)
+  {
     this.prdprice=0;
     this.prodName="";
     this.SelectedCategory = "";
@@ -56,6 +59,19 @@ export class MainComponent implements OnInit,AfterViewInit  {
       this.check_is_staff=true
     }
 
+    this.q=1
+
+    render(
+      {
+        id:"#myPaypalButtons",
+        currency:"USD",
+        value:"137.00",
+        onApprove:(details) => {
+          alert("transaction successfully");
+          console.log("transaction successfully")
+        }
+      }
+    )
   }
 
   ngOnInit(): void {
@@ -120,7 +136,7 @@ export class MainComponent implements OnInit,AfterViewInit  {
     console.log('ssss')
     console.log(item_id)
     this._apiServe.addtocard(
-      item_id,this.loginUser.id).subscribe((res) => {
+      item_id,this.loginUser.id,this.q).subscribe((res) => {
         console.log(res)
 
       }, (err) => { console.log(err) })

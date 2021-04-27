@@ -24,8 +24,8 @@
       <div class="col-4 ">
         <div class="profile-card-4 text-center"><img src="http://envato.jayasankarkr.in/code/profile/assets/img/profile-4.jpg" class="img img-responsive">
           <div class="profile-content">
-                      <div class="profile-name">John Doe
-                          <p>@johndoedesigner</p>
+                      <div class="profile-name">{{loginUser.username}}
+                          <p>{{loginUser.email}}</p>
                       </div>
                       <div class="profile-description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</div>
                       <div class="row">
@@ -51,7 +51,7 @@
       <div class="col-8">
         <form method="post">
               <div class="row">
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <div class="profile-img">
                             <img src="http://envato.jayasankarkr.in/code/profile/assets/img/profile-4.jpg"/>
                             <div class="file btn btn-lg btn-primary">
@@ -59,12 +59,12 @@
                                 <input type="file" name="file"/>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
+                    </div> -->
+                    <div class="col-md-10">
                         <div class="profile-head">
-                                    <h5>John Doe</h5>
-                                    <h6>Web Developer and Designer </h6>
-                                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                                    <h5>NAME : {{loginUser.username}}</h5>
+                                    <!-- <h6>Bussiness Account</h6> -->
+                                    <!-- <p class="proile-rating">RANKINGS : <span>8/10</span></p> -->
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
@@ -76,11 +76,11 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                        <!-- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/> -->
                     </div>
               </div>
               <div class="row">
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <div class="profile-work">
                             <p>WORK LINK</p>
                             <a href="">Website Link</a><br/>
@@ -93,8 +93,8 @@
                             <a href="">WooCommerce</a><br/>
                             <a href="">PHP, .Net</a><br/>
                         </div>
-                    </div>
-                    <div class="col-md-8">
+                    </div> -->
+                    <div class="col-md-10">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="row">
@@ -102,7 +102,7 @@
                                                 <label>User Id</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>John123</p>
+                                                <p>{{loginUser.id}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -110,7 +110,7 @@
                                                 <label>Name</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>John Doe</p>
+                                                <p>{{loginUser.username}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -118,25 +118,25 @@
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>JohnDoe@gmail.com</p>
+                                                <p>{{loginUser.email}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Phone</label>
+                                                <label>Is_staff</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>123 456 7890</p>
+                                                <p>{{loginUser.is_staff}}</p>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <!-- <div class="row">
                                             <div class="col-md-6">
-                                                <label>Profession</label>
+                                                <label>Account Type</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p>Web Developer and Designer</p>
                                             </div>
-                                        </div>
+                                        </div> -->
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                               <div class="row mt-3">
@@ -170,7 +170,7 @@
                                       </div>
                                       <p>{{ item.PRDDesc }}</p>
                                       <a class="btn info m-1" [routerLink]="['/product' ,item.id]">details</a>
-                                      <a class="btn info m-1" [routerLink]="['/edit' ,item.id]">Edit</a>
+                                      <a class="btn danger m-1 " [routerLink]="['/edit' ,item.id]">Edit</a>
 
                                     </div>
                                   </div>
