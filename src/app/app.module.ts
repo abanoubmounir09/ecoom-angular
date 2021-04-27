@@ -20,6 +20,7 @@ import { OnlinePayComponent } from './Components/online-pay/online-pay.component
 import { EditProductComponent } from './Components/edit-product/edit-product.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -1,44 +1,53 @@
-<div class="container-fluid">
-  <div class="row justify-content-center">
+<div class="head container-fluid">
+      <div class="mt-2 mb-4 pt-2 pl-2">
+        <h1 class="font-weight-bolder text-white text-center">LOGIN</h1>
+      </div>
+      <div>
+        <a class="nav-link font-weight-bold text-white text-center" style="font-size:25px; text-decoration:underline;" routerLink="/Home">
+          Home
+        </a>
+        <li class="nav-link font-weight-bold text-white d-flex">
+          <strong class="mx-auto" style="font-size:25px;"> login! </strong>
+        </li>
+      </div>
+</div>
+
+
+
+
+<div class="container p-4 my-4 mx-auto" style="color: black; box-shadow: 2px 2px 4px #000000;">
+  <div class="form-row my-4 justify-content-center">
     <div class="col-lg-6 ">
       <form [formGroup]="loginForm" (ngSubmit)="login()">
-
         <div class="form-group">
-          <label for="">User Name:</label>
-          <input type="text" formControlName="UserName" class="form-control" name="user">
-          <div class="alert alert-danger" role="alert" *ngIf="loginForm.controls['UserName'].invalid &&
-            loginForm.controls['UserName'].touched">
-            <strong *ngIf="loginForm.controls['UserName'].errors.required"> User Name
-              is required </strong>
+          <!--<label class="text-secondary" for="">User Name:</label>-->
+          <input type="text" formControlName="UserName" class="form-control bg-light my-4 border border-0" name="user" placeholder="Enter Your Name">
+          <div class="alert alert-danger" role="alert" *ngIf="loginForm.controls['UserName'].invalid && loginForm.controls['UserName'].touched">
+            <strong *ngIf="loginForm.controls['UserName'].errors.required"> User Name is required </strong>
           </div>
-          </div>
-    <!-- <div class="form-group">
-      <label for="">Email</label>
-      <input type="email" formControlName="Email" class="form-control" name="Umail">
-      <div class="alert alert-danger" role="alert" *ngIf="loginForm.controls['Email'].invalid &&
-      loginForm.controls['Email'].touched">
-        <strong *ngIf="loginForm.controls['Email'].errors.required"> Email
-          is required </strong>
-        <strong *ngIf="loginForm.controls['Email'].errors.email"> Email not
-          contain Ex: @,.com </strong>
-      </div>
-    </div> -->
-    <div class="form-group">
-        <label for="">password</label>
-        <input type="password" formControlName="Password" class="form-control" name="Upassword">
-        <div class="alert alert-danger" role="alert" *ngIf="loginForm.controls['Password'].invalid &&
-            loginForm.controls['Password'].touched">
-            <strong *ngIf="loginForm.controls['Password'].errors.required">
-                Password
-                is required </strong>
-            <strong *ngIf="loginForm.controls['Password'].errors.min"> Password
-                must be more than 3 letters </strong>
         </div>
-
-    </div>
-    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
-</form>
-
+    <!--
+        <div class="form-group">
+          <label for="">Email</label>
+          <input type="email" formControlName="Email" class="form-control" name="Umail">
+          <div class="alert alert-danger" role="alert" *ngIf="loginForm.controls['Email'].invalid && loginForm.controls['Email'].touched">
+            <strong *ngIf="loginForm.controls['Email'].errors.required"> Email is required </strong>
+            <strong *ngIf="loginForm.controls['Email'].errors.email"> Email not contain Ex: @,.com </strong>
+          </div>
+        </div>
+      -->
+        <div class="form-group">
+            <!--<label class="text-secondary" for="">Password:</label>-->
+            <input type="password" formControlName="Password" class="form-control bg-light my-4 border border-0" name="Upassword" placeholder="Enter Password">
+            <div class="alert alert-danger" role="alert" *ngIf="loginForm.controls['Password'].invalid && loginForm.controls['Password'].touched">
+                <strong *ngIf="loginForm.controls['Password'].errors.required">Password  is required </strong>
+                <strong *ngIf="loginForm.controls['Password'].errors.min"> Password must be more than 3 letters </strong>
+            </div>
+        </div>
+        <div class="container" style="width:45%; text-align:center">
+          <button type="submit" class="col-8 btn btn-success text-white font-weight-light" [disabled]="loginForm.invalid">Login</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
