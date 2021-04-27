@@ -10,6 +10,7 @@ import { ApiservicesService } from 'src/app/services/api/apiservices.service';
 })
 export class UserprofileComponent implements OnInit {
   data: Product[]
+  imgDirectory:any= "http://127.0.0.1:8000"
   constructor(private _apiServe: ApiservicesService) { }
 
   ngOnInit(): void {
@@ -22,5 +23,6 @@ export class UserprofileComponent implements OnInit {
       console.log(err)
     })
   }
+
 
 }

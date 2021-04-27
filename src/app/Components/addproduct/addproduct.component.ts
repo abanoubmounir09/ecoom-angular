@@ -10,66 +10,51 @@ import { ApiservicesService } from 'src/app/services/api/apiservices.service';
   styleUrls: ['./addproduct.component.css']
 })
 export class AddproductComponent implements OnInit {
-  prd:Product;
-  categoryArray:Category[];
-  cover:File;
-  urls=[];
+  prd: Product;
+  categoryArray: Category[];
+  cover: File;
+  urls = [];
   uploaddata =  new FormData();
-
+  addcat:string
   constructor(private _apiPrdServ: ApiservicesService, private _router: Router)
    {
     this.prd = {
       PRDName: "",
-      PRDCategory: "",
+      PRDCategory: null,
       PRDDesc: "",
-      PRDImage:null,
-      PRDPrice:null,
-      PRDCost:null,
-      PRDDiscountPrice:null,
-      PRDCreatedNow:"",
+      PRDImage: null,
+      PRDPrice: null,
+      PRDCost: null,
+      PRDDiscountPrice: null,
+      PRDCreatedNow: "",
       PRDQuantity: null,
 
-    }
+    };
   }
 
   ngOnInit(): void
   {
-    this._apiPrdServ.getAllcategories().subscribe((res)=>{
-      this.categoryArray=res
+    this._apiPrdServ.getAllcategories().subscribe((res) => {
+      this.categoryArray = res
       console.log(res)
 
     },
-    (err)=>{
+    (err) => {
       console.log(err)
-    })
+    });
   }
 
   //add product subscripe func
   add() {
-    //  this.prd.PRDImage=`http://127.0.0.1:8000/media/${this.prd.PRDImage}`
-    console.log("----iimg----",this.prd);
-    var xx ={
-      'itm' :this.uploaddata,
-      // data:this.uploaddata
-    }
-
-    var finalData = [];
-    var t1 = this.uploaddata.get
-
-    finalData.push({
-      d1:t1,
-      d2:this.prd
-    })
-    const alldata={order: this.prd, takenSeatsIds:this.uploaddata}
     this._apiPrdServ.insertProduct(this.uploaddata).subscribe((res) => {
         console.log(res)
         this._router.navigateByUrl('/Home');
-      }, (err) => { console.log(err) })
+      }, (err) => { console.log(err) });
   }
 
-  onselect(event:any){
-    this.cover=event.target.files[0]
-    this.prd.PRDImage=this.cover
+  onselect(event: any){
+    this.cover = event.target.files[0];
+    this.prd.PRDImage = this.cover;
 
     // uploaddata =  new FormData();
     this.uploaddata.append("cover",this.cover,this.cover.name)
@@ -80,6 +65,7 @@ export class AddproductComponent implements OnInit {
     this.uploaddata.append("PRDCost",this.prd.PRDCost)
     this.uploaddata.append("PRDDiscountPrice",this.prd.PRDDiscountPrice)
     this.uploaddata.append("PRDQuantity",this.prd.PRDQuantity)
+    this.uploaddata.append("newcat",this.addcat)
 
     // if(event.target.files){
     //   for(let i=0;i<File.length;i++){
@@ -96,9 +82,9 @@ export class AddproductComponent implements OnInit {
 
   processFile(imageInput: any) {
     const file: File = imageInput.files[0];
-    console.log("----file----",file);
-    this.cover=imageInput.target.files[0]
-    console.log("----iimg----",this.cover);
+    console.log("----file----", file);
+    this.cover = imageInput.target.files[0];
+    console.log("----iimg----", this.cover);
   }
 
 }

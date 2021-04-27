@@ -9,5 +9,5 @@ export interface Order
     PRDDiscountPrice:Number;
     PRDCost:Number;
     PRDCreatedNow:string;
-    
+    PRDQuantity:string;
 }

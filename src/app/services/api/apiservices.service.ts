@@ -5,7 +5,7 @@ import { Category } from 'src/app/model/interfaces/category';
 import { Order } from 'src/app/model/interfaces/order';
 import { Product } from 'src/app/model/interfaces/product';
 import { Useraccount } from 'src/app/model/interfaces/useraccount';
-
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Injectable({
@@ -35,13 +35,6 @@ export class ApiservicesService {
   //  { headers: reqHeader }
     return this.http.get<Product[]>('http://127.0.0.1:8000/product/snippets/');
   }
-  // getmycard(userid):Observable<Order[]>
-  // { let x=
-  //   {
-  //     uid:userid
-  //   }
-  //   return this.http.get<Order[]>("http://127.0.0.1:8000/product/mycard/")
-  // }
 
   getFilterProduct(cat, name): Observable<Product[]>{
     return this.http.get<Product[]>(`http://127.0.0.1:8000/product/query/${cat}/${name}/`);
@@ -129,11 +122,12 @@ export class ApiservicesService {
   // }
 
   // add to card
-  addtocard(id, userid): Observable<Order>{
+  addtocard(id, userid,quantity): Observable<Order>{
     const x =
     {
       pid: id,
-      uid: userid
+      uid: userid,
+      quantity:quantity
     };
     const httpOptions = {
           headers: new HttpHeaders({
@@ -145,15 +139,36 @@ export class ApiservicesService {
     return this.http.post<Order>(`http://127.0.0.1:8000/product/order/`, x, httpOptions);
   }
 
+
+
+  delonefromcard(id, userid,quantity): Observable<Order>{
+    const x =
+    {
+      pid: id,
+      uid: userid,
+      quantity:quantity
+    };
+    const httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            Accept: ' */*'
+             // ,'Authorization': 'my-auth-token'
+          })
+        };
+    return this.http.post<Order>(`http://127.0.0.1:8000/product/delfromcard/`, x, httpOptions);
+  }
+
+  
+
   // insert product
   insertProduct(prd): Observable<any> {
-    const reqHeader = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Token  ' + this.token
-   });
+    const headersob = new HttpHeaders();
+    headersob.append('Content-Type', 'application/json');
+    // const alldata={order: prd, takenSeatsIds:imgdata}
+    // console.log("tokeb******",alldata['takenSeatsIds'].get("cover"));
 
 
-    return this.http.post<any>(`http://127.0.0.1:8000/product/add/`, prd,{ headers: reqHeader });
+    return this.http.post<any>(`http://127.0.0.1:8000/product/add/`, prd);
   }
    // active
   //  activeuser():Observable<Useraccount>{
@@ -163,8 +178,7 @@ export class ApiservicesService {
   // }
 
 
-  
-  mycard(userid): Observable<Order[]>{
+  mycard(userid): Observable<Order>{
     const x =
     {
       uid: userid
@@ -176,15 +190,14 @@ export class ApiservicesService {
              // ,'Authorization': 'my-auth-token'
           })
         };
-    return this.http.post<Order[]>(`http://127.0.0.1:8000/product/mycard/`,x,httpOptions)
-    
+    return this.http.post<Order>(`http://127.0.0.1:8000/product/mycard/`, x, httpOptions);
   }
 
   rateProduct(prdId, stars): Observable<any>{
     const rating = {
-      stars:"3",
-      uname:this.username,
-      prdId:prdId,
+      stars: "3",
+      uname: this.username,
+      prdId: prdId,
     };
 
     const reqHeader = new HttpHeaders({
@@ -201,8 +214,9 @@ export class ApiservicesService {
       'Content-Type': 'application/json',
    });
 
-    return this.http.post<Product[]>('http://127.0.0.1:8000/product/ownerproduct/', objecowner, { headers: reqHeader } );
+    return this.http.post<Product[]>(' http://127.0.0.1:8000/product/ownerproduct/', objecowner, { headers: reqHeader } );
   }
+
 
   delitemcard(userid,pid):Observable<Order[]>{
     let x=
@@ -219,6 +233,7 @@ export class ApiservicesService {
         };
     return this.http.post<Order[]>(`http://127.0.0.1:8000/product/delcard/`,x,httpOptions)
   }
+
 
 
 

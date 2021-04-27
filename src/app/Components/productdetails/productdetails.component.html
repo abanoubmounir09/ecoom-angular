@@ -66,7 +66,7 @@
           <input  type="text" [(ngModel)]="add" class="form-control border-light text-center input-btn">
           <button class="form-control border-light btn" (click)="addincrement()"><i class="fa fa-plus text-muted" style="font-size:12px"></i></button>
       </div>
-      <button class="btn-danger btn-card">
+      <button class="btn-danger btn-card" (click)="addtocard(item.id)">
         Add to Cart
       </button>
       <br /><br />
