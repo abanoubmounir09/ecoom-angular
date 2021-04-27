@@ -147,13 +147,13 @@ export class ApiservicesService {
 
   // insert product
   insertProduct(prd): Observable<any> {
-    const headersob = new HttpHeaders();
-    headersob.append('Content-Type', 'application/json');
-    // const alldata={order: prd, takenSeatsIds:imgdata}
-    // console.log("tokeb******",alldata['takenSeatsIds'].get("cover"));
+    const reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Token  ' + this.token
+   });
 
 
-    return this.http.post<any>(`http://127.0.0.1:8000/product/add/`, prd);
+    return this.http.post<any>(`http://127.0.0.1:8000/product/add/`, prd,{ headers: reqHeader });
   }
    // active
   //  activeuser():Observable<Useraccount>{

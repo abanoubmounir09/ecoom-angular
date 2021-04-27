@@ -52,7 +52,6 @@ export class AddproductComponent implements OnInit {
       'itm' :this.uploaddata,
       // data:this.uploaddata
     }
-    // console.log("----uploaddata----", this.uploaddata.get("cover"));
 
     var finalData = [];
     var t1 = this.uploaddata.get
@@ -71,7 +70,7 @@ export class AddproductComponent implements OnInit {
   onselect(event:any){
     this.cover=event.target.files[0]
     this.prd.PRDImage=this.cover
-    
+
     // uploaddata =  new FormData();
     this.uploaddata.append("cover",this.cover,this.cover.name)
     this.uploaddata.append("PRDName",this.prd.PRDName)

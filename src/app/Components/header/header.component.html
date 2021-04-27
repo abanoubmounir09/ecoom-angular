@@ -37,76 +37,109 @@
 
 
  sticky-top -->
-
-
-<nav class="navbar navbar-expand-lg navbar-light bg-secondary fixed-top pl-4">
-  <a class="navbar-brand text-success" href="#" ><h3>Just wish</h3></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link navbar-brand text-primary" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link navbar-brand text-primary" data-toggle="modal" data-target="#exampleModal" href="#">Search</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link navbar-brand text-primary" routerLink = "/contact us">Contact us</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link navbar-brand text-primary" routerLink = "/about us">About us</a>
-      </li>
-
-      <!-- <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li> -->
-      <!-- <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li> -->
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
-      <!-- <button class="btn btn-outline-warning my-2 my-sm-0 m-1" type="submit">search</button> -->
-      <!-- <button class="btn btn-outline-warning my-2 my-sm-0 m-1" (click)="checkactiveuser()" >check active user</button> -->
-      <a  class="bg-white mr-4 btn-lg"  [routerLink]="['/order']"><i class="fa fa-cart-plus  "></i></a>
-      <!-- <a class="btn warning" [routerLink]="['/order']">my card</a> -->
-      <button class="btn btn-outline-success my-2 my-sm-0 m-1" type="submit" [style.display]="loginUser.username ? 'none' : 'block'"
-      [routerLink]="['/login']">signin</button>
-      <button class="btn btn-outline-info my-2 my-sm-0" type="submit" [style.display]="loginUser.username ? 'none' : 'block'"
-       [routerLink]="['/register']">signup</button>
-      <div class="dropdown" [style.display]="loginUser.username ? 'block' : 'none'">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-         {{loginUser.username}}
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item " [routerLink]="['/profile']">Profile</a>
-          <a class="dropdown-item"  [style.display]="check_is_staff ? 'block' : 'none'">Add Product</a>
-          <a class="dropdown-item" (click)="logout()">Logout</a>
-        </div>
+ <div class="container-fluid bg-light py-4">
+  <div class="row">
+    <div class="col-6">
+      <div class="d-flex mr-auto">
+      <a href="#" class="d-flex mr-4">
+      <span class="fa fa-envelope mr-2"></span>
+      <span class="d-none d-md-inline-block">info@domain.com</span>
+      </a>
+        <a href="#" class="d-flex mr-auto"><span class="fa fa-phone mr-2"></span>
+        <span class="d-none d-md-inline-block">+1 234 4567 8910</span></a>
       </div>
-    </form>
+    </div>
+    <div class="col-6 text-right">
+        <div class="mr-auto">
+          <a href="#" class="p-2 pl-0"><span class="fab fa-twitter"></span></a>
+          <a href="#" class="p-2 pl-0"><span class="fab fa-facebook"></span></a>
+          <a href="#" class="p-2 pl-0"><span class="fab fa-linkedin-in"></span></a>
+          <a href="#" class="p-2 pl-0"><span class="fab fa-instagram"></span></a>
+          <a href="#" class="p-2 pl-0"><span class="fab fa-youtube"></span></a>
+      </div>
+    </div>
   </div>
+</div>
+
+<nav class="nav navbar-expand-lg navbar-light bg-light sticky-top border border-right-0 border border-left-0 border border-bottom-0 px-4 py-4">
+      <div class="col-4">
+        <a class="navbar-brand text-primary" href="#" ><h3>Just wish</h3></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div class="col-8 collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link pr-4 text-primary" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pr-4 text-primary" data-toggle="modal" data-target="#exampleModal" href="#">Search</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link pr-4 text-primary" routerLink = "/contact us">Contact us</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link pr-4 text-primary" routerLink = "/about us">About us</a>
+            </li>
+
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li> -->
+            <!-- <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li> -->
+
+          </ul>
+        <!--
+        <form class="form-inline my-2 my-lg-0">-->
+          <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+          <!-- <button class="btn btn-outline-warning my-2 my-sm-0 m-1" type="submit">search</button> -->
+          <!-- <button class="btn btn-outline-warning my-2 my-sm-0 m-1" (click)="checkactiveuser()" >check active user</button> -->
+
+          <!--
+          <a  class="bg-white mr-4 btn-lg"  [routerLink]="['/order']" [style.display]="check_is_staff ? 'none' : 'block'"><i class="fa fa-cart-plus" ></i></a>
+          -->
+
+          <!-- <a class="btn warning" [routerLink]="['/order']">my card</a> -->
+
+        <!--
+          <button class="text-white font-weight-bolder btn btn-outline-success my-2 my-sm-0 m-1" type="submit" [style.display]="loginUser.username ? 'none' : 'block'"
+          [routerLink]="['/login']">Sign in</button>
+          <button class="text-white font-weight-bolder btn btn-outline-info my-2 my-sm-0" type="submit" [style.display]="loginUser.username ? 'none' : 'block'"
+          [routerLink]="['/register']">Sign up</button>
+          <div class="dropdown" [style.display]="loginUser.username ? 'block' : 'none'">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            {{loginUser.username}}
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " [routerLink]="['/profile']">Profile</a>
+              <a class="dropdown-item"  [routerLink]="['/addproduct']" [style.display]="check_is_staff ? 'block' : 'none'">Add Product</a>
+              <a class="dropdown-item" (click)="logout()">Logout</a>
+            </div>
+          </div>
+        </form>
+        -->
+      </div>
 </nav>
 
 
-      <!-- Modal dialog-->
-      <div class="modal fade bd-example-modal-lg" id="exampleModal"tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<!-- Modal dialog-->
+<div class="modal fade bd-example-modal-lg" id="exampleModal"tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
-            <div class="modal-header bg-secondary">
+            <div class="modal-header" style="background-color:black;">
               <h5 class="modal-title text-white" id="exampleModalLabel">Search Item</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -115,7 +148,7 @@
             <div class="modal-body">
               <div class="row">
                   <div class="col-4 bg-light text-center">
-                    <h4><span class="badge badge-secondary ">name</span></h4>
+                    <h4><span class="badge badge-secondary "style="background-color:black;">name</span></h4>
                   </div>
                   <div class="col-4 text-center">
                     <h4><span class="badge badge-info">category</span></h4>
@@ -154,10 +187,11 @@
 
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" style="background-color:black;" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary" data-dismiss="modal" (click)=" saveBtnClick()">Save changes</button>
             </div>
           </div>
         </div>
-      </div>
-     <!-- end modal  -->
+</div>
+<!-- end modal  -->
+

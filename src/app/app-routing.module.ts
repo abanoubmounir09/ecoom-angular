@@ -1,4 +1,3 @@
-import { OnlinePayComponent } from './Components/online-pay/online-pay.component';
 import { AboutUsComponent } from './Components/about-us/about-us.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 import { NgModule, Component } from '@angular/core';
@@ -10,6 +9,7 @@ import { ProductdetailsComponent } from './Components/productdetails/productdeta
 import { LoginComponent } from './Components/user/login/login.component';
 import { RegisterComponent } from './Components/user/register/register.component';
 import { UserprofileComponent } from './Components/userprofile/userprofile.component';
+import { OnlinePayComponent } from './Components/online-pay/online-pay.component';
 const routes: Routes =
 [
   { path: 'apiproductbyid/:id', component: ProductdetailsComponent},
