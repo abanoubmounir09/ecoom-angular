@@ -8,13 +8,15 @@
 
 <form #myfrom="ngForm" (ngSubmit)="add()">
   <!-- {{myfrom.invalid}} -->
+
   <div class="form-group">
       <label for="">Name</label>
-      <input #prdName="ngModel" type="text" [(ngModel)]="prd.PRDName" class="form-control" name="pName" required minlength="3">
+      <input  type="text" [(ngModel)]="prd.PRDName" class="form-control" name="pName" required minlength="3">
   </div>
+
   <div class="form-group">
       <label for="">Price</label>
-      <input #prdPrice="ngModel" type="number" [(ngModel)]="prd.PRDPrice" class="form-control" name="pPrice" required min="1">
+      <input  type="number" [(ngModel)]="prd.PRDPrice" class="form-control" name="pPrice" required min="1">
 
   </div>
 
@@ -43,16 +45,16 @@
 
   <div class="form-group">
       <label for="">cost</label>
-      <input #prdcost="ngModel" type="number" [(ngModel)]="prd.PRDCost" class="form-control" name="pPrice" required >
+      <input  type="number" [(ngModel)]="prd.PRDCost" class="form-control" name="pPrice" required >
   </div>
 
   <div class="form-group">
       <label for="">discound</label>
-      <input #prdcost="ngModel" type="number" [(ngModel)]="prd.PRDDiscountPrice" class="form-control" name="pPrice" required >
+      <input type="number" [(ngModel)]="prd.PRDDiscountPrice" class="form-control" name="pPrice" required >
   </div>
   <div class="form-group">
     <label for="">Quantity</label>
-    <input #prdcost="ngModel" type="number" [(ngModel)]="prd.PRDQuantity" class="form-control" name="pPrice" required >
+    <input  type="number" [(ngModel)]="prd.PRDQuantity" class="form-control" name="pPrice" required >
 </div>
 <div class="form-group">
   <label for="">image</label>

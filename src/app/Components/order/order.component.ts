@@ -4,7 +4,7 @@ import { Userprofile } from 'src/app/model/classes/userprofile';
 import { Order } from 'src/app/model/interfaces/order';
 import { ApiservicesService } from 'src/app/services/api/apiservices.service';
 import {render} from 'creditcardpayments/creditCardPayments'
-import { stringify } from '@angular/compiler/src/util';
+
 
 @Component({
   selector: 'app-order',
@@ -22,7 +22,6 @@ export class OrderComponent implements OnInit {
  v:number=0;  
  total:number;
 
- 
  imgDirectory:any= "http://127.0.0.1:8000"
  newnum:number
   constructor(private _apiPrdServ: ApiservicesService, private _router: Router,private _activedRoute:ActivatedRoute)
@@ -37,9 +36,9 @@ export class OrderComponent implements OnInit {
       PRDDiscountPrice:null,
       PRDCreatedNow:"",
       PRDQuantity:null
-      
-      
-      
+
+
+
 
 
     }
@@ -83,14 +82,14 @@ export class OrderComponent implements OnInit {
 
         this.datap=res['d'];
 
-        
+
         this.qnumber=res['q']
         // this.datap = res;
 
         for(let i=0;i<this.datap.length;i++)
         {
 
-          
+
           this.datap[i][0].PRDPrice=this.datap[i][0].PRDPrice * this.qnumber[i]
           this.totalprice=this.totalprice  + this.datap[i][0].PRDPrice;
         }
@@ -114,7 +113,7 @@ export class OrderComponent implements OnInit {
         this.shippingcost=this.totalprice+10
           console.log("sdsddddddddsdsdddddd")
           console.log(res['q'])
-          
+
           console.log(res)
 
           }, (err) => { console.log(err) })
@@ -133,7 +132,8 @@ export class OrderComponent implements OnInit {
       
   }
   delitem(id)
-  { if(localStorage.getItem("loginuser") != null){
+  {
+    if(localStorage.getItem("loginuser") != null){
     var data = JSON.parse(localStorage.getItem("loginuser"));
     this.loginUser.email=data['email']
     this.loginUser.username=data['username']
@@ -148,13 +148,11 @@ export class OrderComponent implements OnInit {
   }}
     this._apiPrdServ.delitemcard(this.loginUser.id,id).subscribe((res) => {
       this.datap = res;
-        console.log("sdsddddddddsdsdddddd")
-        console.log(res)
-
         }, (err) => { console.log(err) })
     console.log(id)
     window.location.reload();
   }
+
   updatequantity(n:number,id:number)
   {
     if(n>1)
@@ -207,11 +205,11 @@ export class OrderComponent implements OnInit {
     }
     this._apiPrdServ.delonefromcard(id,
       this.loginUser.id,n).subscribe((res) => {
-  
-          
+
+
           }, (err) => { console.log(err) })
-    
-          window.location.reload();
+
+     window.location.reload();
   }
 }
 del_after_buy()

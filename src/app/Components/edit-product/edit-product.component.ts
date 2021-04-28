@@ -42,39 +42,41 @@ export class EditProductComponent implements OnInit {
     (err) => {
       console.log(err)
     });
-    // this.ProductId = this._activedRoute.snapshot.params.pid;
-    // this._apiPrdServ.getproductdetails(this.ProductId).subscribe((res) => {
-    //   this.prd= res[0];
-    //   console.log('****',this.prd);
 
-    //   this.prd.PRDName=res[0]['PRDName'];
-    //   console.log(this.prd.PRDName);
+    this.ProductId = this._activedRoute.snapshot.params.pid;
+    this._apiPrdServ.getproductdetails(this.ProductId).subscribe((res) => {
+      console.log('**result**',res);
+      this.prd= res[0];
+      console.log('**prd**',this.prd);
+
+      this.prd.PRDName=res[0]['PRDName'];
+      console.log(this.prd.PRDName);
 
 
-    //   this.prd.PRDCost=res[0]['PRDCost']
-    //   this.prd.PRDPrice=res[0]['PRDPrice']
-    //   console.log(this.prd.PRDPrice);
+      this.prd.PRDCost=res[0]['PRDCost']
+      this.prd.PRDPrice=res[0]['PRDPrice']
+      console.log(this.prd.PRDPrice);
 
-    //   this.prd.PRDQuantity=res[0]['RDQuantity']
-    //   this.prd.PRDDesc=res[0]['PRDDesc']
-    //   this.prd.PRDDiscountPrice=res[0]['PRDDiscountPrice']
+      this.prd.PRDQuantity=res[0]['RDQuantity']
+      this.prd.PRDDesc=res[0]['PRDDesc']
+      this.prd.PRDDiscountPrice=res[0]['PRDDiscountPrice']
 
-    //   console.log('details', res);
+      console.log('details', res);
 
-    //   console.log('name', this.item.PRDName);
-    // },
-    // (err) => {
-    //   console.log(err);
-    // });
+      console.log('name', this.item.PRDName);
+    },
+    (err) => {
+      console.log(err);
+    });
   }
 
 
 
 
   add() {
-    this._apiPrdServ.insertProduct(this.uploaddata).subscribe((res) => {
+    this._apiPrdServ.updateProduct(this.uploaddata).subscribe((res) => {
         console.log(res)
-        this._router.navigateByUrl('/Home');
+        // this._router.navigateByUrl('/Home');
       }, (err) => { console.log(err) });
   }
 
@@ -96,6 +98,7 @@ export class EditProductComponent implements OnInit {
     this.uploaddata.append("PRDCost", this.prd.PRDCost);
     this.uploaddata.append("PRDDiscountPrice", this.prd.PRDDiscountPrice);
     this.uploaddata.append("PRDQuantity", this.prd.PRDQuantity);
+    this.uploaddata.append("PRDId",this.ProductId);
 }
 
 }

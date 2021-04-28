@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
     }
 
     // tslint:disable-next-line: typedef
-    login() {
+    login()
+    {
         // form value
       let formValue=this.loginForm.value
       var userObject ={
@@ -53,13 +54,14 @@ export class LoginComponent implements OnInit {
         }
 
         localStorage.setItem("loginuser", JSON.stringify(localData));
-        this.router.navigate(['/Home'])
+
+        window.location.href = ('/Home')
+        // this.router.navigate(['/Home'])
+        // window.location.href(['/Home'])
       },
       (err)=>{
         console.log(err)
       })
-      // let mail =formValue['Email']
-      // console.log(formValue['Email']);
-      // let pas = this.test
+
 }
 }

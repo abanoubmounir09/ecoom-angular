@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit,AfterViewInit {
   prdname:string;
   loginUser:Userprofile=new Userprofile();
   check_is_staff:boolean;
+  check_for_addproduct:boolean;
   constructor(private _serapi:ApiservicesService, private router: Router ) {
 
     if(localStorage.getItem("loginuser") != null){
@@ -24,15 +25,20 @@ export class HeaderComponent implements OnInit,AfterViewInit {
       this.loginUser.id=data['id']
       this.loginUser.is_staff=data['is_staff']
       this.loginUser.token=data['token']
-      if (data['is_staff']==true){
+      if (data['is_staff']==true && data['is_staff'] != null){
         this.check_is_staff=true
+        this.check_for_addproduct=true
       }
       else{
         this.check_is_staff=false
+        this.check_for_addproduct=false
       }
-      console.log("staff is ", this.check_is_staff)
     }
-    // console.log("ttttttttt********-------",this.loginUser)
+    else
+    {
+      this.check_is_staff=true
+      this.check_for_addproduct=false
+    }
 
   }
 
@@ -59,6 +65,7 @@ export class HeaderComponent implements OnInit,AfterViewInit {
     if(localStorage.getItem("loginuser") != null){
       localStorage.removeItem('loginuser');
     }
+    window.location.reload();
     this.router.navigate(['/Home'])
   }
 

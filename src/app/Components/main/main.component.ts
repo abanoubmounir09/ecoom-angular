@@ -5,6 +5,8 @@ import { Userprofile } from 'src/app/model/classes/userprofile';
 import { Category } from 'src/app/model/interfaces/category';
 import { Product } from 'src/app/model/interfaces/product';
 import { ApiservicesService } from 'src/app/services/api/apiservices.service';
+import {render} from 'creditcardpayments/creditCardPayments'
+
 
 @Component({
   selector: 'app-main',
@@ -27,19 +29,60 @@ export class MainComponent implements OnInit,AfterViewInit  {
   loginUser:Userprofile=new Userprofile();
   check_is_staff: boolean;
   imgDirectory:any= "http://127.0.0.1:8000"
+  index=0
+  totalLength:number;
+  page:number=1;
+
   q:number
-  constructor(private _apiServe:ApiservicesService,private _router: Router,private _activedRoute:ActivatedRoute) {
+  constructor(private _apiServe:ApiservicesService,private _router: Router,private _activedRoute:ActivatedRoute)
+  {
     this.prdprice=0;
     this.prodName="";
     this.SelectedCategory = "";
+
+
+    if(localStorage.getItem("loginuser") != null){
+      var data = JSON.parse(localStorage.getItem("loginuser"));
+      this.loginUser.email=data['email']
+      this.loginUser.username=data['username']
+      this.loginUser.id=data['id']
+      this.loginUser.is_staff=data['is_staff']
+      this.loginUser.token=data['token']
+      if (data['is_staff']==true && data['is_staff'] != null){
+        this.check_is_staff=true
+      }
+      else{
+        this.check_is_staff=false
+      }
+    }
+    else{
+      this.check_is_staff=true
+    }
+
     this.q=1
+
+    render(
+      {
+        id:"#myPaypalButtons",
+        currency:"USD",
+        value:"137.00",
+        onApprove:(details) => {
+          alert("transaction successfully");
+          console.log("transaction successfully")
+        }
+      }
+    )
   }
 
   ngOnInit(): void {
     // get all products
     this._apiServe.getAllproduct().subscribe((res)=>{
-      this.data=res;
-      console.log(res)
+      this.data=res['product_list'];
+      console.log("res****-***-----",res)
+      console.log("item0----",res['product_list'][0]['PRDName'])
+      //paginations
+      this.totalLength= res['product_list'].length
+      console.log("res****length-***-----",this.totalLength)
     },
     (err)=>{
       console.log(err)

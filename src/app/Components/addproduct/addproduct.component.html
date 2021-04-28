@@ -75,7 +75,7 @@
         <!-- <button class="btn btn-primary" (click)="add()">Add</button> -->
 
 
-<form #myfrom="ngForm" (ngSubmit)="add()">
+
   <!-- {{myfrom.invalid}} -->
   <div class="form-group">
       <label for="">Name</label>
@@ -119,8 +119,7 @@
     
   
 
-    <button type="submit" class="btn btn-primary" >Save</button>
-  </form>
+  
   
   
   <img *ngFor="let url of urls" [src]="url" height="100">
@@ -151,7 +150,7 @@
   </div>
   
   
-  
+  <button type="submit" class="btn btn-primary" >Save</button>
 
 </div>
 

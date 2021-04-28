@@ -15,6 +15,8 @@ export class AddproductComponent implements OnInit {
   cover: File;
   urls = [];
   uploaddata =  new FormData();
+  token:string;userId:string;username:string;
+
   addcat:string
   constructor(private _apiPrdServ: ApiservicesService, private _router: Router)
    {
@@ -30,6 +32,12 @@ export class AddproductComponent implements OnInit {
       PRDQuantity: null,
 
     };
+    if (localStorage.getItem('loginuser') != null){
+      const data = JSON.parse(localStorage.getItem('loginuser'));
+      this.token = data.token;
+      this.userId = data.id;
+      this.username = data.username;
+    }
   }
 
   ngOnInit(): void
@@ -57,14 +65,15 @@ export class AddproductComponent implements OnInit {
     this.prd.PRDImage = this.cover;
 
     // uploaddata =  new FormData();
-    this.uploaddata.append("cover",this.cover,this.cover.name)
-    this.uploaddata.append("PRDName",this.prd.PRDName)
-    this.uploaddata.append("PRDCategory",this.prd.PRDCategory)
-    this.uploaddata.append("PRDDesc",this.prd.PRDDesc)
-    this.uploaddata.append("PRDPrice",this.prd.PRDPrice)
-    this.uploaddata.append("PRDCost",this.prd.PRDCost)
-    this.uploaddata.append("PRDDiscountPrice",this.prd.PRDDiscountPrice)
-    this.uploaddata.append("PRDQuantity",this.prd.PRDQuantity)
+    this.uploaddata.append("cover", this.cover, this.cover.name);
+    this.uploaddata.append("PRDName", this.prd.PRDName);
+    this.uploaddata.append("PRDCategory", this.prd.PRDCategory);
+    this.uploaddata.append("PRDDesc", this.prd.PRDDesc);
+    this.uploaddata.append("PRDPrice", this.prd.PRDPrice);
+    this.uploaddata.append("PRDCost", this.prd.PRDCost);
+    this.uploaddata.append("PRDDiscountPrice", this.prd.PRDDiscountPrice);
+    this.uploaddata.append("PRDQuantity", this.prd.PRDQuantity);
+    this.uploaddata.append("userid", this.userId);
     this.uploaddata.append("newcat",this.addcat)
 
     // if(event.target.files){
