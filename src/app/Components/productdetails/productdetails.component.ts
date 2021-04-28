@@ -59,8 +59,12 @@ export class ProductdetailsComponent implements OnInit, AfterViewInit {
 
 
   }
-  addincrement(){
+  addincrement(q:string)
+  {
+    if (this.add<parseInt (q))
+    {
     this.add +=1
+    }
   }
 
 
