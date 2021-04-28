@@ -141,6 +141,11 @@ export class ApiservicesService {
 
 
 
+
+  
+
+
+
   delonefromcard(id, userid,quantity): Observable<Order>{
     const x =
     {
@@ -157,6 +162,27 @@ export class ApiservicesService {
         };
     return this.http.post<Order>(`http://127.0.0.1:8000/product/delfromcard/`, x, httpOptions);
   }
+
+
+  del_after_buy(userid): Observable<Order>{
+    const x =
+    {
+      
+      uid: userid
+      
+    };
+    const httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            Accept: ' */*'
+             // ,'Authorization': 'my-auth-token'
+          })
+        };
+    return this.http.post<Order>(`http://127.0.0.1:8000/product/del_after_buy/`, x, httpOptions);
+  }
+
+
+
 
   
 
