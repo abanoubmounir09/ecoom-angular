@@ -63,7 +63,7 @@
 
 <nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top border border-right-0 border border-left-0 border border-bottom-0 px-4 py-4">
       <div class="col-4">
-        <a class="navbar-brand text-primary" href="#" ><h3>Just wish</h3></a>
+        <a class="navbar-brand text-primary text-dark " href="#"  ><h3>GAAK Store</h3></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -72,18 +72,18 @@
       <div class="col-8 collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link text-primary bg-info" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link text-dark  " href="#">Home <span class="sr-only">(current)</span></a>
             </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link pr-4 text-dark " data-toggle="modal" data-target="#exampleModal" href="#">Search</a>
+            </li> -->
+
             <li class="nav-item">
-              <a class="nav-link pr-4 text-primary" data-toggle="modal" data-target="#exampleModal" href="#">Search</a>
+              <a class="nav-link pr-4 text-dark " routerLink = "/contact us">Contact us</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link pr-4 text-primary" routerLink = "/contact us">Contact us</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link pr-4 text-primary" routerLink = "/about us">About us</a>
+              <a class="nav-link pr-4 text-dark " routerLink = "/about us">About us</a>
             </li>
 
             <!-- <li class="nav-item dropdown">
@@ -123,7 +123,7 @@
       <!-- <button class="btn btn-outline-warning my-2 my-sm-0 m-1" (click)="checkactiveuser()" >check active user</button> -->
       <a  class="bg-white mr-4 btn-lg"  [routerLink]="['/order']" [hidden]="this.check_is_staff" ><i class="fa fa-cart-plus" ></i></a>
       <!-- <a class="btn warning" [routerLink]="['/order']">my card</a> -->
-      <a class="btn btn-outline-warning my-2 my-sm-0 m-1"  [routerLink]="['/addproduct']" [hidden]="!this.check_for_addproduct">Add Product</a>
+      <a class="btn btn-outline-warning my-2 my-sm-0 mr-2"  [routerLink]="['/addproduct']" [hidden]="!this.check_for_addproduct">Add Product</a>
       <button class="btn btn-outline-success my-2 my-sm-0 m-1" type="submit" [style.display]="loginUser.username ? 'none' : 'block'"
       [routerLink]="['/login']">signin</button>
       <button class="btn btn-outline-info my-2 my-sm-0" type="submit" [style.display]="loginUser.username ? 'none' : 'block'"
