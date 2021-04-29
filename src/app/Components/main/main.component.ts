@@ -5,7 +5,6 @@ import { Userprofile } from 'src/app/model/classes/userprofile';
 import { Category } from 'src/app/model/interfaces/category';
 import { Product } from 'src/app/model/interfaces/product';
 import { ApiservicesService } from 'src/app/services/api/apiservices.service';
-import {render} from 'creditcardpayments/creditCardPayments'
 
 
 @Component({
@@ -61,17 +60,7 @@ export class MainComponent implements OnInit,AfterViewInit  {
 
     this.q=1
 
-    render(
-      {
-        id:"#myPaypalButtons",
-        currency:"USD",
-        value:"137.00",
-        onApprove:(details) => {
-          alert("transaction successfully");
-          console.log("transaction successfully")
-        }
-      }
-    )
+
   }
 
   ngOnInit(): void {
@@ -104,11 +93,16 @@ export class MainComponent implements OnInit,AfterViewInit  {
 
   onSave(){
     console.log(this.prdprice,this.prodName,this.SelectedCategory)
+    console.log("price",this.prdprice)
+    if (this.prdprice == null){
+      this.prdprice = 0
+    }
     var filteObj={
       category:this.SelectedCategory,
       Prodname:this.prodName,
       price:this.prdprice
     }
+
     this._apiServe.testallquires(filteObj).subscribe((res)=>{
       console.log(res)
       this.data=res
@@ -116,6 +110,7 @@ export class MainComponent implements OnInit,AfterViewInit  {
     (err)=>{
       console.log(err)
     })
+
   }
   addtocard(item_id)
   {

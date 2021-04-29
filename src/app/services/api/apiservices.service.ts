@@ -57,26 +57,6 @@ export class ApiservicesService {
 
 
 
-  // order(id): Observable<Order> {
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json',
-  //       'Accept': ' */*'
-  //       //  ,'Authorization': 'my-auth-token'
-  //     })
-  //   };
-  //   return this.http.post<Order>(`http://127.0.0.1:8000/product/order/`, order, httpOptions)
-  // }
-
-  // test filters
-  testallquires(filterObj): Observable<Product[]>{
-
-    const objectToSend = JSON.stringify(filterObj);
-    const headersob = new HttpHeaders();
-    headersob.append('Content-Type', 'application/json');
-    console.log(filterObj);
-    return this.http.post<Product[]>(`http://127.0.0.1:8000/product/test/`, objectToSend, { headers: headersob });
-  }
 
   // register api-http://127.0.0.1:8000/account/signup/
     registeruser(user): Observable<Useraccount>{
@@ -109,12 +89,7 @@ export class ApiservicesService {
     return this.http.post<Useraccount>(`http://127.0.0.1:8000/account/logout/`, { headers: headersob });
   }
 
-   // active
-  //  activeuser():Observable<Useraccount>{
-  //   var headersob = new HttpHeaders();
-  //   headersob.append('Content-Type', 'application/json');
-  //   return this.http.post<Useraccount>(`http://127.0.0.1:8000/account/active/`,{ headers: headersob })
-  // }
+
 
   // add to card
   addtocard(id, userid,quantity): Observable<Order>{
@@ -137,7 +112,7 @@ export class ApiservicesService {
 
 
 
-  
+
 
 
 
@@ -162,9 +137,9 @@ export class ApiservicesService {
   del_after_buy(userid): Observable<Order>{
     const x =
     {
-      
+
       uid: userid
-      
+
     };
     const httpOptions = {
           headers: new HttpHeaders({
@@ -179,7 +154,7 @@ export class ApiservicesService {
 
 
 
-  
+
 
   // insert product
   insertProduct(prd): Observable<any> {
@@ -187,7 +162,7 @@ export class ApiservicesService {
     'Content-Type' : 'application/json; charset=UTF-8',
     Authorization: 'Token  ' + this.token
    });
-    return this.http.post(`http://127.0.0.1:8000/product/add/`, prd,{ headers: reqHeader });
+    return this.http.post(`http://127.0.0.1:8000/product/add/`, prd);
   }
 
   // rate
@@ -264,6 +239,17 @@ export class ApiservicesService {
      });
       return this.http.post(`http://127.0.0.1:8000/product/edit/`, prd);
     }
+
+
+      // test filters
+  testallquires(filterObj): Observable<Product[]>{
+
+    const objectToSend = JSON.stringify(filterObj);
+    const headersob = new HttpHeaders();
+    headersob.append('Content-Type', 'application/json');
+    console.log(filterObj);
+    return this.http.post<Product[]>(`http://127.0.0.1:8000/product/test/`, objectToSend, { headers: headersob });
+  }
 
 
 

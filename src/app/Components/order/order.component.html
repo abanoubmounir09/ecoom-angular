@@ -2,26 +2,16 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 </head>
 <body style="background-color: white;">
-    
-
-
-
-
-
-
-
-
-
 
 
 <!-- Cart Start -->
-<div class="cart-page">
+<div class="cart-page " style="margin-bottom: 210px;">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-8">
                 <div class="cart-page-inner">
                     <div class="table-responsive">
-                        <table class="table text-center table-bordered" style="" >
+                        <table class="table text-center table-bordered"  >
                             <thead  style="color: black;">
                                 <tr style="font-weight: bold; font-size: larger;">
                                     <th>image</th>
@@ -49,7 +39,7 @@
                                     <td id="1">{{ datap[i][v].PRDPrice}}</td>
                                     <td>
                                         <div class="qty">
-                                             
+
                                             <button (click) ="updatequantity(qnumber[i],datap[i][v].id )"  class="btn-minus"><i class="fa fa-minus"></i></button>
                                             <input type="number"  id="1N" disabled [value]="qnumber[i]" [min]=1 [max]="3">
                                             <button (click)="updatequantityadd(qnumber[i],datap[i][v].id,datap[i][v].PRDQuantity)" class="btn-plus"><i class="fa fa-plus"></i></button>
@@ -58,19 +48,6 @@
                                     <td id="1res">{{qnumber[i]}}</td>
                                     <td><button (click)="delitem( datap[i][v].id )"><i class="fa fa-trash"></i></button></td>
                                 </tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
                             </tbody>
                         </table>
                     </div>
@@ -88,12 +65,12 @@
                                     <h2>Grand Total<span id="grandTotal">${{shippingcost}}</span></h2>
                                 </div>
                                 <div class="cart-btn">
-                                    <a ><button >Update Cart</button></a>
+                                    <!-- <a ><button >Update Cart</button></a> -->
                                     <!-- <a href="checkout.html"><button>Checkout</button></a> -->
                                     <div id="myPaypalButtons">
 
                                     </div>
-                                  
+
                                 </div>
                             </div>
                         </div>

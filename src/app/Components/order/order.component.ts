@@ -19,50 +19,13 @@ export class OrderComponent implements OnInit {
   totalprice:number
   shippingcost:number
   qnumber:[];
- v:number=0;  
+ v:number=0;
  total:number;
 
  imgDirectory:any= "http://127.0.0.1:8000"
  newnum:number
   constructor(private _apiPrdServ: ApiservicesService, private _router: Router,private _activedRoute:ActivatedRoute)
    {
-    this.order = {
-      PRDName: "",
-      PRDCategory: "",
-      PRDDesc: "",
-      PRDImage:null,
-      PRDPrice:null,
-      PRDCost:null,
-      PRDDiscountPrice:null,
-      PRDCreatedNow:"",
-      PRDQuantity:null
-
-
-
-
-
-    }
-   
-
-
-
-    this.totalprice=0
-
-  
-    }
-
-  ngOnInit(): void
-  {
-
-    // let id = this._activedRoute.snapshot.params['pid']
-    // console.log('ssss')
-    // console.log(id)
-    // this._apiPrdServ.addtocard(
-    //   id).subscribe((res) => {
-    //     console.log(res)
-
-    //   }, (err) => { console.log(err) })
-
     if(localStorage.getItem("loginuser") != null){
       var data = JSON.parse(localStorage.getItem("loginuser"));
       this.loginUser.email=data['email']
@@ -77,6 +40,25 @@ export class OrderComponent implements OnInit {
       }
       console.log("staff is ", this.check_is_staff)
     }
+
+    this.order = {
+      PRDName: "",
+      PRDCategory: "",
+      PRDDesc: "",
+      PRDImage:null,
+      PRDPrice:null,
+      PRDCost:null,
+      PRDDiscountPrice:null,
+      PRDCreatedNow:"",
+      PRDQuantity:null
+    }
+
+    this.totalprice=0
+    }
+
+  ngOnInit(): void
+  {
+
     this._apiPrdServ.mycard(
       this.loginUser.id).subscribe((res) => {
 
@@ -93,7 +75,7 @@ export class OrderComponent implements OnInit {
           this.datap[i][0].PRDPrice=this.datap[i][0].PRDPrice * this.qnumber[i]
           this.totalprice=this.totalprice  + this.datap[i][0].PRDPrice;
         }
-        this.total=this.totalprice;
+        this.total=this.totalprice+10;
         console.log('totalllllll')
         console.log(this.total)
         render(
@@ -106,46 +88,22 @@ export class OrderComponent implements OnInit {
               console.log("transaction successfully")
               this.del_after_buy()
             }
-            
-            
+
+
           }
         )
         this.shippingcost=this.totalprice+10
-          console.log("sdsddddddddsdsdddddd")
+
           console.log(res['q'])
 
           console.log(res)
 
           }, (err) => { console.log(err) })
 
-
-
-          
-        //  this._apiPrdServ.getmycard().subscribe((res)=>{
-        //   this.datap=res;
-        //   console.log(res)
-        // },
-        // (err)=>{
-        //   console.log(err)
-        // })
-
-      
   }
+
   delitem(id)
   {
-    if(localStorage.getItem("loginuser") != null){
-    var data = JSON.parse(localStorage.getItem("loginuser"));
-    this.loginUser.email=data['email']
-    this.loginUser.username=data['username']
-    this.loginUser.id=data['id']
-    this.loginUser.is_staff=data['is_staff']
-    if (data['is_staff']==true){
-      this.check_is_staff=true
-    }
-    else{
-      this.check_is_staff=false
-
-  }}
     this._apiPrdServ.delitemcard(this.loginUser.id,id).subscribe((res) => {
       this.datap = res;
         }, (err) => { console.log(err) })
@@ -159,26 +117,10 @@ export class OrderComponent implements OnInit {
     {
       console.log(n)
       n=n-1;
-      if(localStorage.getItem("loginuser") != null){
-        var data = JSON.parse(localStorage.getItem("loginuser"));
-        this.loginUser.email=data['email']
-        this.loginUser.username=data['username']
-        this.loginUser.id=data['id']
-        this.loginUser.is_staff=data['is_staff']
-        if (data['is_staff']==true){
-          this.check_is_staff=true
-        }
-        else{
-          this.check_is_staff=false
-        }
-        console.log("staff is ", this.check_is_staff)
-      }
       this._apiPrdServ.delonefromcard(id,
         this.loginUser.id,n).subscribe((res) => {
-    
-            
             }, (err) => { console.log(err) })
-      
+
             window.location.reload();
   }
 
@@ -189,20 +131,6 @@ export class OrderComponent implements OnInit {
     {
     console.log(n)
     n=n+1;
-    if(localStorage.getItem("loginuser") != null){
-      var data = JSON.parse(localStorage.getItem("loginuser"));
-      this.loginUser.email=data['email']
-      this.loginUser.username=data['username']
-      this.loginUser.id=data['id']
-      this.loginUser.is_staff=data['is_staff']
-      if (data['is_staff']==true){
-        this.check_is_staff=true
-      }
-      else{
-        this.check_is_staff=false
-      }
-      console.log("staff is ", this.check_is_staff)
-    }
     this._apiPrdServ.delonefromcard(id,
       this.loginUser.id,n).subscribe((res) => {
 
@@ -214,28 +142,15 @@ export class OrderComponent implements OnInit {
 }
 del_after_buy()
 {
-  if(localStorage.getItem("loginuser") != null){
-    var data = JSON.parse(localStorage.getItem("loginuser"));
-    this.loginUser.email=data['email']
-    this.loginUser.username=data['username']
-    this.loginUser.id=data['id']
-    this.loginUser.is_staff=data['is_staff']
-    if (data['is_staff']==true){
-      this.check_is_staff=true
-    }
-    else{
-      this.check_is_staff=false
-    }
-    console.log("staff is ", this.check_is_staff)
-  }
+
 
 
   this._apiPrdServ.del_after_buy(
     this.loginUser.id).subscribe((res) => {
 
-        
+
         }, (err) => { console.log(err) })
-  
+
         window.location.reload();
 }
 
@@ -245,6 +160,6 @@ del_after_buy()
   refresh(): void {
     window.location.reload();
 }
-  
+
 }
 
