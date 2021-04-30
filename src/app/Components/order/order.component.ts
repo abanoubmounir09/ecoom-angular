@@ -143,23 +143,12 @@ export class OrderComponent implements OnInit {
 del_after_buy()
 {
 
-
-
   this._apiPrdServ.del_after_buy(
     this.loginUser.id).subscribe((res) => {
-
-
         }, (err) => { console.log(err) })
-
         window.location.reload();
 }
 
-
-
-
-  refresh(): void {
-    window.location.reload();
-}
 
 }
 

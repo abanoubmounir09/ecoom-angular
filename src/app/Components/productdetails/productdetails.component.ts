@@ -24,6 +24,23 @@ export class ProductdetailsComponent implements OnInit, AfterViewInit {
   constructor(private _apiServe: ApiservicesService,private _activedRoute: ActivatedRoute,
     private loc: Location) {
       this.add = 1
+      if(localStorage.getItem("loginuser") != null){
+        var data = JSON.parse(localStorage.getItem("loginuser"));
+        this.loginUser.email=data['email']
+        this.loginUser.username=data['username']
+        this.loginUser.id=data['id']
+        this.loginUser.is_staff=data['is_staff']
+        this.loginUser.token=data['token']
+        if (data['is_staff']==true && data['is_staff'] != null){
+          this.check_is_staff=true
+        }
+        else{
+          this.check_is_staff=false
+        }
+      }
+      else{
+        this.check_is_staff=true
+      }
 
      }
   ngAfterViewInit(): void {

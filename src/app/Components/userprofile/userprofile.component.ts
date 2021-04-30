@@ -12,6 +12,7 @@ export class UserprofileComponent implements OnInit {
   data: Product[]
   loginUser:Userprofile=new Userprofile();
   imgDirectory:any= "http://127.0.0.1:8000";
+  check_is_staff:Boolean;
   constructor(private _apiServe: ApiservicesService)
    {
     if(localStorage.getItem("loginuser") != null){
@@ -21,6 +22,15 @@ export class UserprofileComponent implements OnInit {
       this.loginUser.id=data['id']
       this.loginUser.is_staff=data['is_staff']
       this.loginUser.token=data['token']
+      if (data['is_staff']==true && data['is_staff'] != null){
+        this.check_is_staff=true
+      }
+      else{
+        this.check_is_staff=false
+      }
+    }
+    else{
+      this.check_is_staff=true
     }
    }
 
@@ -38,16 +48,36 @@ export class UserprofileComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.getUser()
+    // this.getUser()
+    if( this.check_is_staff){
+      this._apiServe.getOwnerProduct().subscribe((res)=>{
+        this.data = res;
+        console.log("details",res[0].PRDName)
+      },
+      (err)=>{
+        console.log(err)
+      })
+    }
+    else{
+      this._apiServe.getFavoriteItems().subscribe((res)=>{
+        this.data = res;
+        console.log("details",res[0].PRDName)
+      },
+      (err)=>{
+        console.log(err)
+      })
+    }
 
-    this._apiServe.getOwnerProduct().subscribe((res)=>{
-      this.data = res;
-      console.log("details",res[0].PRDName)
-    },
-    (err)=>{
-      console.log(err)
-    })
   }
+
+  deletFavoriteItem(itemId){
+
+    this._apiServe.deletFavoriteItem(this.loginUser.id,itemId).subscribe((res) => {
+          }, (err) => { console.log(err) })
+          window.location.reload();
+  }
+
+
 
 
 }

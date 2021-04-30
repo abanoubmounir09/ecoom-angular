@@ -133,13 +133,11 @@ export class ApiservicesService {
     return this.http.post<Order>(`http://127.0.0.1:8000/product/delfromcard/`, x, httpOptions);
   }
 
-
+//del item from order table
   del_after_buy(userid): Observable<Order>{
     const x =
     {
-
       uid: userid
-
     };
     const httpOptions = {
           headers: new HttpHeaders({
@@ -149,6 +147,23 @@ export class ApiservicesService {
           })
         };
     return this.http.post<Order>(`http://127.0.0.1:8000/product/del_after_buy/`, x, httpOptions);
+  }
+
+  //del item from favorite table
+  deletFavoriteItem(userid,itemId): Observable<Order>{
+    const x =
+    {
+      uid: userid,
+      itemId:itemId
+    };
+    const httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            Accept: ' */*'
+             // ,'Authorization': 'my-auth-token'
+          })
+        };
+    return this.http.post<Order>(`http://127.0.0.1:8000/product/deletFavoriteItem/`, x, httpOptions);
   }
 
 
@@ -198,6 +213,23 @@ export class ApiservicesService {
 
 
 
+  // add to favoriteItem
+  favoriteItem(item_id, userid): Observable<Order>{
+    const x =
+    {
+      pid: item_id,
+      uid: userid,
+
+    };
+    const httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            Accept: ' */*'
+             // ,'Authorization': 'my-auth-token'
+          })
+        };
+    return this.http.post<Order>(`http://127.0.0.1:8000/product/favoriteItem/`, x, httpOptions);
+  }
 
 
   getOwnerProduct(): Observable<Product[]>{
@@ -212,6 +244,19 @@ export class ApiservicesService {
  });
 
     return this.http.post<Product[]>(' http://127.0.0.1:8000/product/ownerproduct/', objecowner, { headers: reqHeader } );
+  }
+
+  getFavoriteItems(): Observable<Product[]>{
+    const objecowner = {
+      uid: this.userId,
+      is_staff:this.is_staff
+    };
+   const reqHeader = new HttpHeaders({
+    'Content-Type' : 'application/json; charset=UTF-8',
+    Authorization: 'Token  ' + this.token
+ });
+
+    return this.http.post<Product[]>(' http://127.0.0.1:8000/product/getFavoriteItems/', objecowner, { headers: reqHeader } );
   }
 
 

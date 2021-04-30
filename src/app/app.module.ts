@@ -19,6 +19,7 @@ import { UserprofileComponent } from './Components/userprofile/userprofile.compo
 import { OnlinePayComponent } from './Components/online-pay/online-pay.component';
 import { EditProductComponent } from './Components/edit-product/edit-product.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     UserprofileComponent,
     OnlinePayComponent,
     EditProductComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

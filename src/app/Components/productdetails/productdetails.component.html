@@ -66,11 +66,11 @@
 
 
       <div class="form-group d-inline-flex mr-4 border-muted">
-          <button class="form-control border-light btn" (click)="subproduct()"><i class="fa fa-minus text-muted" style=" font-size:12px"></i></button>
-          <input  type="text" [(ngModel)]="add" class="form-control border-light text-center input-btn" readonly>
-          <button class="form-control border-light btn" (click)="addincrement(item.PRDQuantity)"><i class="fa fa-plus text-muted" style="font-size:12px"></i></button>
+          <button [hidden]="this.check_is_staff" class="form-control border-light btn" (click)="subproduct()"><i class="fa fa-minus text-muted" style=" font-size:12px"></i></button>
+          <input [hidden]="this.check_is_staff"  type="text" [(ngModel)]="add" class="form-control border-light text-center input-btn" readonly>
+          <button  [hidden]="this.check_is_staff" class="form-control border-light btn" (click)="addincrement(item.PRDQuantity)"><i class="fa fa-plus text-muted" style="font-size:12px"></i></button>
       </div>
-      <button class="btn-danger btn-card" (click)="addtocard(item.id)">
+      <button [hidden]="this.check_is_staff" class="btn-danger btn-card" (click)="addtocard(item.id)">
         Add to Cart
       </button>
       <br /><br />

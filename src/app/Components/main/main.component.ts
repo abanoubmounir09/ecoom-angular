@@ -114,22 +114,7 @@ export class MainComponent implements OnInit,AfterViewInit  {
   }
   addtocard(item_id)
   {
-    if(localStorage.getItem("loginuser") != null){
-      var data = JSON.parse(localStorage.getItem("loginuser"));
-      this.loginUser.email=data['email']
-      this.loginUser.username=data['username']
-      this.loginUser.id=data['id']
-      this.loginUser.is_staff=data['is_staff']
-      if (data['is_staff']==true){
-        this.check_is_staff=true
-      }
-      else{
-        this.check_is_staff=false
-      }
-      console.log("staff is ", this.check_is_staff)
-    }
-    console.log('ssss')
-    console.log(item_id)
+
     this._apiServe.addtocard(
       item_id,this.loginUser.id,this.q).subscribe((res) => {
         console.log(res)
@@ -139,28 +124,13 @@ export class MainComponent implements OnInit,AfterViewInit  {
   }
 
 
-  onSubmit(){
+  favoriteItem(itemId){
+    console.log(itemId)
+    this._apiServe.favoriteItem(
+      itemId,this.loginUser.id).subscribe((res) => {
+        console.log(res)
 
-
-    // let poductname=this.prodName
-    // let prodcategory=this.SelectedCategory
-    // let  dict = {"poductname":poductname,"prodcategory":prodcategory}
-
-    // this._apiServe.getFilterProduct(this.SelectedCategory,this.prodName).subscribe((res)=>{
-    //   console.log(res)
-    //   this.data=res
-
-    // },
-    // (err)=>{
-    //   console.log(err)
-    // })
-
-    // this._apiServe.testallquires().subscribe((res)=>{
-    //   console.log(res)
-    // },
-    // (err)=>{
-    //   console.log(err)
-    // })
+      }, (err) => { console.log(err) })
 
    }
 
