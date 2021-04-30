@@ -152,6 +152,9 @@
 
               <a [routerLink]="['/product', item.id]"><i class="fa fa-search"></i></a>
             </div>
+            <a [routerLink]="['/product' ,item.id]"><i class="fa fa-search" ></i></a>
+            <a (click)="favoriteItem(item.id)" [hidden]="this.check_is_staff"><i class="fa fa-heart"></i></a>
+          </div>
           </div>
         </div>
         <div class="card-body Cartitem">
@@ -180,4 +183,4 @@
   <div class="row mt-3 justify-content-center">
     <pagination-controls (pageChange)="page = $event"></pagination-controls>
   </div>
-</div>
+
