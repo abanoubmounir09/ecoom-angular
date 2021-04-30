@@ -1,7 +1,7 @@
 
 .first {
   box-shadow:  0px 1px 2px rgba(0, 0, 0, 0.2), 0 0 20px lightblue, 0 0 10px rgb(5, 75, 99);
-  border-radius:15px 50px;
+  border-radius:15px  50px;
 }
 
 .first:hover
@@ -10,6 +10,52 @@
 
 }
 
+.img2
+{
+  max-width: 295px;
+  min-width: 295px;
+  max-height: 265px;
+  min-height: 265px;
+  border-radius:15px  50px;
+}
+.addcart
+{
+
+  border-radius: 7%;
+  border: 1px solid #13424c;
+}
+.addcart:hover
+{
+  background-color:#13424c;
+  color: white;
+}
+
+.details
+{
+  border-radius: 7%;
+  border: 1px solid #13424c;
+  background-color:#13424c;
+  color: white;
+
+}
+
+
+
+
+
+.Cartitem
+{
+  max-width: 230px;
+  min-width: 230px;
+  max-height: 230px;
+  min-height: 230px;
+}
+.desc
+{
+
+  max-height:70px;
+  min-height: 70px;
+}
 
 .btnx {
   border: 2px solid black;

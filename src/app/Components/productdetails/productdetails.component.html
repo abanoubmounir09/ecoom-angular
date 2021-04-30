@@ -1,74 +1,167 @@
-<div class="container bg-dark">
-  <div class="row">
-    <div class="col-12">
+<!-- <div class="container bg-dark">
+  <div class="row mt-5">
+    <div class="col-12 ">
       <div class="mt-2 mb-4 pt-2 pl-2 bg-dark">
         <h1 class="font-weight-bolder text-white text-center">
           {{item.PRDName}}
         </h1>
       </div>
-      <div>
-        <a
-          class="nav-link font-weight-bold text-white text-center"
-          style="font-size: 25px; cursor: pointer"
-          routerLink="/Home"
-          >Home</a
-        >
-        <li class="nav-link font-weight-bold text-white d-flex">
-          <strong class="mx-auto" style="font-size: 25px">
-            {{item.PRDDesc}}
-          </strong>
-        </li>
-      </div>
     </div>
   </div>
-</div>
+</div> -->
 
-<div class="container">
-  <div class="row my-4 pr-6">
-    <div class="col-6 my-4 pl-4 mw-100%">
-      <div class="col-10 my-4 pr-4 mw-100%">
-        <img src="{{imgDirectory}}{{item.PRDImage}}"  class="img-thumbnail mt-2 first w-100 h-100">
+<div class="container" >
+  <div class="row mt-5 mb-5">
+    <div class="col-5 my-4 pl-4 mw-100%" >
+      <div class="col-10 my-4 pr-4 mw-100%" >
+        <!-- <img src="{{imgDirectory}}{{item.PRDImage}}"  class="img-thumbnail mt-2 first w-100 h-100" > -->
+        <img src="{{imgDirectory}}{{item.PRDImage}}" class="img-thumbnail img1">
       </div>
-      <div class="col-8 my-4 pr-4  ml-5">
-      <h3 class="text-success ">Description: {{item.PRDDesc}}</h3>
+      <div class="col-8 my-4 pr-2  ml-2">
+        <h5 style="color: #13424c;" >Description:</h5>
+        <p>{{item.PRDDesc}}</p>
       </div>
-      <!-- <img
-        src="assets/usb1.png"
-        width="120px"
-        class="border border-muted d-flex float-right"
-      />
-      <img
-        src="assets/usb2.jpg"
-        width="120px"
-        class="border border-muted d-flex float-right"
-      />
-      <img
-        src="assets/usb3.jpg"
-        width="120px"
-        class="border border-muted d-flex float-right"
-      /> -->
     </div>
 
 
 
-    <div class="col-6 my-4">
-      <h2> Product Name :{{ item.PRDName }}</h2>
-      <p class="text-success">Description: {{item.PRDDesc}}</p>
+    <div class="col-lg-7 mt-5 mb-5" >
+      <div class="cart-body">
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Name</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">{{item.PRDName}}</div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Price</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">{{item.PRDPrice| currency}}</div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Description</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">{{item.PRDDesc}}</div>
+          <!-- <div class="text-info">number of rating: {{item['no_of_rating']}}</div>
+      <div class="text-success">average of rating: {{item['avg_of_rating']}}</div> -->
+        </div>
+        <hr />
+
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Quantity</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">{{item.PRDQuantity}}</div>
+        </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">number of rating</h6>
+        </div>
+        <div class="col-sm-9 text-secondary"> {{item['no_of_rating']}}</div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">average of rating</h6>
+        </div>
+        <div class="col-sm-9 text-secondary"> {{item['avg_of_rating']}}</div>
+      </div>
+      <hr />
+
+         <div class="row">
+           <div class="col-3">
+            <div class="form-group d-inline-flex mr-4 border-muted">
+              <button class="form-control border-light btn" (click)="subproduct()"><i class="fa fa-minus text-muted"
+                  style=" font-size:12px"></i></button>
+              <input type="text" [(ngModel)]="add" class="form-control border-light text-center input-btn" readonly>
+              <button class="form-control border-light btn" (click)="addincrement(item.PRDQuantity)"><i
+                  class="fa fa-plus text-muted" style="font-size:12px"></i></button>
+            </div>
+          </div>
+          <div class="col-9">
+            <button class=" col-4 btn-card" style="background-color: #ae7c54;color: white;" (click)="addtocard(item.id)">
+              Add to Cart
+            </button>
+        </div>
+        </div>
+        <hr>
+         <div class="row">
+           <div class="col-3">
+            <div class="form-group ">
+              <label for="sel1">Select Rating:</label>
+            </div>
+          </div>
+            <div class="col-5">
+              <select class="form-control" id="sel1" [(ngModel)]="ratevalue">
+                <option [value]="1">1</option>
+                <option [value]="2">2</option>
+                <option [value]="3">3</option>
+                <option [value]="4">4</option>
+                <option [value]="5">5</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <button class="btn w-100" style="background-color: #ae7c54;color: white;"  (click)="sRating()">
+                Rating
+              </button>
+            </div>
+
+
+
+         </div>
+         <hr>
+
+
+         <div class="col-lg-12 text-center">
+          <button class="btn w-50" style="background-color: #218490;color: white;" (click)="GoBack()">go Back</button>
+        </div>
+
+
+</div>
+
+</div>
+
+
+
+
+         <!-- <br>
+        <div class="form-group ">
+          <label for="sel1">Select Rating:</label>
+          <select class="form-control col-6" id="sel1" [(ngModel)]="ratevalue">
+            <option [value]="1">1</option>
+            <option [value]="2">2</option>
+            <option [value]="3">3</option>
+            <option [value]="4">4</option>
+            <option [value]="5">5</option>
+          </select>
+        </div>
+
+       </div>
+
+
+
+
+
+
+
+
+      <div> Product Name:</div> <p> {{item.PRDName }} </p>
       <h3 class="text-danger">Price:{{item.PRDCost | currency}}</h3>
       <a class="text-muted">Quantity: {{item.PRDQuantity}}</a>
       <p class="text-info">number of rating: {{item['no_of_rating']}}</p>
       <p class="text-success">average of rating: {{item['avg_of_rating']}}</p>
-      <!-- <ul>
-        <li><a class="text-muted">4.5 inch HD Touch Screen (1280 x 720)</a></li>
-        <li><a class="text-muted">Android 4.4 KitKat OS</a></li>
-        <li><a class="text-muted">1.4 GHz Quad Core™ Processor</a></li>
-      </ul> -->
-
 
       <div class="form-group d-inline-flex mr-4 border-muted">
-          <button class="form-control border-light btn" (click)="subproduct()"><i class="fa fa-minus text-muted" style=" font-size:12px"></i></button>
-          <input  type="text" [(ngModel)]="add" class="form-control border-light text-center input-btn" readonly>
-          <button class="form-control border-light btn" (click)="addincrement(item.PRDQuantity)"><i class="fa fa-plus text-muted" style="font-size:12px"></i></button>
+        <button class="form-control border-light btn" (click)="subproduct()"><i class="fa fa-minus text-muted"
+            style=" font-size:12px"></i></button>
+        <input type="text" [(ngModel)]="add" class="form-control border-light text-center input-btn" readonly>
+        <button class="form-control border-light btn" (click)="addincrement(item.PRDQuantity)"><i
+            class="fa fa-plus text-muted" style="font-size:12px"></i></button>
       </div>
       <button class="btn-danger btn-card" (click)="addtocard(item.id)">
         Add to Cart
@@ -102,60 +195,53 @@
         <button class="btn btn-success w-50" (click)="GoBack()">go Back</button>
       </div>
     </div>
-  </div>
-</div>
+ -->
 
+    <!-- <div class="col-7 my-4 mt-5">
+       <div class="col-md-10 mt-3 mb-5">
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Name</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">{{loginUser.username}}</div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Email</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">{{loginUser.email}}</div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">ID</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">{{loginUser.id}}</div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Is Staff</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">{{loginUser.is_staff}}</div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Last Login</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">{{loginUser.last_login| date :'medium'}}</div>
+            </div>
 
-
-
-
-
-
-
-
-<!--
-<div class="container mt-3">
-  <div class="row mt-2 dfirst" style="height: 300px">
-    <div class="col-4 fcard d-flex justify-content-center">
-      <img
-        src=" assets/im.jpg"
-        class="img-thumbnail mt-2 first"
-        style="width: 100%"
-      />
-  <div class="row mt-2 dfirst " style="height: 300px;">
-    <div class="col-4 fcard  d-flex justify-content-center">
-      <img src="{{imgDirectory}}{{item.PRDImage}}"  class="img-thumbnail mt-2 first " style="width:100%">
-    </div>
-
-    <div class="col-8 mt-2">
-      <div class="card fcard">
-        <div class="card-body">
-          <h4 class="card-title text-success mt-2">
-            name is :{{ item.PRDName }}
-          </h4>
-          <p class="text-info mt-2">price is :{{ item.PRDName }}</p>
-          <p class="text-primary mt-2">description:{{ item.PRDDesc }}</p>
+          </div>
         </div>
+
       </div>
-      <button class="btn btn-success m-2" (click)="GoBack()">go Back</button>
-    </div>
-  </div>
-  <div class="row">
-    <div class="form-group">
-      <label for="sel1">Select list:</label>
-      <select class="form-control" id="sel1" [(ngModel)]="ratevalue">
-        <option [value]="1">1</option>
-        <option [value]="2">2</option>
-        <option [value]="3">3</option>
-        <option [value]="4">4</option>
-        <option [value]="5">5</option>
-      </select>
-    </div>
-  </div>
-  <button type="button" class="btn btn-primary" (click)="sRating()">
-    Rating
-  </button>
-</div> -->
+    </div> -->
+
 
 
 

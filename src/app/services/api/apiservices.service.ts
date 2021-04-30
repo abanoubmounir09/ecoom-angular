@@ -17,6 +17,9 @@ export class ApiservicesService {
    userId: string;
    username: string;
    is_staff:boolean;
+   last_login:string;
+   is_active:string;
+
   constructor(private http: HttpClient) {
 
     if (localStorage.getItem('loginuser') != null){
@@ -24,7 +27,11 @@ export class ApiservicesService {
       this.token = data.token;
       this.userId = data.id;
       this.username = data.username;
-      this.is_staff=data['is_staff']
+      this.is_staff=data['is_staff'];
+      this.last_login=data.last_login;
+
+
+
     }
    }
 

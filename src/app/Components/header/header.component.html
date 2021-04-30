@@ -61,9 +61,9 @@
   </div>
 </div>
 
-<nav class="navbar navbar-expand-sm  m-0 p-0  sticky-top border border-right-0 border border-left-0 border border-bottom-0 px- py-1" style="background-color: rgb(205, 234, 243);">
+<nav class="navbar navbar-expand-sm  m-0 p-0  sticky-top border border-right-0 border border-left-0 border border-bottom-0 px- py-1" style="background-color: #13424c; color: white;">
       <div class="col-4">
-        <a class="navbar-brand text-primary text-dark " href="#"  ><h3>GAAK Store</h3></a>
+        <a class="navbar-brand text-light" href="#"  ><h3 class="logo">GAAK Store</h3></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -72,18 +72,18 @@
       <div class="col-8 collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link text-dark  " href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link text-light   " href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <!-- <li class="nav-item">
-              <a class="nav-link pr-4 text-dark " data-toggle="modal" data-target="#exampleModal" href="#">Search</a>
+              <a class="nav-link pr-4  " data-toggle="modal" data-target="#exampleModal" href="#">Search</a>
             </li> -->
 
             <li class="nav-item">
-              <a class="nav-link pr-4 text-dark " routerLink = "/contact us">Contact us</a>
+              <a class="nav-link pr-4  text-light" routerLink = "/contact us">Contact us</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link pr-4 text-dark " routerLink = "/about us">About us</a>
+              <a class="nav-link pr-4 text-light " routerLink = "/about us">About us</a>
             </li>
 
             <!-- <li class="nav-item dropdown">
@@ -121,7 +121,7 @@
       <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
       <!-- <button class="btn btn-outline-warning my-2 my-sm-0 m-1" type="submit">search</button> -->
       <!-- <button class="btn btn-outline-warning my-2 my-sm-0 m-1" (click)="checkactiveuser()" >check active user</button> -->
-      <a  class="bg-white mr-4 btn-lg"  [routerLink]="['/order']" [hidden]="this.check_is_staff" ><i class="fa fa-cart-plus" ></i></a>
+      <a  class=" mr-4 btn-lg" style="background-color:#AE7c54;" [routerLink]="['/order']" [hidden]="this.check_is_staff" ><i class="fa fa-cart-plus" style="color: white;"></i></a>
       <!-- <a class="btn warning" [routerLink]="['/order']">my card</a> -->
       <a class="btn btn-outline-warning my-2 my-sm-0 mr-2"  [routerLink]="['/addproduct']" [hidden]="!this.check_for_addproduct">Add Product</a>
       <button class="btn btn-outline-success my-2 my-sm-0 m-1" type="submit" [style.display]="loginUser.username ? 'none' : 'block'"
@@ -129,7 +129,7 @@
       <button class="btn btn-outline-info my-2 my-sm-0" type="submit" [style.display]="loginUser.username ? 'none' : 'block'"
        [routerLink]="['/register']">signup</button>
       <div class="dropdown" [style.display]="loginUser.username ? 'block' : 'none'">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        <button type="button" class="btn dropdown-toggle" style="background-color:#AE7c54;color: white;"data-toggle="dropdown">
          {{loginUser.username}}
         </button>
         <div class="dropdown-menu">

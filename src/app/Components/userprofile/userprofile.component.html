@@ -1,57 +1,56 @@
-
-  <div class="head container-fluid">
-      <div class="mt-2 mb-4 pt-2 pl-2">
-        <h1 class="font-weight-bolder text-white text-center">My Profile Account</h1>
-      </div>
-      <div>
-        <a class="nav-link font-weight-bold text-white text-center" style="font-size:25px; text-decoration:underline;" routerLink="/Home">
-          Home
-        </a>
-        <li class="nav-link font-weight-bold text-white d-flex">
-          <strong class="mx-auto" style="font-size:25px;"> My Info. </strong>
-        </li>
-      </div>
+<div class="head container-fluid">
+  <div class="mt-2 m2-4 pt-2 pl-2">
+    <h1 class="font-weight-bolder text-white text-center">My Profile Account</h1>
   </div>
+  <div>
+    <a class="nav-link font-weight-bold text-white text-center" style="font-size:25px; text-decoration:underline;"
+      routerLink="/Home">
+      Home
+    </a>
+  </div>
+</div>
 
 
-  <div class="col-md-12">
-  <h4 class="text-center"><strong>MY INFO.</strong></h4>
-
-  <hr>
+<div class="col-md-12">
 
   <div class="container-fluid">
     <div class="row">
       <div class="col-4 ">
-        <div class="profile-card-4 text-center"><img src="http://envato.jayasankarkr.in/code/profile/assets/img/profile-4.jpg" class="img img-responsive">
+        <div class="profile-card-4 text-center"><img
+            src="http://envato.jayasankarkr.in/code/profile/assets/img/profile-4.jpg" class="img img-responsive">
           <div class="profile-content">
-                      <div class="profile-name">{{loginUser.username}}
-                          <p>{{loginUser.email}}</p>
-                      </div>
-                      <div class="profile-description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</div>
-                      <div class="row">
-                          <div class="col-xs-4">
-                              <div class="profile-overview">
-                                  <p>TWEETS</p>
-                                  <h4>1300</h4></div>
-                          </div>
-                          <div class="col-xs-4">
-                              <div class="profile-overview">
-                                  <p>FOLLOWERS</p>
-                                  <h4>250</h4></div>
-                          </div>
-                          <div class="col-xs-4">
-                              <div class="profile-overview">
-                                  <p>FOLLOWING</p>
-                                  <h4>168</h4></div>
-                          </div>
-                      </div>
+            <div class="profile-name ">{{loginUser.username}}
+              <p>{{loginUser.email}}</p>
+            </div>
+            <div class="profile-description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+              eirmod tempor.</div>
+            <div class="row">
+              <div class="col-xs-4">
+                <div class="profile-overview">
+                  <p>TWEETS</p>
+                  <h4>1300</h4>
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="profile-overview">
+                  <p>FOLLOWERS</p>
+                  <h4>250</h4>
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="profile-overview">
+                  <p>FOLLOWING</p>
+                  <h4>168</h4>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <div class="col-8">
         <form method="post">
-              <div class="row">
-                    <!-- <div class="col-md-4">
+          <div class="row">
+            <!-- <div class="col-md-4">
                         <div class="profile-img">
                             <img src="http://envato.jayasankarkr.in/code/profile/assets/img/profile-4.jpg"/>
                             <div class="file btn btn-lg btn-primary">
@@ -60,173 +59,68 @@
                             </div>
                         </div>
                     </div> -->
-                    <div class="col-md-10">
-                        <div class="profile-head">
-                                    <h5>NAME : {{loginUser.username}}</h5>
-                                    <!-- <h6>Bussiness Account</h6> -->
-                                    <!-- <p class="proile-rating">RANKINGS : <span>8/10</span></p> -->
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false" [hidden]="!this.loginUser.is_staff">Timeline</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <!-- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/> -->
-                    </div>
+            <div class="col-md-10">
+              <div class="profile-head">
+                <!-- <h5>NAME : {{loginUser.username}}</h5> -->
+                <!-- <h6>Bussiness Account</h6> -->
+                <!-- <p class="proile-rating">RANKINGS : <span>8/10</span></p> -->
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                      aria-controls="home" aria-selected="true">About Me:</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                      aria-controls="profile" aria-selected="false" [hidden]="!this.loginUser.is_staff">Timeline</a>
+                  </li>
+                </ul>
               </div>
-              <div class="row">
-                    <!-- <div class="col-md-4">
-                        <div class="profile-work">
-                            <p>WORK LINK</p>
-                            <a href="">Website Link</a><br/>
-                            <a href="">Bootsnipp Profile</a><br/>
-                            <a href="">Bootply Profile</a>
-                            <p>SKILLS</p>
-                            <a href="">Web Designer</a><br/>
-                            <a href="">Web Developer</a><br/>
-                            <a href="">WordPress</a><br/>
-                            <a href="">WooCommerce</a><br/>
-                            <a href="">PHP, .Net</a><br/>
-                        </div>
-                    </div> -->
-                    <div class="col-md-10">
-                        <div class="tab-content profile-tab" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>User Id</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>{{loginUser.id}}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Name</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>{{loginUser.username}}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Email</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>{{loginUser.email}}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Is_staff</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>{{loginUser.is_staff}}</p>
-                                            </div>
-                                        </div>
-                                        <!-- <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Account Type</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Web Developer and Designer</p>
-                                            </div>
-                                        </div> -->
-                            </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                              <div class="row mt-3">
-                                <div class="col-lg-6 col-md-6 col-xl-6 " *ngFor="let item of data">
-                                  <div class="card mt-2 mb-2 first">
-                                    <div  class="product-item  p-0"  >
-                                      <div class="product-image">
-                                         <img class="card-img-top" src="{{imgDirectory}}{{item.PRDImage}}"
-                                        alt="Card image cap" height="220" />
-                                      <div class="product-action">
-
-
-                                        <a [routerLink]="['/product' ,item.id]"><i class="fa fa-search" ></i></a>
-
-                                        <!-- <a href="#"><i class="fa fa-heart"></i></a> -->
-
-                                      </div>
-                                      </div>
-                                    </div>
-                                    <!-- <img class="card-img-top" src="{{imgDirectory}}{{item.PRDImage}}" alt="Card image cap" /> -->
-                                    <div class="card-body">
-                                      <div class="caption">
-                                        <div class="caption-top">
-                                          <h5 class="float-right badge-warning ">
-                                             {{ item.PRDPrice| currency }}
-                                          </h5>
-                                          <h5>
-                                            <!-- <a [routerLink]="['/product', item.id]">{{ item.PRDName }}</a> -->
-                                          </h5>
-                                        </div>
-                                      </div>
-                                      <p>{{ item.PRDDesc }}</p>
-                                      <a class="btn info m-1" [routerLink]="['/product' ,item.id]">details</a>
-                                      <a class="btn danger m-1 " [routerLink]="['/edit' ,item.id]">Edit</a>
-
-                                    </div>
-                                  </div>
-                                </div>
-
-                            </div>
-                                          <!-- <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Experience</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Expert</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Hourly Rate</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>10$/hr</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Total Projects</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>230</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>English Level</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Expert</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Availability</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>6 months</p>
-                                            </div>
-                                        </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label>Your Bio</label><br/>
-                                        <p>Your detail description</p>
-                                    </div>
-                                </div> -->
-                            </div>
-                        </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 mt-3 mb-5">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Name</h6>
                     </div>
+                    <div class="col-sm-9 text-secondary">{{loginUser.username}}</div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{loginUser.email}}</div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">ID</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{loginUser.id}}</div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Is Staff</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{loginUser.is_staff}}</div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Last Login</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{loginUser.last_login| date :'medium'}}</div>
+                  </div>
+
+                </div>
               </div>
+
+            </div>
+          </div>
         </form>
       </div>
     </div>

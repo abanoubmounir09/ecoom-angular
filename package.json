@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "~11.2.8",
     "@angular/router": "~11.2.8",
     "creditcardpayments": "^1.0.3",
+    "ng": "0.0.0",
     "ngx-cookie-service": "^11.0.2",
     "ngx-pagination": "^5.0.0",
     "rxjs": "~6.6.0",

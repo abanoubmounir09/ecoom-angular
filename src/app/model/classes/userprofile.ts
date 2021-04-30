@@ -5,5 +5,6 @@ export class Userprofile {
   id:string;
   is_staff:string;
   token:string;
+  last_login:string;
 
 }

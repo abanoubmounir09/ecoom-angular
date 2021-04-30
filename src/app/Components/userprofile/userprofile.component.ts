@@ -21,6 +21,9 @@ export class UserprofileComponent implements OnInit {
       this.loginUser.id=data['id']
       this.loginUser.is_staff=data['is_staff']
       this.loginUser.token=data['token']
+      this.loginUser.last_login=data['last_login']
+
+
     }
    }
 
@@ -34,6 +37,8 @@ export class UserprofileComponent implements OnInit {
       this.loginUser.id=data['id']
       this.loginUser.is_staff=data['is_staff']
       this.loginUser.token=data['token']
+      this.loginUser.last_login=data['last_login']
+
     }
    }
 

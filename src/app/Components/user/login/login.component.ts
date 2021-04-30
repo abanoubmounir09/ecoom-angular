@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
         var id= res['data']['id']
         var token=res['data']['token']
         var is_staffdata=res['data']['is_staff']
+        var last_login=res['data']['last_login']
           console.log("username",username)
         var localData={
           username:username,
@@ -51,6 +52,7 @@ export class LoginComponent implements OnInit {
           id:id,
           token:token,
           is_staff:is_staffdata,
+          last_login:last_login
         }
 
         localStorage.setItem("loginuser", JSON.stringify(localData));
